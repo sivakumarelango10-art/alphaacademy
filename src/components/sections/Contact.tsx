@@ -9,6 +9,7 @@ import {
   CheckCircle2,
   GraduationCap
 } from "lucide-react";
+import { InstagramIcon, YoutubeIcon, FacebookIcon } from "../ui/SocialIcons";
 import confetti from "canvas-confetti";
 import { contactInfoData, socialLinksData } from "../../data/social";
 
@@ -56,9 +57,6 @@ export const Contact = ({ onSuccessToast }: ContactProps) => {
       ref={sectionRef}
       className="py-24 relative bg-[#090D15] overflow-hidden"
     >
-      {/* Background ambient lighting */}
-      <div className="absolute bottom-10 right-1/4 w-[600px] h-[600px] bg-[#D4AF37]/5 rounded-full blur-[160px] pointer-events-none" />
-
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
@@ -79,12 +77,12 @@ export const Contact = ({ onSuccessToast }: ContactProps) => {
           
           {/* Left Column: Contact Cards & Academy Advisory Info (5 cols) */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
+            initial={{ opacity: 0, x: -20 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.5 }}
             className="lg:col-span-5 space-y-6"
           >
-            <div className="p-8 rounded-3xl bg-[#0E1524]/90 border border-[#D4AF37]/30 shadow-2xl space-y-6">
+            <div className="p-8 rounded-3xl bg-[#0E1524] border border-[#D4AF37]/30 shadow-2xl space-y-6">
               <div className="space-y-1">
                 <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#D4AF37]">
                   <GraduationCap className="w-4 h-4" />
@@ -100,7 +98,7 @@ export const Contact = ({ onSuccessToast }: ContactProps) => {
 
               {/* Information Cards */}
               <div className="space-y-3 pt-2">
-                <div className="flex items-start gap-3.5 p-4 rounded-2xl bg-slate-900/80 border border-slate-800">
+                <div className="flex items-start gap-3.5 p-4 rounded-2xl bg-slate-900 border border-slate-800">
                   <div className="p-2.5 rounded-xl bg-[#D4AF37]/15 text-[#F3D068] shrink-0">
                     <Phone className="w-4 h-4" />
                   </div>
@@ -110,7 +108,7 @@ export const Contact = ({ onSuccessToast }: ContactProps) => {
                   </div>
                 </div>
 
-                <div className="flex items-start gap-3.5 p-4 rounded-2xl bg-slate-900/80 border border-slate-800">
+                <div className="flex items-start gap-3.5 p-4 rounded-2xl bg-slate-900 border border-slate-800">
                   <div className="p-2.5 rounded-xl bg-[#D4AF37]/15 text-[#F3D068] shrink-0">
                     <Mail className="w-4 h-4" />
                   </div>
@@ -120,7 +118,7 @@ export const Contact = ({ onSuccessToast }: ContactProps) => {
                   </div>
                 </div>
 
-                <div className="flex items-start gap-3.5 p-4 rounded-2xl bg-slate-900/80 border border-slate-800">
+                <div className="flex items-start gap-3.5 p-4 rounded-2xl bg-slate-900 border border-slate-800">
                   <div className="p-2.5 rounded-xl bg-[#D4AF37]/15 text-[#F3D068] shrink-0">
                     <MapPin className="w-4 h-4" />
                   </div>
@@ -130,7 +128,7 @@ export const Contact = ({ onSuccessToast }: ContactProps) => {
                   </div>
                 </div>
 
-                <div className="flex items-start gap-3.5 p-4 rounded-2xl bg-slate-900/80 border border-slate-800">
+                <div className="flex items-start gap-3.5 p-4 rounded-2xl bg-slate-900 border border-slate-800">
                   <div className="p-2.5 rounded-xl bg-[#D4AF37]/15 text-[#F3D068] shrink-0">
                     <Clock className="w-4 h-4" />
                   </div>
@@ -141,23 +139,30 @@ export const Contact = ({ onSuccessToast }: ContactProps) => {
                 </div>
               </div>
 
-              {/* Social Link Quick Row */}
+              {/* Social Link Quick Row with real colored icons */}
               <div className="pt-2">
                 <span className="text-xs text-slate-400 block mb-2 font-semibold">
                   Official Channels:
                 </span>
-                <div className="flex items-center gap-2">
-                  {socialLinksData.map((s) => (
-                    <a
-                      key={s.id}
-                      href={s.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-700 hover:border-[#D4AF37] text-xs text-slate-300 hover:text-white transition-colors"
-                    >
-                      {s.name}
-                    </a>
-                  ))}
+                <div className="flex items-center gap-3">
+                  {socialLinksData.map((s) => {
+                    let IconComp = InstagramIcon;
+                    if (s.id === "youtube") IconComp = YoutubeIcon;
+                    if (s.id === "facebook") IconComp = FacebookIcon;
+
+                    return (
+                      <a
+                        key={s.id}
+                        href={s.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-3.5 py-2 rounded-xl bg-slate-900 border border-slate-700 hover:border-[#D4AF37] text-xs text-slate-200 hover:text-white transition-all flex items-center gap-2 hover:scale-105"
+                      >
+                        <IconComp className="w-4 h-4" colored={true} />
+                        <span>{s.name}</span>
+                      </a>
+                    );
+                  })}
                 </div>
               </div>
             </div>
@@ -165,12 +170,12 @@ export const Contact = ({ onSuccessToast }: ContactProps) => {
 
           {/* Right Column: Interactive Contact Form (7 cols) */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
+            initial={{ opacity: 0, x: 20 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
             className="lg:col-span-7"
           >
-            <div className="p-8 sm:p-10 rounded-3xl bg-[#0E1524]/90 border border-[#D4AF37]/30 shadow-2xl space-y-6">
+            <div className="p-8 sm:p-10 rounded-3xl bg-[#0E1524] border border-[#D4AF37]/30 shadow-2xl space-y-6">
               <div className="space-y-1 pb-2 border-b border-slate-800">
                 <h3 className="font-serif-display text-2xl font-bold text-white">
                   Send Your Academic Enquiry
@@ -191,7 +196,7 @@ export const Contact = ({ onSuccessToast }: ContactProps) => {
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder="Enter your full name"
-                    className="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-slate-700 focus:border-[#D4AF37] focus:outline-none text-white text-sm placeholder-slate-500 transition-colors"
+                    className="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 focus:border-[#D4AF37] focus:outline-none text-white text-sm placeholder-slate-500 transition-colors"
                   />
                 </div>
 
@@ -206,7 +211,7 @@ export const Contact = ({ onSuccessToast }: ContactProps) => {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="name@example.com"
-                      className="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-slate-700 focus:border-[#D4AF37] focus:outline-none text-white text-sm placeholder-slate-500 transition-colors"
+                      className="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 focus:border-[#D4AF37] focus:outline-none text-white text-sm placeholder-slate-500 transition-colors"
                     />
                   </div>
 
@@ -220,7 +225,7 @@ export const Contact = ({ onSuccessToast }: ContactProps) => {
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
                       placeholder="+91 XXXXX XXXXX"
-                      className="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-slate-700 focus:border-[#D4AF37] focus:outline-none text-white text-sm placeholder-slate-500 transition-colors"
+                      className="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 focus:border-[#D4AF37] focus:outline-none text-white text-sm placeholder-slate-500 transition-colors"
                     />
                   </div>
                 </div>
@@ -234,7 +239,7 @@ export const Contact = ({ onSuccessToast }: ContactProps) => {
                     value={subject}
                     onChange={(e) => setSubject(e.target.value)}
                     placeholder="e.g. UGC NET English Coaching Batch / Study Materials 01-07"
-                    className="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-slate-700 focus:border-[#D4AF37] focus:outline-none text-white text-sm placeholder-slate-500 transition-colors"
+                    className="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 focus:border-[#D4AF37] focus:outline-none text-white text-sm placeholder-slate-500 transition-colors"
                   />
                 </div>
 
@@ -247,7 +252,7 @@ export const Contact = ({ onSuccessToast }: ContactProps) => {
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
                     placeholder="Share your current preparation stage, target exam session, or queries about classes..."
-                    className="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-slate-700 focus:border-[#D4AF37] focus:outline-none text-white text-sm placeholder-slate-500 transition-colors"
+                    className="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 focus:border-[#D4AF37] focus:outline-none text-white text-sm placeholder-slate-500 transition-colors"
                   />
                 </div>
 

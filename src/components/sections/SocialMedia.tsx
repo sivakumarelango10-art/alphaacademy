@@ -10,10 +10,10 @@ export const SocialMedia = () => {
 
   const getPlatformIcon = (id: string) => {
     switch (id) {
-      case "instagram": return <InstagramIcon className="w-8 h-8 text-pink-400" />;
-      case "youtube": return <YoutubeIcon className="w-8 h-8 text-red-500" />;
-      case "facebook": return <FacebookIcon className="w-8 h-8 text-blue-400" />;
-      default: return <Users className="w-8 h-8 text-[#D4AF37]" />;
+      case "instagram": return <InstagramIcon className="w-10 h-10 drop-shadow-md" colored={true} />;
+      case "youtube": return <YoutubeIcon className="w-10 h-10 drop-shadow-md" colored={true} />;
+      case "facebook": return <FacebookIcon className="w-10 h-10 drop-shadow-md" colored={true} />;
+      default: return <Users className="w-10 h-10 text-[#D4AF37]" />;
     }
   };
 
@@ -44,15 +44,15 @@ export const SocialMedia = () => {
           {socialLinksData.map((social, idx) => (
             <motion.div
               key={social.id}
-              initial={{ opacity: 0, y: 25 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: idx * 0.12 }}
-              className={`p-8 rounded-3xl bg-[#0E1524]/90 border ${social.colorScheme.border} transition-all duration-300 flex flex-col justify-between group ${social.colorScheme.glow} hover:-translate-y-2 relative overflow-hidden`}
+              transition={{ duration: 0.5, delay: idx * 0.1 }}
+              className={`p-8 rounded-3xl bg-[#0E1524] border ${social.colorScheme.border} transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1.5 shadow-xl relative overflow-hidden`}
             >
               <div className="space-y-5">
-                {/* Header */}
+                {/* Header with authentic real brand symbol */}
                 <div className="flex items-center justify-between">
-                  <div className="p-3.5 rounded-2xl bg-slate-900/90 border border-slate-800 group-hover:scale-110 transition-transform">
+                  <div className="p-2.5 rounded-2xl bg-black/40 border border-slate-700/60 group-hover:scale-105 transition-transform flex items-center justify-center">
                     {getPlatformIcon(social.id)}
                   </div>
                   <span className={`text-[11px] font-bold px-3 py-1 rounded-full border ${social.colorScheme.badge}`}>

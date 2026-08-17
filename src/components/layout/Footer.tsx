@@ -31,14 +31,13 @@ export const Footer = ({ onOpenEnquiryModal }: FooterProps) => {
     <footer className="relative bg-[#05070B] text-slate-400 border-t border-[#D4AF37]/15 overflow-hidden">
       {/* Decorative top ambient glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-[1px] bg-gradient-to-r from-transparent via-[#D4AF37]/40 to-transparent" />
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-24 bg-[#D4AF37]/5 blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 pb-12 border-b border-slate-800/70">
           {/* Brand Column (5 cols) */}
           <div className="lg:col-span-5 space-y-6">
             <div className="flex items-center gap-3.5">
-              <div className="w-12 h-12 rounded-full overflow-hidden border border-[#D4AF37]/40 p-0.5 bg-black/80 shadow-[0_0_20px_rgba(212,175,55,0.3)]">
+              <div className="w-12 h-12 rounded-full overflow-hidden border border-[#D4AF37]/40 p-0.5 bg-black/80 shadow-md">
                 <img
                   src="/alpha-academy-logo.jpg"
                   alt="Alpha Academy Emblem"
@@ -68,7 +67,7 @@ export const Footer = ({ onOpenEnquiryModal }: FooterProps) => {
               </p>
             </div>
 
-            {/* Social Channels */}
+            {/* Social Channels with real brand symbols */}
             <div className="space-y-2">
               <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">
                 Official Social Channels
@@ -85,10 +84,10 @@ export const Footer = ({ onOpenEnquiryModal }: FooterProps) => {
                       href={platform.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-10 h-10 rounded-lg bg-slate-900 border border-slate-700/60 flex items-center justify-center text-slate-300 hover:text-white hover:border-[#D4AF37] hover:bg-[#D4AF37]/10 hover:shadow-[0_0_15px_rgba(212,175,55,0.3)] transition-all duration-300"
+                      className="w-11 h-11 rounded-xl bg-slate-900 border border-slate-700/60 flex items-center justify-center hover:border-[#D4AF37] hover:scale-105 transition-all shadow-md"
                       aria-label={`Follow Alpha Academy on ${platform.name}`}
                     >
-                      <IconComp className="w-5 h-5" />
+                      <IconComp className="w-6 h-6" colored={true} />
                     </a>
                   );
                 })}
