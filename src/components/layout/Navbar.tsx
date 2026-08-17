@@ -24,11 +24,18 @@ const sectionIds = ["hero", "about", "founder", "philosophy", "materials", "clas
 export const Navbar = ({ onOpenEnquiryModal }: NavbarProps) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const activeId = useScrollSpy(sectionIds, 150);
+  const activeId = useScrollSpy(sectionIds, 120);
 
   useEffect(() => {
+    let ticking = false;
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setIsScrolled(window.scrollY > 20);
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
@@ -45,10 +52,10 @@ export const Navbar = ({ onOpenEnquiryModal }: NavbarProps) => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-[#070A0F]/90 backdrop-blur-xl border-b border-[#D4AF37]/20 py-3 shadow-[0_10px_30px_-10px_rgba(0,0,0,0.8)]"
-          : "bg-gradient-to-b from-[#070A0F]/80 to-transparent py-5"
+          ? "bg-[#070A0F]/95 backdrop-blur-md border-b border-[#D4AF37]/20 py-2.5 shadow-xl"
+          : "bg-gradient-to-b from-[#070A0F]/90 to-transparent py-4"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -57,9 +64,9 @@ export const Navbar = ({ onOpenEnquiryModal }: NavbarProps) => {
           <a
             href="#hero"
             onClick={(e) => scrollToSection(e, "#hero")}
-            className="flex items-center gap-3.5 group"
+            className="flex items-center gap-3 group"
           >
-            <div className="relative w-11 h-11 rounded-full overflow-hidden border border-[#D4AF37]/40 p-0.5 bg-black/60 shadow-[0_0_15px_rgba(212,175,55,0.25)] group-hover:border-[#D4AF37] group-hover:shadow-[0_0_25px_rgba(212,175,55,0.5)] transition-all duration-300">
+            <div className="relative w-10 h-10 rounded-full overflow-hidden border border-[#D4AF37]/40 p-0.5 bg-black/60 shadow-md group-hover:border-[#D4AF37] transition-all">
               <img
                 src="/alpha-academy-logo.jpg"
                 alt="Alpha Academy Logo"
@@ -79,7 +86,7 @@ export const Navbar = ({ onOpenEnquiryModal }: NavbarProps) => {
           </a>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-1 xl:gap-2">
+          <nav className="hidden lg:flex items-center gap-1 xl:gap-1.5">
             {navItems.map((item) => {
               const isActive = activeId === item.href.replace("#", "");
               return (
@@ -87,7 +94,7 @@ export const Navbar = ({ onOpenEnquiryModal }: NavbarProps) => {
                   key={item.href}
                   href={item.href}
                   onClick={(e) => scrollToSection(e, item.href)}
-                  className={`relative px-3 py-1.5 text-xs xl:text-sm font-medium tracking-wide transition-all duration-200 rounded-md ${
+                  className={`relative px-3 py-1.5 text-xs xl:text-sm font-medium tracking-wide transition-colors rounded-md ${
                     isActive
                       ? "text-[#F3D068] font-semibold"
                       : "text-slate-300 hover:text-white hover:bg-white/5"
@@ -97,8 +104,8 @@ export const Navbar = ({ onOpenEnquiryModal }: NavbarProps) => {
                   {isActive && (
                     <motion.div
                       layoutId="activeNavIndicator"
-                      className="absolute bottom-0 left-2 right-2 h-[2px] bg-[#D4AF37] rounded-full shadow-[0_0_8px_#D4AF37]"
-                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                      className="absolute bottom-0 left-2 right-2 h-[2px] bg-[#D4AF37] rounded-full"
+                      transition={{ type: "spring", stiffness: 400, damping: 35 }}
                     />
                   )}
                 </a>
@@ -110,11 +117,11 @@ export const Navbar = ({ onOpenEnquiryModal }: NavbarProps) => {
           <div className="hidden lg:flex items-center gap-3">
             <button
               onClick={onOpenEnquiryModal}
-              className="relative group overflow-hidden px-4 py-2 rounded-lg text-xs xl:text-sm font-semibold tracking-wide text-black bg-gradient-to-r from-[#F3D068] via-[#D4AF37] to-[#B8860B] shadow-[0_0_20px_rgba(212,175,55,0.3)] hover:shadow-[0_0_30px_rgba(212,175,55,0.6)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 flex items-center gap-2"
+              className="px-4 py-2 rounded-lg text-xs xl:text-sm font-semibold tracking-wide text-black bg-gradient-to-r from-[#F3D068] via-[#D4AF37] to-[#B8860B] hover:shadow-[0_0_20px_rgba(212,175,55,0.4)] transition-all flex items-center gap-2"
             >
-              <Sparkles className="w-3.5 h-3.5 text-black animate-spin" style={{ animationDuration: '8s' }} />
+              <Sparkles className="w-3.5 h-3.5 text-black" />
               <span>Enroll / Enquire</span>
-              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="w-3.5 h-3.5" />
             </button>
           </div>
 
@@ -144,10 +151,10 @@ export const Navbar = ({ onOpenEnquiryModal }: NavbarProps) => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="lg:hidden bg-[#0A0E17]/98 backdrop-blur-2xl border-b border-[#D4AF37]/30 overflow-hidden shadow-2xl"
+            transition={{ duration: 0.25, ease: "easeInOut" }}
+            className="lg:hidden bg-[#0A0E17] border-b border-[#D4AF37]/30 overflow-hidden shadow-2xl"
           >
-            <div className="px-6 py-6 space-y-3">
+            <div className="px-6 py-5 space-y-3">
               <div className="pb-3 border-b border-slate-800 flex items-center justify-between">
                 <div className="flex items-center gap-2 text-xs text-[#D4AF37]">
                   <GraduationCap className="w-4 h-4" />
@@ -179,13 +186,13 @@ export const Navbar = ({ onOpenEnquiryModal }: NavbarProps) => {
                 })}
               </div>
 
-              <div className="pt-4 border-t border-slate-800 space-y-2">
+              <div className="pt-3 border-t border-slate-800">
                 <button
                   onClick={() => {
                     setMobileMenuOpen(false);
                     onOpenEnquiryModal();
                   }}
-                  className="w-full py-3 rounded-lg text-sm font-bold text-black bg-gradient-to-r from-[#F3D068] via-[#D4AF37] to-[#B8860B] shadow-[0_0_20px_rgba(212,175,55,0.4)] flex items-center justify-center gap-2"
+                  className="w-full py-3 rounded-lg text-sm font-bold text-black bg-gradient-to-r from-[#F3D068] via-[#D4AF37] to-[#B8860B] flex items-center justify-center gap-2"
                 >
                   <Sparkles className="w-4 h-4 text-black" />
                   <span>Enroll / Enquire for 2026 Batch</span>
