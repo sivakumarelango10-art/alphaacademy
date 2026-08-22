@@ -64,7 +64,7 @@ export const Navbar = ({ onOpenEnquiryModal }: NavbarProps) => {
             onClick={(e) => scrollToSection(e, "#hero")}
             className="flex items-center gap-3 group"
           >
-            <div className="relative w-10 h-10 rounded-full overflow-hidden border border-[#D4AF37] p-0.5 bg-white shadow-sm group-hover:scale-105 transition-all">
+            <div className="relative w-10 h-10 rounded-full overflow-hidden border border-[#D4AF37] p-0.5 bg-[#121316] shadow-sm group-hover:scale-105 transition-all">
               <img
                 src="/alpha-academy-logo.jpg"
                 alt="Alpha Academy Logo"

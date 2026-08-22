@@ -33,7 +33,7 @@ export const Footer = ({ onOpenEnquiryModal }: FooterProps) => {
           {/* Brand Column (5 cols) */}
           <div className="lg:col-span-5 space-y-6">
             <div className="flex items-center gap-3.5">
-              <div className="w-12 h-12 rounded-full overflow-hidden border border-[#D4AF37] p-0.5 bg-white shadow-md">
+              <div className="w-12 h-12 rounded-full overflow-hidden border border-[#D4AF37] p-0.5 bg-[#121316] shadow-md">
                 <img
                   src="/alpha-academy-logo.jpg"
                   alt="Alpha Academy Emblem"

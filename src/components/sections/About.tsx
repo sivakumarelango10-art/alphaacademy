@@ -67,7 +67,7 @@ export const About = () => {
             <div className="relative rounded-3xl bg-white border border-[#EAE5DC] p-8 shadow-xl overflow-hidden">
               <div className="space-y-6">
                 <div className="flex items-center gap-4">
-                  <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-[#8C6418] p-0.5 bg-white shadow-md">
+                  <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-[#8C6418] p-0.5 bg-[#121316] shadow-md">
                     <img
                       src="/alpha-academy-logo.jpg"
                       alt="Alpha Academy Emblem"
