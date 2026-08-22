@@ -170,8 +170,6 @@ export const EnquiryModal = ({
                     className="w-full px-4 py-2.5 rounded-xl bg-[#FAF8F5] border border-[#EAE5DC] focus:border-[#8C6418] focus:bg-white focus:outline-none text-[#121316] text-sm transition-colors"
                   >
                     <option value="Online Interactive">Online Interactive (Live + Recorded)</option>
-                    <option value="Offline Classroom">Offline Classroom (In-Person)</option>
-                    <option value="Hybrid Learning">Hybrid Learning</option>
                     <option value="Study Materials Only">Study Materials Only</option>
                   </select>
                 </div>

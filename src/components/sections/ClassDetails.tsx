@@ -49,26 +49,29 @@ export const ClassDetails = ({ onOpenEnquiryModal: _onOpenEnquiryModal }: ClassD
           </p>
         </div>
 
-        {/* 3 Learning Modes Bar */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-12">
+        {/* Learning Mode Banner */}
+        <div className="max-w-2xl mx-auto mb-12">
           {classData.modes.map((mode, idx) => (
             <motion.div
               key={mode.name}
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className="p-6 rounded-2xl bg-white border border-[#EAE5DC] hover:border-[#8C6418] transition-all space-y-3 group shadow-xs hover:shadow-md"
+              className="p-6 sm:p-7 rounded-2xl bg-white border border-[#8C6418]/40 shadow-xs hover:border-[#8C6418] hover:shadow-md transition-all space-y-2.5 text-center group"
             >
-              <div className="flex items-center justify-between">
-                <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-[#F3EEDF] text-[#8C6418] border border-[#E2D6BE]">
+              <div className="flex items-center justify-center gap-2">
+                <span className="text-xs font-bold px-3 py-0.5 rounded-full bg-[#F3EEDF] text-[#8C6418] border border-[#E2D6BE]">
                   {mode.badge}
                 </span>
-                <span className="w-2 h-2 rounded-full bg-emerald-500" />
+                <span className="inline-flex items-center gap-1.5 text-[11px] text-emerald-600 font-semibold">
+                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                  <span>Live & Recorded Access</span>
+                </span>
               </div>
-              <h3 className="font-serif-display text-lg font-bold text-[#121316] group-hover:text-[#8C6418] transition-colors">
+              <h3 className="font-serif-display text-xl font-bold text-[#121316]">
                 {mode.name}
               </h3>
-              <p className="text-xs text-slate-600 leading-relaxed">
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed max-w-xl mx-auto">
                 {mode.description}
               </p>
             </motion.div>

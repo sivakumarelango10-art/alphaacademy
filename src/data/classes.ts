@@ -36,21 +36,9 @@ export const classData: ClassDetailInfo = {
   
   modes: [
     {
-      name: "Online Interactive",
-      description: "Live interactive sessions with recording access, doubt resolutions, and digital resources.",
-      badge: "Most Popular",
-      isAvailable: true
-    },
-    {
-      name: "Offline Classroom",
-      description: "Immersive in-person mentoring with direct faculty interaction and peer discussion groups.",
-      badge: "In-Person",
-      isAvailable: true
-    },
-    {
-      name: "Hybrid Learning",
-      description: "Flexible blend of physical classroom workshops and live digital sessions for distant learners.",
-      badge: "Flexible",
+      name: "Online Interactive Coaching",
+      description: "Live interactive classes with full recorded video backup, doubt-clearing sessions, and integrated digital study materials.",
+      badge: "Online Interactive",
       isAvailable: true
     }
   ],
