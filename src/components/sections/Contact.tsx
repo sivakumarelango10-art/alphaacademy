@@ -30,6 +30,18 @@ export const Contact = ({ onSuccessToast }: ContactProps) => {
     e.preventDefault();
     setIsSubmitting(true);
 
+    const whatsappMessage = `*New Academic Advisory Enquiry - Alpha Academy*
+━━━━━━━━━━━━━━━━━━━━
+👤 *Full Name:* ${name.trim()}
+📱 *Phone Number:* ${phone.trim()}
+📧 *Email Address:* ${email.trim()}
+📚 *Subject / Area:* ${subject.trim()}
+💬 *Message / Query:* ${message.trim() ? message.trim() : "None"}
+━━━━━━━━━━━━━━━━━━━━
+_Submitted via Alpha Academy Contact Form_`;
+
+    const whatsappUrl = `https://wa.me/919025567624?text=${encodeURIComponent(whatsappMessage)}`;
+
     setTimeout(() => {
       setIsSubmitting(false);
       try {
@@ -41,12 +53,16 @@ export const Contact = ({ onSuccessToast }: ContactProps) => {
       } catch {
         // Fallback
       }
-      onSuccessToast(`Thank you, ${name}! Your enquiry has been received. Our team will contact you shortly regarding "${subject}".`);
+
+      // Open WhatsApp chat directly
+      window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+
+      onSuccessToast(`Thank you, ${name}! Connecting your enquiry to Alpha Academy WhatsApp (9025567624)...`);
       setName("");
       setEmail("");
       setPhone("");
       setMessage("");
-    }, 600);
+    }, 400);
   };
 
   return (
@@ -102,7 +118,14 @@ export const Contact = ({ onSuccessToast }: ContactProps) => {
                   </div>
                   <div>
                     <div className="text-xs text-slate-500 font-bold uppercase">Telephone / WhatsApp</div>
-                    <div className="text-sm font-bold text-[#121316] mt-0.5">{contactInfoData.phonePlaceholder}</div>
+                    <a
+                      href={`https://wa.me/${contactInfoData.whatsappNumber}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm font-bold text-[#121316] hover:text-[#8C6418] transition-colors mt-0.5 block"
+                    >
+                      {contactInfoData.phoneDisplay}
+                    </a>
                   </div>
                 </div>
 

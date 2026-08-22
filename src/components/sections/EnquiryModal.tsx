@@ -36,6 +36,19 @@ export const EnquiryModal = ({
     e.preventDefault();
     setIsSubmitting(true);
 
+    const whatsappMessage = `*New Academic Enquiry - Alpha Academy*
+━━━━━━━━━━━━━━━━━━━━
+👤 *Full Name:* ${name.trim()}
+📱 *Phone Number:* ${phone.trim()}
+📧 *Email Address:* ${email.trim()}
+📚 *Interested In:* ${subject.trim() || "UGC NET English Literature"}
+🎓 *Learning Mode:* ${learningMode}
+💬 *Message / Query:* ${message.trim() ? message.trim() : "None"}
+━━━━━━━━━━━━━━━━━━━━
+_Submitted via Alpha Academy Official Portal_`;
+
+    const whatsappUrl = `https://wa.me/919025567624?text=${encodeURIComponent(whatsappMessage)}`;
+
     setTimeout(() => {
       setIsSubmitting(false);
       try {
@@ -47,13 +60,17 @@ export const EnquiryModal = ({
       } catch {
         // Confetti fallback
       }
-      onSuccessToast(`Thank you, ${name || "Aspirant"}! Your enquiry for "${subject}" has been received. Our team will contact you shortly.`);
+
+      // Open WhatsApp chat directly
+      window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+
+      onSuccessToast(`Enquiry prepared for ${name || "Aspirant"}! Connecting to Alpha Academy WhatsApp (9025567624)...`);
       setName("");
       setEmail("");
       setPhone("");
       setMessage("");
       onClose();
-    }, 600);
+    }, 400);
   };
 
   return (
@@ -91,13 +108,13 @@ export const EnquiryModal = ({
             <div className="space-y-1">
               <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#8C6418]">
                 <GraduationCap className="w-4 h-4" />
-                <span>Alpha Academy • Enrolment & Enquiry</span>
+                <span>Alpha Academy • Direct WhatsApp Enrolment</span>
               </div>
               <h3 className="font-serif-display text-2xl sm:text-3xl font-bold text-[#121316]">
                 Start Your UGC NET Journey
               </h3>
               <p className="text-xs text-slate-500">
-                Submit your details below to receive batch schedules, fee breakdowns, and study material guidance.
+                Submit your details below to send your enquiry directly to Alpha Academy WhatsApp (9025567624).
               </p>
             </div>
 
@@ -194,18 +211,18 @@ export const EnquiryModal = ({
                 className="w-full py-3.5 px-6 rounded-none sm:rounded-md font-bold text-xs uppercase tracking-wider text-white bg-[#121316] hover:bg-black transition-all flex items-center justify-center gap-2 disabled:opacity-50 shadow-md hover:shadow-lg"
               >
                 {isSubmitting ? (
-                  <span>Processing Enquiry...</span>
+                  <span>Connecting to WhatsApp...</span>
                 ) : (
                   <>
                     <Send className="w-4 h-4 text-[#F3D068]" />
-                    <span>Submit Academic Enquiry</span>
+                    <span>Send Enquiry to Alpha Academy</span>
                   </>
                 )}
               </button>
 
               <div className="flex items-center justify-center gap-2 text-[11px] text-slate-500 pt-1">
                 <CheckCircle2 className="w-3.5 h-3.5 text-[#8C6418]" />
-                <span>Zero spam • 100% confidential mentorship response</span>
+                <span>Redirects directly to official WhatsApp: +91 90255 67624</span>
               </div>
             </form>
           </div>

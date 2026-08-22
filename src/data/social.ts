@@ -69,7 +69,9 @@ export const socialLinksData: SocialPlatform[] = [
 export const contactInfoData = {
   title: "Start Your Learning Journey",
   subtitle: "Have questions about classes, study materials or UGC NET preparation? Get in touch with Alpha Academy.",
-  phonePlaceholder: "Contact numbers provided upon enquiry",
+  phone: "+91 90255 67624",
+  whatsappNumber: "919025567624",
+  phoneDisplay: "+91 90255 67624",
   email: "Contact@tnalphaacademy.in",
   emailPlaceholder: "Contact@tnalphaacademy.in",
   locationPlaceholder: "Academic Centre / Online Headquarters",
