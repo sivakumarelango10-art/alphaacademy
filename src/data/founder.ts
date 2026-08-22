@@ -25,19 +25,19 @@ export const founderData: FounderProfile = {
   titles: [
     "Educator & Academic Trainer",
     "UGC NET English Literature Specialist",
-    "Author of 7 Published Study Materials",
+    "Author of 8 Published Study Materials",
     "Founder & CEO, Alpha Academy"
   ],
   bio: [
     "Sabarna Suresh is an educator, academic trainer and mentor specialising in English Literature and UGC NET preparation.",
     "She has successfully cleared the UGC NET examination several times, giving her extensive first-hand experience of the examination pattern, syllabus, question trends and preparation strategies.",
-    "She has also published 7 study materials specifically designed for UGC NET English Literature aspirants.",
+    "She has also published 8 study materials specifically designed for UGC NET English Literature aspirants.",
     "Her unique teaching methodology moves students beyond stressful rote memorisation by building deep conceptual clarity and disciplined, strategic revision."
   ],
   credentials: [
     "Repeatedly Qualified UGC NET (English Literature)",
     "5+ Years Academic Training Experience",
-    "Author of 7 Specialised UGC NET Reference Materials",
+    "Author of 8 Specialised UGC NET Reference Materials",
     "Mentored hundreds of literary aspirants across India"
   ],
   pillars: [
@@ -81,8 +81,8 @@ export const founderData: FounderProfile = {
     },
     {
       step: "03",
-      title: "7 Study Materials",
-      description: "Authoring and publishing 7 dedicated, comprehensive study volumes tailored for literary aspirants.",
+      title: "8 Study Materials",
+      description: "Authoring and publishing 8 dedicated, comprehensive study volumes tailored for literary aspirants.",
       yearOrTag: "Publication"
     },
     {

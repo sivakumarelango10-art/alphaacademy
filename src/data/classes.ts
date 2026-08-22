@@ -106,7 +106,7 @@ export const classData: ClassDetailInfo = {
 
   inclusions: [
     {
-      title: "7 Published Study Materials",
+      title: "8 Published Study Materials",
       description: "Direct access to our published study volumes curated specifically for UGC NET English.",
       icon: "BookOpen"
     },

@@ -70,7 +70,8 @@ export const contactInfoData = {
   title: "Start Your Learning Journey",
   subtitle: "Have questions about classes, study materials or UGC NET preparation? Get in touch with Alpha Academy.",
   phonePlaceholder: "Contact numbers provided upon enquiry",
-  emailPlaceholder: "Email address provided upon enquiry",
+  email: "Contact@tnalphaacademy.in",
+  emailPlaceholder: "Contact@tnalphaacademy.in",
   locationPlaceholder: "Academic Centre / Online Headquarters",
   socialHandles: "@tnalphaacademy",
   operatingHours: "Monday – Saturday | 9:00 AM – 7:00 PM IST"

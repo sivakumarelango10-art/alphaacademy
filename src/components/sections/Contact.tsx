@@ -4,8 +4,6 @@ import {
   Send,
   Phone,
   Mail,
-  MapPin,
-  Clock,
   CheckCircle2,
   GraduationCap
 } from "lucide-react";
@@ -55,20 +53,20 @@ export const Contact = ({ onSuccessToast }: ContactProps) => {
     <section
       id="contact"
       ref={sectionRef}
-      className="py-24 relative bg-[#090D15] overflow-hidden"
+      className="py-24 relative bg-[#F5F2EB] border-t border-[#EAE5DC] overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-3 mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#D4AF37]/10 border border-[#D4AF37]/30 text-xs font-bold text-[#F3D068] uppercase tracking-wider">
-            <Mail className="w-3.5 h-3.5" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F3EEDF] border border-[#E2D6BE] text-xs font-bold text-[#8C6418] uppercase tracking-wider">
+            <Mail className="w-3.5 h-3.5 text-[#8C6418]" />
             <span>Direct Academic Advisory</span>
           </div>
-          <h2 className="font-serif-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight">
+          <h2 className="font-serif-display text-3xl sm:text-4xl lg:text-5xl font-bold text-[#121316] tracking-tight">
             {contactInfoData.title}
           </h2>
-          <p className="text-slate-400 text-sm sm:text-base">
+          <p className="text-slate-600 text-sm sm:text-base">
             {contactInfoData.subtitle}
           </p>
         </div>
@@ -82,69 +80,54 @@ export const Contact = ({ onSuccessToast }: ContactProps) => {
             transition={{ duration: 0.5 }}
             className="lg:col-span-5 space-y-6"
           >
-            <div className="p-8 rounded-3xl bg-[#0E1524] border border-[#D4AF37]/30 shadow-2xl space-y-6">
+            <div className="p-8 rounded-3xl bg-white border border-[#EAE5DC] shadow-xl space-y-6">
               <div className="space-y-1">
-                <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#D4AF37]">
+                <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#8C6418]">
                   <GraduationCap className="w-4 h-4" />
                   <span>Alpha Academy Admissions</span>
                 </div>
-                <h3 className="font-serif-display text-2xl font-bold text-white">
+                <h3 className="font-serif-display text-2xl font-bold text-[#121316]">
                   Get in Touch with Sabarna Suresh & Mentors
                 </h3>
-                <p className="text-xs text-slate-400">
+                <p className="text-xs text-slate-500 leading-relaxed">
                   Whether you wish to order study materials or join upcoming batch classes, we are here to guide you.
                 </p>
               </div>
 
               {/* Information Cards */}
               <div className="space-y-3 pt-2">
-                <div className="flex items-start gap-3.5 p-4 rounded-2xl bg-slate-900 border border-slate-800">
-                  <div className="p-2.5 rounded-xl bg-[#D4AF37]/15 text-[#F3D068] shrink-0">
+                <div className="flex items-start gap-3.5 p-4 rounded-2xl bg-[#FAF8F5] border border-[#EAE5DC]">
+                  <div className="p-2.5 rounded-xl bg-[#F3EEDF] text-[#8C6418] shrink-0">
                     <Phone className="w-4 h-4" />
                   </div>
                   <div>
-                    <div className="text-xs text-slate-400 font-semibold uppercase">Telephone / WhatsApp</div>
-                    <div className="text-sm font-bold text-white mt-0.5">{contactInfoData.phonePlaceholder}</div>
+                    <div className="text-xs text-slate-500 font-bold uppercase">Telephone / WhatsApp</div>
+                    <div className="text-sm font-bold text-[#121316] mt-0.5">{contactInfoData.phonePlaceholder}</div>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-3.5 p-4 rounded-2xl bg-slate-900 border border-slate-800">
-                  <div className="p-2.5 rounded-xl bg-[#D4AF37]/15 text-[#F3D068] shrink-0">
+                <div className="flex items-start gap-3.5 p-4 rounded-2xl bg-[#FAF8F5] border border-[#EAE5DC]">
+                  <div className="p-2.5 rounded-xl bg-[#F3EEDF] text-[#8C6418] shrink-0">
                     <Mail className="w-4 h-4" />
                   </div>
                   <div>
-                    <div className="text-xs text-slate-400 font-semibold uppercase">Email Correspondence</div>
-                    <div className="text-sm font-bold text-white mt-0.5">{contactInfoData.emailPlaceholder}</div>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3.5 p-4 rounded-2xl bg-slate-900 border border-slate-800">
-                  <div className="p-2.5 rounded-xl bg-[#D4AF37]/15 text-[#F3D068] shrink-0">
-                    <MapPin className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <div className="text-xs text-slate-400 font-semibold uppercase">Centre Location</div>
-                    <div className="text-sm font-bold text-white mt-0.5">{contactInfoData.locationPlaceholder}</div>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3.5 p-4 rounded-2xl bg-slate-900 border border-slate-800">
-                  <div className="p-2.5 rounded-xl bg-[#D4AF37]/15 text-[#F3D068] shrink-0">
-                    <Clock className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <div className="text-xs text-slate-400 font-semibold uppercase">Academic Support Hours</div>
-                    <div className="text-sm font-bold text-white mt-0.5">{contactInfoData.operatingHours}</div>
+                    <div className="text-xs text-slate-500 font-bold uppercase">Email Correspondence</div>
+                    <a
+                      href={`mailto:${contactInfoData.email}`}
+                      className="text-sm font-bold text-[#121316] hover:text-[#8C6418] transition-colors mt-0.5 block break-all"
+                    >
+                      {contactInfoData.email}
+                    </a>
                   </div>
                 </div>
               </div>
 
               {/* Social Link Quick Row with real colored icons */}
               <div className="pt-2">
-                <span className="text-xs text-slate-400 block mb-2 font-semibold">
+                <span className="text-xs text-slate-500 block mb-2 font-bold uppercase tracking-wider">
                   Official Channels:
                 </span>
-                <div className="flex items-center gap-3">
+                <div className="flex flex-wrap items-center gap-2.5">
                   {socialLinksData.map((s) => {
                     let IconComp = InstagramIcon;
                     if (s.id === "youtube") IconComp = YoutubeIcon;
@@ -156,7 +139,7 @@ export const Contact = ({ onSuccessToast }: ContactProps) => {
                         href={s.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="px-3.5 py-2 rounded-xl bg-slate-900 border border-slate-700 hover:border-[#D4AF37] text-xs text-slate-200 hover:text-white transition-all flex items-center gap-2 hover:scale-105"
+                        className="px-3.5 py-2 rounded-xl bg-[#FAF8F5] border border-[#EAE5DC] hover:border-[#8C6418] text-xs font-semibold text-slate-800 hover:text-black transition-all flex items-center gap-2 hover:scale-105 shadow-xs"
                       >
                         <IconComp className="w-4 h-4" colored={true} />
                         <span>{s.name}</span>
@@ -175,20 +158,20 @@ export const Contact = ({ onSuccessToast }: ContactProps) => {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="lg:col-span-7"
           >
-            <div className="p-8 sm:p-10 rounded-3xl bg-[#0E1524] border border-[#D4AF37]/30 shadow-2xl space-y-6">
-              <div className="space-y-1 pb-2 border-b border-slate-800">
-                <h3 className="font-serif-display text-2xl font-bold text-white">
+            <div className="p-8 sm:p-10 rounded-3xl bg-white border border-[#EAE5DC] shadow-xl space-y-6">
+              <div className="space-y-1 pb-2 border-b border-[#EAE5DC]">
+                <h3 className="font-serif-display text-2xl font-bold text-[#121316]">
                   Send Your Academic Enquiry
                 </h3>
-                <p className="text-xs text-slate-400">
+                <p className="text-xs text-slate-500">
                   Fill out the details below and our mentorship desk will respond promptly.
                 </p>
               </div>
 
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="space-y-1.5">
-                  <label className="text-xs font-semibold text-slate-300">
-                    Your Full Name <span className="text-red-400">*</span>
+                  <label className="text-xs font-bold text-slate-700 uppercase tracking-wide">
+                    Your Full Name <span className="text-red-500">*</span>
                   </label>
                   <input
                     type="text"
@@ -196,14 +179,14 @@ export const Contact = ({ onSuccessToast }: ContactProps) => {
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder="Enter your full name"
-                    className="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 focus:border-[#D4AF37] focus:outline-none text-white text-sm placeholder-slate-500 transition-colors"
+                    className="w-full px-4 py-3 rounded-xl bg-[#FAF8F5] border border-[#EAE5DC] focus:border-[#8C6418] focus:bg-white focus:outline-none text-[#121316] text-sm placeholder-slate-400 transition-colors"
                   />
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="space-y-1.5">
-                    <label className="text-xs font-semibold text-slate-300">
-                      Email Address <span className="text-red-400">*</span>
+                    <label className="text-xs font-bold text-slate-700 uppercase tracking-wide">
+                      Email Address <span className="text-red-500">*</span>
                     </label>
                     <input
                       type="email"
@@ -211,13 +194,13 @@ export const Contact = ({ onSuccessToast }: ContactProps) => {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="name@example.com"
-                      className="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 focus:border-[#D4AF37] focus:outline-none text-white text-sm placeholder-slate-500 transition-colors"
+                      className="w-full px-4 py-3 rounded-xl bg-[#FAF8F5] border border-[#EAE5DC] focus:border-[#8C6418] focus:bg-white focus:outline-none text-[#121316] text-sm placeholder-slate-400 transition-colors"
                     />
                   </div>
 
                   <div className="space-y-1.5">
-                    <label className="text-xs font-semibold text-slate-300">
-                      Phone Number / WhatsApp <span className="text-red-400">*</span>
+                    <label className="text-xs font-bold text-slate-700 uppercase tracking-wide">
+                      Phone Number / WhatsApp <span className="text-red-500">*</span>
                     </label>
                     <input
                       type="tel"
@@ -225,26 +208,26 @@ export const Contact = ({ onSuccessToast }: ContactProps) => {
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
                       placeholder="+91 XXXXX XXXXX"
-                      className="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 focus:border-[#D4AF37] focus:outline-none text-white text-sm placeholder-slate-500 transition-colors"
+                      className="w-full px-4 py-3 rounded-xl bg-[#FAF8F5] border border-[#EAE5DC] focus:border-[#8C6418] focus:bg-white focus:outline-none text-[#121316] text-sm placeholder-slate-400 transition-colors"
                     />
                   </div>
                 </div>
 
                 <div className="space-y-1.5">
-                  <label className="text-xs font-semibold text-slate-300">
+                  <label className="text-xs font-bold text-slate-700 uppercase tracking-wide">
                     Subject / Area of Interest
                   </label>
                   <input
                     type="text"
                     value={subject}
                     onChange={(e) => setSubject(e.target.value)}
-                    placeholder="e.g. UGC NET English Coaching Batch / Study Materials 01-07"
-                    className="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 focus:border-[#D4AF37] focus:outline-none text-white text-sm placeholder-slate-500 transition-colors"
+                    placeholder="e.g. UGC NET English Coaching Batch / Study Materials 01-08"
+                    className="w-full px-4 py-3 rounded-xl bg-[#FAF8F5] border border-[#EAE5DC] focus:border-[#8C6418] focus:bg-white focus:outline-none text-[#121316] text-sm placeholder-slate-400 transition-colors"
                   />
                 </div>
 
                 <div className="space-y-1.5">
-                  <label className="text-xs font-semibold text-slate-300">
+                  <label className="text-xs font-bold text-slate-700 uppercase tracking-wide">
                     Your Message / Specific Clarification
                   </label>
                   <textarea
@@ -252,27 +235,27 @@ export const Contact = ({ onSuccessToast }: ContactProps) => {
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
                     placeholder="Share your current preparation stage, target exam session, or queries about classes..."
-                    className="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 focus:border-[#D4AF37] focus:outline-none text-white text-sm placeholder-slate-500 transition-colors"
+                    className="w-full px-4 py-3 rounded-xl bg-[#FAF8F5] border border-[#EAE5DC] focus:border-[#8C6418] focus:bg-white focus:outline-none text-[#121316] text-sm placeholder-slate-400 transition-colors"
                   />
                 </div>
 
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full py-4 px-8 rounded-xl font-bold text-sm text-black bg-gradient-to-r from-[#F3D068] via-[#D4AF37] to-[#B8860B] hover:shadow-[0_0_30px_rgba(212,175,55,0.5)] transition-all flex items-center justify-center gap-2 disabled:opacity-50"
+                  className="w-full py-4 px-8 rounded-none sm:rounded-md font-bold text-xs uppercase tracking-wider text-white bg-[#121316] hover:bg-black transition-all flex items-center justify-center gap-2 disabled:opacity-50 shadow-md hover:shadow-lg"
                 >
                   {isSubmitting ? (
                     <span>Submitting Enquiry...</span>
                   ) : (
                     <>
-                      <Send className="w-4 h-4 text-black" />
+                      <Send className="w-4 h-4 text-[#F3D068]" />
                       <span>Send Enquiry to Alpha Academy</span>
                     </>
                   )}
                 </button>
 
-                <div className="flex items-center justify-center gap-2 text-xs text-slate-400 pt-1">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-[#D4AF37]" />
+                <div className="flex items-center justify-center gap-2 text-xs text-slate-500 pt-1">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-[#8C6418]" />
                   <span>Prompt academic response • Your details remain completely private</span>
                 </div>
               </form>

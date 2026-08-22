@@ -30,22 +30,22 @@ export const Hero = ({ onOpenEnquiryModal }: HeroProps) => {
           >
             {/* Trust Indicator & Motto Badge */}
             <div className="inline-flex flex-wrap items-center justify-center lg:justify-start gap-2.5">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#111827] border border-[#D4AF37]/35 text-xs font-semibold text-[#F3D068] shadow-sm">
-                <Sparkles className="w-3.5 h-3.5 text-[#D4AF37]" />
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F3EEDF] border border-[#E2D6BE] text-xs font-bold uppercase tracking-wider text-[#8C6418] shadow-xs">
+                <Sparkles className="w-3.5 h-3.5 text-[#8C6418]" />
                 <span>{academyData.trustIndicator}</span>
               </div>
 
-              <div className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-900 border border-slate-700/60 text-[11px] font-medium text-slate-300">
-                <ShieldCheck className="w-3 h-3 text-[#D4AF37]" />
+              <div className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-[#EAE5DC] text-[11px] font-semibold text-slate-700 shadow-xs">
+                <ShieldCheck className="w-3 h-3 text-[#8C6418]" />
                 <span>Repeated NET Success</span>
               </div>
             </div>
 
             {/* Headline */}
             <div className="space-y-2">
-              <h1 className="font-serif-display text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.14]">
+              <h1 className="font-serif-display text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#121316] tracking-tight leading-[1.14]">
                 Empowering Aspirants to{" "}
-                <span className="text-gradient-gold inline-block">
+                <span className="text-[#8C6418] inline-block">
                   Learn Better,
                 </span>{" "}
                 Prepare Smarter and Succeed.
@@ -53,51 +53,51 @@ export const Hero = ({ onOpenEnquiryModal }: HeroProps) => {
             </div>
 
             {/* Supporting Text */}
-            <p className="text-base sm:text-lg text-slate-300 leading-relaxed max-w-2xl mx-auto lg:mx-0 font-normal">
+            <p className="text-base sm:text-lg text-slate-600 leading-relaxed max-w-2xl mx-auto lg:mx-0 font-normal">
               {academyData.heroSupportingText}
             </p>
 
             {/* Academy Motto Highlight */}
-            <div className="p-3.5 rounded-xl bg-[#D4AF37]/10 border-l-4 border-[#D4AF37] max-w-xl mx-auto lg:mx-0 text-left">
-              <span className="text-[11px] font-bold uppercase tracking-widest text-[#D4AF37] block">
+            <div className="p-4 rounded-xl bg-white border-l-4 border-[#8C6418] border border-[#EAE5DC] shadow-xs max-w-xl mx-auto lg:mx-0 text-left">
+              <span className="text-[11px] font-bold uppercase tracking-widest text-[#8C6418] block">
                 Official Academy Motto
               </span>
-              <p className="font-serif-display italic text-slate-200 text-sm sm:text-base font-medium">
+              <p className="font-serif-display italic text-slate-900 text-sm sm:text-base font-semibold pt-0.5">
                 “{academyData.motto}”
               </p>
             </div>
 
-            {/* Action Buttons */}
+            {/* Action Buttons: Solid Black Primary & Outlined Secondary */}
             <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
               <button
-                onClick={() => scrollToSection("about")}
-                className="w-full sm:w-auto px-7 py-3.5 rounded-xl font-bold text-sm text-black bg-gradient-to-r from-[#F3D068] via-[#D4AF37] to-[#B8860B] shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2.5 group"
+                onClick={() => scrollToSection("materials")}
+                className="w-full sm:w-auto px-7 py-3.5 rounded-none sm:rounded-md font-bold text-xs uppercase tracking-wider text-white bg-[#121316] hover:bg-black shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2.5 group"
               >
-                <span>Explore Alpha Academy</span>
+                <span>Explore Materials</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </button>
 
               <button
-                onClick={() => scrollToSection("materials")}
-                className="w-full sm:w-auto px-7 py-3.5 rounded-xl font-semibold text-sm text-slate-200 bg-slate-900 border border-[#D4AF37]/35 hover:border-[#D4AF37] hover:bg-slate-800 hover:text-white transition-all flex items-center justify-center gap-2 group"
+                onClick={() => scrollToSection("about")}
+                className="w-full sm:w-auto px-7 py-3.5 rounded-none sm:rounded-md font-bold text-xs uppercase tracking-wider text-[#121316] bg-white border-2 border-[#121316] hover:bg-[#121316] hover:text-white transition-all flex items-center justify-center gap-2 group shadow-xs"
               >
-                <BookOpen className="w-4 h-4 text-[#D4AF37]" />
-                <span>View 7 Study Materials</span>
+                <BookOpen className="w-4 h-4 text-[#8C6418] group-hover:text-white" />
+                <span>View Academy</span>
               </button>
             </div>
 
             {/* Micro Highlights Grid */}
             <div className="pt-2 grid grid-cols-2 sm:grid-cols-3 gap-3 text-left max-w-lg mx-auto lg:mx-0">
-              <div className="flex items-center gap-2 text-xs text-slate-300">
-                <CheckCircle2 className="w-4 h-4 text-[#D4AF37] shrink-0" />
+              <div className="flex items-center gap-2 text-xs font-medium text-slate-700">
+                <CheckCircle2 className="w-4 h-4 text-[#8C6418] shrink-0" />
                 <span>Conceptual Focus</span>
               </div>
-              <div className="flex items-center gap-2 text-xs text-slate-300">
-                <CheckCircle2 className="w-4 h-4 text-[#D4AF37] shrink-0" />
+              <div className="flex items-center gap-2 text-xs font-medium text-slate-700">
+                <CheckCircle2 className="w-4 h-4 text-[#8C6418] shrink-0" />
                 <span>Exam-Driven Strategy</span>
               </div>
-              <div className="flex items-center gap-2 text-xs text-slate-300">
-                <CheckCircle2 className="w-4 h-4 text-[#D4AF37] shrink-0" />
+              <div className="flex items-center gap-2 text-xs font-medium text-slate-700">
+                <CheckCircle2 className="w-4 h-4 text-[#8C6418] shrink-0" />
                 <span>Direct Mentorship</span>
               </div>
             </div>
@@ -112,58 +112,58 @@ export const Hero = ({ onOpenEnquiryModal }: HeroProps) => {
           >
             {/* Center Main Card */}
             <div className="relative w-full max-w-md">
-              <div className="relative rounded-3xl bg-[#0D131F] border border-[#D4AF37]/35 p-6 sm:p-8 shadow-2xl overflow-hidden">
+              <div className="relative rounded-3xl bg-white border border-[#EAE5DC] p-6 sm:p-8 shadow-xl overflow-hidden">
                 
                 {/* Founder Presentation Header */}
                 <div className="flex flex-col items-center text-center space-y-4">
                   {/* Official Emblem Logo Circle */}
                   <div className="relative group">
-                    <div className="w-32 h-32 sm:w-36 sm:h-36 rounded-full p-1.5 bg-gradient-to-tr from-[#D4AF37] via-[#F3D068] to-[#B8860B] shadow-lg">
-                      <div className="w-full h-full rounded-full overflow-hidden bg-black flex items-center justify-center">
+                    <div className="w-32 h-32 sm:w-36 sm:h-36 rounded-full p-1 bg-gradient-to-tr from-[#D4AF37] via-[#F3D068] to-[#B8860B] shadow-md">
+                      <div className="w-full h-full rounded-full overflow-hidden bg-white flex items-center justify-center">
                         <img
-                          src="/alpha-academy-logo.jpg"
+                          src="/founder.jpg"
                           alt="Sabarna Suresh - Alpha Academy"
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                          className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300"
                         />
                       </div>
                     </div>
 
                     {/* Badge on logo */}
-                    <div className="absolute -bottom-2 -right-1 px-3 py-1 rounded-full bg-[#0B0F17] border border-[#D4AF37] text-[10px] font-bold text-[#F3D068] shadow-md flex items-center gap-1">
-                      <Award className="w-3 h-3 text-[#D4AF37]" />
+                    <div className="absolute -bottom-2 -right-1 px-3 py-1 rounded-full bg-[#121316] text-[10px] font-bold uppercase tracking-wider text-white shadow-md flex items-center gap-1">
+                      <Award className="w-3 h-3 text-[#F3D068]" />
                       <span>Founder & CEO</span>
                     </div>
                   </div>
 
                   {/* Founder Info */}
                   <div className="space-y-1">
-                    <h3 className="font-serif-display text-2xl font-bold text-white tracking-wide">
+                    <h3 className="font-serif-display text-2xl font-bold text-[#121316] tracking-wide">
                       {founderData.name}
                     </h3>
-                    <p className="text-xs text-[#D4AF37] font-semibold tracking-wider uppercase">
+                    <p className="text-xs text-[#8C6418] font-bold tracking-wider uppercase">
                       Educator • Academic Trainer • Mentor
                     </p>
-                    <p className="text-xs text-slate-400 max-w-xs pt-1">
+                    <p className="text-xs text-slate-500 max-w-xs pt-1 leading-relaxed">
                       Specialising in UGC NET English Literature with repeated examination qualifications.
                     </p>
                   </div>
 
                   {/* Visual Pill Matrix */}
                   <div className="w-full grid grid-cols-2 gap-2 pt-2 text-left">
-                    <div className="p-2.5 rounded-xl bg-slate-900 border border-slate-800">
-                      <div className="text-[10px] text-slate-400 uppercase font-semibold">Specialisation</div>
-                      <div className="text-xs font-bold text-slate-200">UGC NET English</div>
+                    <div className="p-3 rounded-xl bg-[#FAF8F5] border border-[#EAE5DC]">
+                      <div className="text-[10px] text-slate-500 uppercase font-bold">Specialisation</div>
+                      <div className="text-xs font-bold text-slate-800">UGC NET English</div>
                     </div>
-                    <div className="p-2.5 rounded-xl bg-slate-900 border border-slate-800">
-                      <div className="text-[10px] text-slate-400 uppercase font-semibold">Study Materials</div>
-                      <div className="text-xs font-bold text-[#F3D068]">7 Published Books</div>
+                    <div className="p-3 rounded-xl bg-[#FAF8F5] border border-[#EAE5DC]">
+                      <div className="text-[10px] text-slate-500 uppercase font-bold">Study Materials</div>
+                      <div className="text-xs font-bold text-[#8C6418]">8 Published Books</div>
                     </div>
                   </div>
 
                   {/* Fast Action */}
                   <button
                     onClick={() => onOpenEnquiryModal("UGC NET English Mentorship")}
-                    className="w-full py-2.5 px-4 rounded-xl text-xs font-bold text-white bg-slate-800 hover:bg-[#D4AF37] hover:text-black border border-[#D4AF37]/30 transition-colors flex items-center justify-center gap-2"
+                    className="w-full py-3 px-4 rounded-xl text-xs font-bold uppercase tracking-wider text-white bg-[#121316] hover:bg-black transition-colors flex items-center justify-center gap-2 shadow-sm"
                   >
                     <span>Connect for 2026 Guidance</span>
                     <ArrowRight className="w-3.5 h-3.5" />
@@ -172,24 +172,24 @@ export const Hero = ({ onOpenEnquiryModal }: HeroProps) => {
               </div>
 
               {/* Floating Academic Element 1: Top Left */}
-              <div className="absolute -top-4 -left-4 hidden sm:flex items-center gap-2.5 p-2.5 rounded-xl bg-[#0B0F17] border border-[#D4AF37]/40 shadow-lg">
-                <div className="p-1.5 rounded-lg bg-[#D4AF37]/20 text-[#F3D068]">
+              <div className="absolute -top-4 -left-4 hidden sm:flex items-center gap-2.5 p-2.5 rounded-xl bg-white border border-[#EAE5DC] shadow-lg">
+                <div className="p-2 rounded-lg bg-[#F3EEDF] text-[#8C6418]">
                   <Feather className="w-4 h-4" />
                 </div>
                 <div>
-                  <div className="text-xs font-bold text-white">Literary Theory</div>
-                  <div className="text-[10px] text-[#D4AF37]">Conceptual Clarity</div>
+                  <div className="text-xs font-bold text-[#121316]">Literary Theory</div>
+                  <div className="text-[10px] font-semibold text-[#8C6418]">Conceptual Clarity</div>
                 </div>
               </div>
 
               {/* Floating Academic Element 2: Bottom Right */}
-              <div className="absolute -bottom-4 -right-4 hidden sm:flex items-center gap-2.5 p-2.5 rounded-xl bg-[#0B0F17] border border-[#D4AF37]/40 shadow-lg">
-                <div className="p-1.5 rounded-lg bg-[#D4AF37]/20 text-[#F3D068]">
+              <div className="absolute -bottom-4 -right-4 hidden sm:flex items-center gap-2.5 p-2.5 rounded-xl bg-white border border-[#EAE5DC] shadow-lg">
+                <div className="p-2 rounded-lg bg-[#F3EEDF] text-[#8C6418]">
                   <GraduationCap className="w-4 h-4" />
                 </div>
                 <div>
-                  <div className="text-xs font-bold text-white">7 Volumes</div>
-                  <div className="text-[10px] text-slate-300">Exam-Oriented Notes</div>
+                  <div className="text-xs font-bold text-[#121316]">8 Volumes</div>
+                  <div className="text-[10px] font-semibold text-slate-500">Exam-Oriented Notes</div>
                 </div>
               </div>
             </div>

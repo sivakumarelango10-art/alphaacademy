@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { BookOpen, Eye, Send, ArrowRight } from "lucide-react";
+import { BookOpen, Eye, Send, ArrowRight, Sparkles } from "lucide-react";
 import { studyMaterialsData } from "../../data/materials";
 import type { StudyMaterial } from "../../data/materials";
 
@@ -24,24 +24,21 @@ export const StudyMaterials = ({ onSelectMaterial, onEnquire }: StudyMaterialsPr
     <section
       id="materials"
       ref={sectionRef}
-      className="py-24 relative bg-[#090D15] overflow-hidden"
+      className="py-24 relative bg-[#FAF8F5] border-t border-[#EAE5DC] overflow-hidden"
     >
-      {/* Ambient glow */}
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[700px] h-[700px] bg-[#D4AF37]/5 rounded-full blur-[160px] pointer-events-none" />
-
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-3 mb-12">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#D4AF37]/10 border border-[#D4AF37]/30 text-xs font-bold text-[#F3D068] uppercase tracking-wider">
-            <BookOpen className="w-3.5 h-3.5" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F3EEDF] border border-[#E2D6BE] text-xs font-bold text-[#8C6418] uppercase tracking-wider">
+            <BookOpen className="w-3.5 h-3.5 text-[#8C6418]" />
             <span>Authored by Sabarna Suresh</span>
           </div>
-          <h2 className="font-serif-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight">
-            Study Materials
+          <h2 className="font-serif-display text-3xl sm:text-4xl lg:text-5xl font-bold text-[#121316] tracking-tight">
+            Official Study Materials & Books
           </h2>
-          <p className="text-slate-400 text-sm sm:text-base">
-            Structured resources designed specifically for UGC NET English Literature aspirants.
+          <p className="text-slate-600 text-sm sm:text-base">
+            Curated, structured publications engineered specifically for UGC NET English Literature & Paper 1 aspirants.
           </p>
         </div>
 
@@ -51,10 +48,10 @@ export const StudyMaterials = ({ onSelectMaterial, onEnquire }: StudyMaterialsPr
             <button
               key={cat}
               onClick={() => setSelectedCategory(cat)}
-              className={`px-4 py-2 rounded-xl text-xs font-semibold tracking-wide transition-all ${
+              className={`px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all ${
                 selectedCategory === cat
-                  ? "bg-[#D4AF37] text-black shadow-[0_0_20px_rgba(212,175,55,0.4)]"
-                  : "bg-slate-900/90 text-slate-300 border border-slate-800 hover:border-[#D4AF37]/40 hover:text-white"
+                  ? "bg-[#121316] text-white shadow-md"
+                  : "bg-white text-slate-700 border border-[#EAE5DC] hover:border-[#8C6418] hover:text-[#121316] shadow-xs"
               }`}
             >
               {cat}
@@ -62,92 +59,95 @@ export const StudyMaterials = ({ onSelectMaterial, onEnquire }: StudyMaterialsPr
           ))}
         </div>
 
-        {/* 7 Books Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        {/* Books Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
           {filteredBooks.map((book, idx) => (
             <motion.div
               key={book.id}
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: idx * 0.08 }}
-              className="p-6 rounded-3xl bg-[#0E1524]/90 border border-[#D4AF37]/20 hover:border-[#D4AF37]/60 transition-all duration-300 flex flex-col justify-between group hover:shadow-[0_20px_50px_-10px_rgba(212,175,55,0.25)] hover:-translate-y-2 relative overflow-hidden"
+              className="p-5 rounded-3xl bg-white border border-[#EAE5DC] hover:border-[#8C6418] transition-all duration-300 flex flex-col justify-between group shadow-xs hover:shadow-xl hover:-translate-y-1 relative overflow-hidden"
             >
               {/* Top Accent bar */}
-              <div className={`h-1.5 w-full bg-gradient-to-r ${book.coverAccent.gradient} rounded-full mb-4`} />
+              <div className={`h-1.5 w-full bg-gradient-to-r ${book.coverAccent.gradient} rounded-full mb-3`} />
 
-              {/* Book Presentation Mockup */}
+              {/* Book Presentation with Real Cover Image */}
               <div className="space-y-4">
-                {/* Visual Cover Card */}
+                {/* Book Cover Image Card */}
                 <div
                   onClick={() => onSelectMaterial(book)}
-                  className="relative cursor-pointer aspect-[3/4] rounded-2xl bg-gradient-to-b from-[#161F32] to-[#0A0E18] border border-slate-700/80 group-hover:border-[#D4AF37]/50 p-5 flex flex-col justify-between shadow-lg overflow-hidden transition-all duration-300"
+                  className="relative cursor-pointer aspect-[3/4.2] rounded-2xl bg-slate-900 border border-[#EAE5DC] group-hover:border-[#8C6418] overflow-hidden shadow-md group-hover:shadow-2xl transition-all duration-500"
                 >
-                  {/* Subtle Book Spine Effect */}
-                  <div className="absolute left-0 top-0 bottom-0 w-3 bg-gradient-to-r from-black/60 to-transparent border-r border-white/5" />
+                  {/* Book Image */}
+                  <img
+                    src={book.image}
+                    alt={book.title}
+                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                  />
 
-                  {/* Volume Badge */}
-                  <div className="flex items-center justify-between pl-2">
-                    <span className={`text-[10px] font-bold px-2.5 py-0.5 rounded-full ${book.coverAccent.badgeBg} ${book.coverAccent.badgeText}`}>
+                  {/* Spine Highlight Shadow */}
+                  <div className="absolute left-0 top-0 bottom-0 w-3.5 bg-gradient-to-r from-black/40 via-black/10 to-transparent pointer-events-none" />
+
+                  {/* Volume Badge Tag */}
+                  <div className="absolute top-2.5 right-2.5 z-10">
+                    <span className="text-[10px] font-extrabold px-2.5 py-1 rounded-full bg-black/75 text-white backdrop-blur-md shadow-sm border border-white/20">
                       VOL {book.volumeNumber.toString().padStart(2, "0")}
                     </span>
-                    <span className="text-[10px] text-slate-400 font-mono">UGC NET</span>
                   </div>
 
-                  {/* Book Core Title on Cover */}
-                  <div className="text-center space-y-2 pl-2">
-                    <div className="w-10 h-10 rounded-full mx-auto bg-black/60 border border-[#D4AF37]/30 flex items-center justify-center text-[#D4AF37]">
-                      <BookOpen className="w-5 h-5" />
-                    </div>
-                    <h3 className="font-serif-display text-lg sm:text-xl font-bold text-white leading-snug">
+                  {/* Hover Overlay with Preview */}
+                  <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 backdrop-blur-xs flex flex-col items-center justify-center gap-2 transition-all duration-300 p-4 text-center">
+                    <span className="px-4 py-2 rounded-full bg-[#121316] text-white text-xs font-bold flex items-center gap-1.5 shadow-xl border border-white/10">
+                      <Eye className="w-3.5 h-3.5 text-[#F3D068]" />
+                      <span>Preview Details</span>
+                    </span>
+                    <span className="text-[11px] text-slate-200 font-medium line-clamp-2">
                       {book.title}
-                    </h3>
-                    <p className="text-[11px] text-[#D4AF37] font-medium">
-                      {book.category}
-                    </p>
-                  </div>
-
-                  {/* Author on Cover */}
-                  <div className="pt-2 border-t border-slate-800/80 text-center pl-2">
-                    <p className="text-[10px] text-slate-400">
-                      Author: <span className="text-slate-200 font-medium">{book.author}</span>
-                    </p>
-                  </div>
-
-                  {/* Hover Eye Preview Overlay */}
-                  <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 backdrop-blur-xs flex items-center justify-center transition-opacity">
-                    <span className="px-3 py-1.5 rounded-full bg-[#D4AF37] text-black text-xs font-bold flex items-center gap-1 shadow-lg">
-                      <Eye className="w-3.5 h-3.5" />
-                      <span>Click to Preview</span>
                     </span>
                   </div>
                 </div>
 
-                {/* Short Description */}
+                {/* Metadata & Title */}
                 <div className="space-y-1.5">
-                  <p className="text-xs text-slate-300 leading-relaxed line-clamp-3">
+                  <div className="flex items-center justify-between gap-1 text-[11px]">
+                    <span className="font-bold text-[#8C6418] uppercase tracking-wider truncate">
+                      {book.category}
+                    </span>
+                    <span className="text-slate-400 font-mono text-[10px] shrink-0">
+                      UGC NET
+                    </span>
+                  </div>
+
+                  <h3
+                    onClick={() => onSelectMaterial(book)}
+                    className="font-serif-display text-base font-bold text-[#121316] hover:text-[#8C6418] cursor-pointer transition-colors leading-tight line-clamp-2 min-h-[2.5rem]"
+                  >
+                    {book.title}
+                  </h3>
+
+                  <p className="text-xs text-slate-600 leading-relaxed line-clamp-2">
                     {book.shortDescription}
-                  </p>
-                  <p className="text-[11px] text-slate-500 italic">
-                    {book.pricePlaceholder}
                   </p>
                 </div>
               </div>
 
               {/* Action Buttons */}
-              <div className="pt-5 mt-4 border-t border-slate-800 flex items-center gap-2">
+              <div className="pt-4 mt-3 border-t border-[#EAE5DC] flex items-center gap-2">
                 <button
                   onClick={() => onSelectMaterial(book)}
-                  className="flex-1 py-2 px-3 rounded-lg text-xs font-semibold text-slate-200 bg-slate-800 hover:bg-slate-700 hover:text-white border border-slate-700 transition-colors flex items-center justify-center gap-1.5"
+                  className="flex-1 py-2 px-2.5 rounded-lg text-xs font-bold text-slate-800 bg-[#FAF8F5] hover:bg-slate-100 border border-[#EAE5DC] transition-colors flex items-center justify-center gap-1"
                 >
-                  <Eye className="w-3.5 h-3.5 text-[#D4AF37]" />
+                  <Eye className="w-3.5 h-3.5 text-[#8C6418]" />
                   <span>Preview</span>
                 </button>
 
                 <button
                   onClick={() => onEnquire(`Order Study Material: ${book.title}`)}
-                  className="flex-1 py-2 px-3 rounded-lg text-xs font-bold text-black bg-gradient-to-r from-[#F3D068] to-[#D4AF37] hover:shadow-[0_0_15px_rgba(212,175,55,0.4)] transition-all flex items-center justify-center gap-1"
+                  className="flex-1 py-2 px-2.5 rounded-lg text-xs font-bold uppercase tracking-wider text-white bg-[#121316] hover:bg-black transition-all flex items-center justify-center gap-1 shadow-xs"
                 >
-                  <Send className="w-3 h-3 text-black" />
+                  <Send className="w-3 h-3 text-[#F3D068]" />
                   <span>Enquire</span>
                 </button>
               </div>
@@ -156,16 +156,26 @@ export const StudyMaterials = ({ onSelectMaterial, onEnquire }: StudyMaterialsPr
         </div>
 
         {/* Bottom Callout Note */}
-        <div className="mt-12 p-6 rounded-2xl bg-[#0E1524]/60 border border-slate-800 max-w-3xl mx-auto text-center space-y-2">
-          <p className="text-xs sm:text-sm text-slate-300">
-            <strong className="text-[#F3D068]">Looking for the full set of 7 volumes?</strong> Comprehensive package includes all theoretical primers, cultural studies notes, and previous-year question analyses.
-          </p>
+        <div className="mt-14 p-6 sm:p-8 rounded-3xl bg-white border border-[#EAE5DC] shadow-sm max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
+          <div className="space-y-1 max-w-xl">
+            <div className="flex items-center justify-center sm:justify-start gap-1.5 text-xs font-bold text-[#8C6418] uppercase tracking-wider">
+              <Sparkles className="w-3.5 h-3.5 text-[#8C6418]" />
+              <span>Comprehensive Study Material Bundle</span>
+            </div>
+            <h4 className="font-serif-display text-lg font-bold text-[#121316]">
+              Looking to obtain the complete published book series?
+            </h4>
+            <p className="text-xs text-slate-600 leading-relaxed">
+              Order individual volumes or the complete master bundle covering British Literature, Literary Theories, Non-British Canons, General Paper 1, and PYQ Mastery.
+            </p>
+          </div>
+
           <button
-            onClick={() => onEnquire("Full 7-Volume UGC NET Study Material Set")}
-            className="inline-flex items-center gap-2 text-xs font-bold text-[#F3D068] hover:text-white underline underline-offset-4 transition-colors"
+            onClick={() => onEnquire("Complete Alpha Academy UGC NET Study Material Bundle")}
+            className="shrink-0 px-6 py-3 rounded-xl font-bold text-xs uppercase tracking-wider text-white bg-[#121316] hover:bg-black transition-all flex items-center gap-2 shadow-md hover:shadow-lg"
           >
-            <span>Enquire about the complete 7-book bundle</span>
-            <ArrowRight className="w-3.5 h-3.5" />
+            <span>Enquire for Full Bundle</span>
+            <ArrowRight className="w-4 h-4 text-[#F3D068]" />
           </button>
         </div>
 
@@ -173,3 +183,4 @@ export const StudyMaterials = ({ onSelectMaterial, onEnquire }: StudyMaterialsPr
     </section>
   );
 };
+

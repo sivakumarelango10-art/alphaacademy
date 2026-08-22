@@ -22,7 +22,7 @@ export const journeyStepsData: JourneyStep[] = [
     stepNumber: "02",
     title: "Learn",
     subtitle: "Study Structured Topics",
-    description: "Navigate through unit-by-unit syllabus modules using our 7 published reference materials and strategic lectures.",
+    description: "Navigate through unit-by-unit syllabus modules using our 8 published reference materials and strategic lectures.",
     outcomes: ["Exhaustive unit coverage", "High-yield author canons", "Structured note-taking"],
     icon: "BookOpen",
     badge: "Systematic Syllabus"

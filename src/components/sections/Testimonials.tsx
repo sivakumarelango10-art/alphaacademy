@@ -1,100 +1,141 @@
 import { useState, useRef } from "react";
-import { motion, useInView } from "framer-motion";
-import { Star, GraduationCap, ShieldCheck } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Star, ChevronLeft, ChevronRight, GraduationCap, Quote, ShieldCheck } from "lucide-react";
 import { studentReviewsData } from "../../data/testimonials";
 
 export const Testimonials = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0);
   const sectionRef = useRef(null);
-  const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
+
+  const nextReview = () => {
+    setCurrentIndex((prev) => (prev + 1) % studentReviewsData.length);
+  };
+
+  const prevReview = () => {
+    setCurrentIndex((prev) => (prev - 1 + studentReviewsData.length) % studentReviewsData.length);
+  };
 
   return (
     <section
       id="reviews"
       ref={sectionRef}
-      className="py-24 relative bg-[#090D15] overflow-hidden"
+      className="py-24 relative bg-[#FAF8F5] border-t border-[#EAE5DC] overflow-hidden"
     >
-      {/* Background radial glow */}
-      <div className="absolute top-1/2 left-1/3 -translate-y-1/2 w-96 h-96 bg-[#D4AF37]/5 rounded-full blur-[140px] pointer-events-none" />
-
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-3 mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#D4AF37]/10 border border-[#D4AF37]/30 text-xs font-bold text-[#F3D068] uppercase tracking-wider">
-            <GraduationCap className="w-3.5 h-3.5" />
+        <div className="text-center max-w-3xl mx-auto space-y-3 mb-14">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F3EEDF] border border-[#E2D6BE] text-xs font-bold text-[#8C6418] uppercase tracking-wider">
+            <GraduationCap className="w-3.5 h-3.5 text-[#8C6418]" />
             <span>Student Experiences</span>
           </div>
-          <h2 className="font-serif-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight">
+          <h2 className="font-serif-display text-3xl sm:text-4xl lg:text-5xl font-bold text-[#121316] tracking-tight">
             What Our Students Say
           </h2>
-          <p className="text-slate-400 text-sm sm:text-base">
-            Honest reflections from aspirants preparing with Alpha Academy’s mentorship and study systems.
+          <p className="text-slate-600 text-sm sm:text-base">
+            Honest reflections from aspirants preparing with Alpha Academy’s mentorship, lectures, and published books.
           </p>
         </div>
 
-        {/* 3-Card Interactive Deck */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {studentReviewsData.map((review, idx) => (
-            <motion.div
-              key={review.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: idx * 0.1 }}
-              onClick={() => setActiveIndex(idx)}
-              className={`p-7 sm:p-8 rounded-3xl transition-all duration-300 flex flex-col justify-between cursor-pointer relative ${
-                activeIndex === idx
-                  ? "bg-[#121A2A] border-2 border-[#D4AF37] shadow-[0_20px_50px_rgba(212,175,55,0.2)] -translate-y-2"
-                  : "bg-[#0E1524]/80 border border-slate-800 hover:border-[#D4AF37]/40 hover:bg-[#121A2A]/50"
-              }`}
-            >
-              <div className="space-y-4">
-                {/* Header */}
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <div className="w-11 h-11 rounded-full bg-gradient-to-tr from-[#D4AF37] to-[#B8860B] text-black font-bold flex items-center justify-center shadow-md text-sm">
-                      {review.avatarInitial}
+        {/* Carousel Container */}
+        <div className="max-w-4xl mx-auto relative">
+          <div className="overflow-hidden">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentIndex}
+                initial={{ opacity: 0, x: 25 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -25 }}
+                transition={{ duration: 0.4 }}
+                className="p-8 sm:p-10 rounded-3xl bg-white border border-[#EAE5DC] shadow-xl relative"
+              >
+                {/* Review Header */}
+                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-6 border-b border-[#EAE5DC]">
+                  <div className="flex items-center gap-3.5">
+                    <div className="w-12 h-12 rounded-2xl bg-[#F3EEDF] border border-[#E2D6BE] text-[#8C6418] font-bold text-lg flex items-center justify-center shadow-xs">
+                      {studentReviewsData[currentIndex].avatarInitial}
                     </div>
                     <div>
-                      <h4 className="text-sm font-bold text-white">
-                        {review.studentName}
+                      <h4 className="text-base font-bold text-[#121316]">
+                        {studentReviewsData[currentIndex].studentName}
                       </h4>
-                      <p className="text-[11px] text-[#D4AF37]">
-                        {review.studentCategory}
+                      <p className="text-xs text-[#8C6418] font-semibold">
+                        {studentReviewsData[currentIndex].studentCategory}
                       </p>
                     </div>
                   </div>
-                  <div className="flex items-center gap-0.5">
-                    {[...Array(review.rating)].map((_, i) => (
-                      <Star key={i} className="w-3.5 h-3.5 fill-[#F3D068] text-[#F3D068]" />
-                    ))}
+
+                  {/* Rating & Course Pill */}
+                  <div className="flex flex-col items-start sm:items-end gap-1.5">
+                    <div className="flex items-center gap-1">
+                      {[...Array(studentReviewsData[currentIndex].rating)].map((_, i) => (
+                        <Star key={i} className="w-4 h-4 fill-[#8C6418] text-[#8C6418]" />
+                      ))}
+                    </div>
+                    <span className="text-[11px] text-slate-500 font-mono font-medium bg-[#FAF8F5] px-2.5 py-0.5 rounded-full border border-[#EAE5DC]">
+                      {studentReviewsData[currentIndex].courseOrMaterial}
+                    </span>
                   </div>
                 </div>
 
-                {/* Course badge */}
-                <div className="text-[11px] px-2.5 py-1 rounded bg-slate-900 border border-slate-800 text-slate-300 font-medium inline-block">
-                  {review.courseOrMaterial}
+                {/* Feedback Content */}
+                <div className="py-6 space-y-3">
+                  <Quote className="w-8 h-8 text-[#8C6418]/30" />
+                  <p className="text-base sm:text-lg text-slate-800 leading-relaxed font-serif-display italic">
+                    “{studentReviewsData[currentIndex].reviewText}”
+                  </p>
                 </div>
 
-                {/* Review Text */}
-                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-serif-display italic">
-                  “{review.reviewText}”
-                </p>
-              </div>
+                {/* Verified Candidate Badge */}
+                <div className="pt-4 border-t border-[#EAE5DC] flex items-center justify-between text-xs text-slate-500">
+                  <span className="text-[11px] bg-[#FAF8F5] px-3 py-1 rounded-md border border-[#EAE5DC] font-semibold text-slate-700 flex items-center gap-1.5">
+                    <ShieldCheck className="w-3.5 h-3.5 text-[#8C6418]" />
+                    <span>Verified Student Feedback</span>
+                  </span>
+                  <span className="text-slate-400 font-medium">
+                    {currentIndex + 1} of {studentReviewsData.length}
+                  </span>
+                </div>
+              </motion.div>
+            </AnimatePresence>
+          </div>
 
-              {/* Footer Indicator */}
-              <div className="pt-4 mt-4 border-t border-slate-800/80 flex items-center justify-between text-[11px] text-slate-500">
-                <span className="flex items-center gap-1">
-                  <ShieldCheck className="w-3.5 h-3.5 text-[#D4AF37]" />
-                  <span>Student Feedback Card</span>
-                </span>
-                <span className="text-slate-400 font-mono">0{idx + 1}</span>
-              </div>
-            </motion.div>
-          ))}
+          {/* Carousel Controls */}
+          <div className="flex items-center justify-center gap-4 mt-8">
+            <button
+              onClick={prevReview}
+              className="p-3 rounded-full bg-white border border-[#EAE5DC] hover:border-[#8C6418] text-slate-700 hover:text-black transition-all shadow-xs active:scale-95"
+              aria-label="Previous review"
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+
+            {/* Indicator Pills */}
+            <div className="flex items-center gap-2">
+              {studentReviewsData.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setCurrentIndex(idx)}
+                  className={`h-2 rounded-full transition-all ${
+                    currentIndex === idx ? "w-8 bg-[#121316]" : "w-2 bg-slate-300 hover:bg-slate-400"
+                  }`}
+                  aria-label={`Go to review ${idx + 1}`}
+                />
+              ))}
+            </div>
+
+            <button
+              onClick={nextReview}
+              className="p-3 rounded-full bg-white border border-[#EAE5DC] hover:border-[#8C6418] text-slate-700 hover:text-black transition-all shadow-xs active:scale-95"
+              aria-label="Next review"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </button>
+          </div>
         </div>
 
       </div>
     </section>
   );
 };
+

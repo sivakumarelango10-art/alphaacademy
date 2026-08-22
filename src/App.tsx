@@ -4,14 +4,11 @@ import { Navbar } from "./components/layout/Navbar";
 import { Hero } from "./components/sections/Hero";
 import { About } from "./components/sections/About";
 import { Founder } from "./components/sections/Founder";
-import { Philosophy } from "./components/sections/Philosophy";
-import { VisionMission } from "./components/sections/VisionMission";
 import { WhyAlpha } from "./components/sections/WhyAlpha";
 import { StudyMaterials } from "./components/sections/StudyMaterials";
 import { MaterialFeedback } from "./components/sections/MaterialFeedback";
 import { Testimonials } from "./components/sections/Testimonials";
 import { ClassDetails } from "./components/sections/ClassDetails";
-import { LearningJourney } from "./components/sections/LearningJourney";
 import { Subjects } from "./components/sections/Subjects";
 import { FAQ } from "./components/sections/FAQ";
 import { SocialMedia } from "./components/sections/SocialMedia";
@@ -42,7 +39,7 @@ export function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#070A0F] text-slate-100 selection:bg-[#D4AF37]/30 selection:text-white">
+    <div className="min-h-screen bg-[#FAF8F5] text-[#1E293B] selection:bg-[#B8860B]/20 selection:text-black">
       {/* Top Scroll Indicator */}
       <ScrollProgress />
 
@@ -60,16 +57,10 @@ export function App() {
         {/* 3. Meet the Founder (Sabarna Suresh) */}
         <Founder onOpenEnquiryModal={handleOpenEnquiry} />
 
-        {/* 4. Core Philosophy / What We Believe */}
-        <Philosophy />
-
-        {/* 5 & 6. Vision & Mission */}
-        <VisionMission />
-
-        {/* 7. Why Alpha Academy? (6 Interactive Cards) */}
+        {/* 4. Why Alpha Academy? (6 Interactive Cards) */}
         <WhyAlpha onOpenEnquiryModal={handleOpenEnquiry} />
 
-        {/* 8. Study Materials Catalog (7 Published Books) */}
+        {/* 5. Study Materials Catalog (8 Published Books) */}
         <StudyMaterials
           onSelectMaterial={(material) => setSelectedMaterial(material)}
           onEnquire={(subject) => handleOpenEnquiry(subject)}
@@ -84,10 +75,7 @@ export function App() {
         {/* 11. Class Details */}
         <ClassDetails onOpenEnquiryModal={handleOpenEnquiry} />
 
-        {/* 12. Learning Journey (5-Step Animated Timeline) */}
-        <LearningJourney />
-
-        {/* 13. Subjects & Core Learning Areas */}
+        {/* 12. Subjects & Core Learning Areas */}
         <Subjects />
 
         {/* 14. Frequently Asked Questions */}

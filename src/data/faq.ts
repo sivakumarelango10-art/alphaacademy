@@ -15,7 +15,7 @@ export const faqData: FAQItem[] = [
   {
     id: "faq-2",
     question: "Who is Sabarna Suresh?",
-    answer: "Sabarna Suresh is the Founder & CEO of Alpha Academy, an educator, academic trainer, and mentor with 5 years of teaching experience. She has cleared the UGC NET examination repeatedly and authored 7 dedicated study materials for UGC NET English Literature aspirants.",
+    answer: "Sabarna Suresh is the Founder & CEO of Alpha Academy, an educator, academic trainer, and mentor with 5 years of teaching experience. She has cleared the UGC NET examination repeatedly and authored 8 dedicated study materials for UGC NET English Literature aspirants.",
     category: "General"
   },
   {
@@ -27,13 +27,13 @@ export const faqData: FAQItem[] = [
   {
     id: "faq-4",
     question: "Is Alpha Academy focused specifically on UGC NET English Literature?",
-    answer: "Yes. Our curriculum, 7 published study materials, practice tests, and mentorship strategies are 100% focused on and aligned with the UGC NET English Literature syllabus and examination patterns.",
+    answer: "Yes. Our curriculum, 8 published study materials, practice tests, and mentorship strategies are 100% focused on and aligned with the UGC NET English Literature syllabus and examination patterns.",
     category: "General"
   },
   {
     id: "faq-5",
     question: "Are study materials available for purchase separately?",
-    answer: "Yes, Alpha Academy has published 7 specialised study materials covering all vital domains of UGC NET English Literature. You can enquire about and explore these materials directly through the Study Materials section on this website.",
+    answer: "Yes, Alpha Academy has published 8 specialised study materials covering all vital domains of UGC NET English Literature. You can enquire about and explore these materials directly through the Study Materials section on this website.",
     category: "Materials"
   },
   {

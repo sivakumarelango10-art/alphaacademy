@@ -73,15 +73,15 @@ export const EnquiryModal = ({
           initial={{ opacity: 0, scale: 0.95, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: 20 }}
-          className="relative w-full max-w-xl bg-[#0E1420] border border-[#D4AF37]/40 rounded-2xl shadow-[0_25px_60px_rgba(0,0,0,0.9)] overflow-hidden z-10 my-6"
+          className="relative w-full max-w-xl bg-white border border-[#EAE5DC] rounded-2xl shadow-2xl overflow-hidden z-10 my-6"
         >
           {/* Top Gold Accent */}
-          <div className="h-2 w-full bg-gradient-to-r from-[#B8860B] via-[#F3D068] to-[#D4AF37]" />
+          <div className="h-2 w-full bg-gradient-to-r from-[#B8860B] via-[#F3D068] to-[#8C6418]" />
 
           {/* Close Button */}
           <button
             onClick={onClose}
-            className="absolute top-5 right-5 p-2 rounded-full bg-slate-800/80 text-slate-300 hover:text-white hover:bg-slate-700 transition-colors border border-slate-700/50"
+            className="absolute top-5 right-5 p-2 rounded-full bg-[#FAF8F5] text-slate-700 hover:text-black hover:bg-[#F3EEDF] transition-colors border border-[#EAE5DC]"
             aria-label="Close form"
           >
             <X className="w-5 h-5" />
@@ -89,22 +89,22 @@ export const EnquiryModal = ({
 
           <div className="p-6 sm:p-8 space-y-5 max-h-[85vh] overflow-y-auto">
             <div className="space-y-1">
-              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#D4AF37]">
+              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#8C6418]">
                 <GraduationCap className="w-4 h-4" />
                 <span>Alpha Academy • Enrolment & Enquiry</span>
               </div>
-              <h3 className="font-serif-display text-2xl sm:text-3xl font-bold text-white">
+              <h3 className="font-serif-display text-2xl sm:text-3xl font-bold text-[#121316]">
                 Start Your UGC NET Journey
               </h3>
-              <p className="text-xs text-slate-400">
+              <p className="text-xs text-slate-500">
                 Submit your details below to receive batch schedules, fee breakdowns, and study material guidance.
               </p>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="space-y-1.5">
-                <label className="text-xs font-semibold text-slate-300">
-                  Full Name <span className="text-red-400">*</span>
+                <label className="text-xs font-bold text-slate-700 uppercase tracking-wide">
+                  Full Name <span className="text-red-500">*</span>
                 </label>
                 <input
                   type="text"
@@ -112,14 +112,14 @@ export const EnquiryModal = ({
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder="Enter your full name"
-                  className="w-full px-4 py-2.5 rounded-xl bg-slate-900/90 border border-slate-700 focus:border-[#D4AF37] focus:outline-none text-white text-sm placeholder-slate-500 transition-colors"
+                  className="w-full px-4 py-2.5 rounded-xl bg-[#FAF8F5] border border-[#EAE5DC] focus:border-[#8C6418] focus:bg-white focus:outline-none text-[#121316] text-sm placeholder-slate-400 transition-colors"
                 />
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div className="space-y-1.5">
-                  <label className="text-xs font-semibold text-slate-300">
-                    Email Address <span className="text-red-400">*</span>
+                  <label className="text-xs font-bold text-slate-700 uppercase tracking-wide">
+                    Email Address <span className="text-red-500">*</span>
                   </label>
                   <input
                     type="email"
@@ -127,13 +127,13 @@ export const EnquiryModal = ({
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="name@example.com"
-                    className="w-full px-4 py-2.5 rounded-xl bg-slate-900/90 border border-slate-700 focus:border-[#D4AF37] focus:outline-none text-white text-sm placeholder-slate-500 transition-colors"
+                    className="w-full px-4 py-2.5 rounded-xl bg-[#FAF8F5] border border-[#EAE5DC] focus:border-[#8C6418] focus:bg-white focus:outline-none text-[#121316] text-sm placeholder-slate-400 transition-colors"
                   />
                 </div>
 
                 <div className="space-y-1.5">
-                  <label className="text-xs font-semibold text-slate-300">
-                    Phone / WhatsApp Number <span className="text-red-400">*</span>
+                  <label className="text-xs font-bold text-slate-700 uppercase tracking-wide">
+                    Phone / WhatsApp Number <span className="text-red-500">*</span>
                   </label>
                   <input
                     type="tel"
@@ -141,14 +141,14 @@ export const EnquiryModal = ({
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                     placeholder="+91 XXXXX XXXXX"
-                    className="w-full px-4 py-2.5 rounded-xl bg-slate-900/90 border border-slate-700 focus:border-[#D4AF37] focus:outline-none text-white text-sm placeholder-slate-500 transition-colors"
+                    className="w-full px-4 py-2.5 rounded-xl bg-[#FAF8F5] border border-[#EAE5DC] focus:border-[#8C6418] focus:bg-white focus:outline-none text-[#121316] text-sm placeholder-slate-400 transition-colors"
                   />
                 </div>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div className="space-y-1.5">
-                  <label className="text-xs font-semibold text-slate-300">
+                  <label className="text-xs font-bold text-slate-700 uppercase tracking-wide">
                     Interested In
                   </label>
                   <input
@@ -156,18 +156,18 @@ export const EnquiryModal = ({
                     value={subject}
                     onChange={(e) => setSubject(e.target.value)}
                     placeholder="e.g. Study Materials / Class Batch"
-                    className="w-full px-4 py-2.5 rounded-xl bg-slate-900/90 border border-slate-700 focus:border-[#D4AF37] focus:outline-none text-white text-sm placeholder-slate-500 transition-colors"
+                    className="w-full px-4 py-2.5 rounded-xl bg-[#FAF8F5] border border-[#EAE5DC] focus:border-[#8C6418] focus:bg-white focus:outline-none text-[#121316] text-sm placeholder-slate-400 transition-colors"
                   />
                 </div>
 
                 <div className="space-y-1.5">
-                  <label className="text-xs font-semibold text-slate-300">
+                  <label className="text-xs font-bold text-slate-700 uppercase tracking-wide">
                     Preferred Learning Mode
                   </label>
                   <select
                     value={learningMode}
                     onChange={(e) => setLearningMode(e.target.value)}
-                    className="w-full px-4 py-2.5 rounded-xl bg-slate-900/90 border border-slate-700 focus:border-[#D4AF37] focus:outline-none text-white text-sm transition-colors"
+                    className="w-full px-4 py-2.5 rounded-xl bg-[#FAF8F5] border border-[#EAE5DC] focus:border-[#8C6418] focus:bg-white focus:outline-none text-[#121316] text-sm transition-colors"
                   >
                     <option value="Online Interactive">Online Interactive (Live + Recorded)</option>
                     <option value="Offline Classroom">Offline Classroom (In-Person)</option>
@@ -178,7 +178,7 @@ export const EnquiryModal = ({
               </div>
 
               <div className="space-y-1.5">
-                <label className="text-xs font-semibold text-slate-300">
+                <label className="text-xs font-bold text-slate-700 uppercase tracking-wide">
                   Your Message / Specific Question
                 </label>
                 <textarea
@@ -186,27 +186,27 @@ export const EnquiryModal = ({
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
                   placeholder="Ask about batch timings, fees, or study material contents..."
-                  className="w-full px-4 py-2.5 rounded-xl bg-slate-900/90 border border-slate-700 focus:border-[#D4AF37] focus:outline-none text-white text-sm placeholder-slate-500 transition-colors"
+                  className="w-full px-4 py-2.5 rounded-xl bg-[#FAF8F5] border border-[#EAE5DC] focus:border-[#8C6418] focus:bg-white focus:outline-none text-[#121316] text-sm placeholder-slate-400 transition-colors"
                 />
               </div>
 
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full py-3 px-6 rounded-xl font-bold text-sm text-black bg-gradient-to-r from-[#F3D068] via-[#D4AF37] to-[#B8860B] hover:shadow-[0_0_25px_rgba(212,175,55,0.5)] transition-all flex items-center justify-center gap-2 disabled:opacity-50"
+                className="w-full py-3.5 px-6 rounded-none sm:rounded-md font-bold text-xs uppercase tracking-wider text-white bg-[#121316] hover:bg-black transition-all flex items-center justify-center gap-2 disabled:opacity-50 shadow-md hover:shadow-lg"
               >
                 {isSubmitting ? (
                   <span>Processing Enquiry...</span>
                 ) : (
                   <>
-                    <Send className="w-4 h-4 text-black" />
+                    <Send className="w-4 h-4 text-[#F3D068]" />
                     <span>Submit Academic Enquiry</span>
                   </>
                 )}
               </button>
 
-              <div className="flex items-center justify-center gap-2 text-[11px] text-slate-400 pt-1">
-                <CheckCircle2 className="w-3.5 h-3.5 text-[#D4AF37]" />
+              <div className="flex items-center justify-center gap-2 text-[11px] text-slate-500 pt-1">
+                <CheckCircle2 className="w-3.5 h-3.5 text-[#8C6418]" />
                 <span>Zero spam • 100% confidential mentorship response</span>
               </div>
             </form>

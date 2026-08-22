@@ -23,20 +23,20 @@ export const FAQ = () => {
     <section
       id="faq"
       ref={sectionRef}
-      className="py-24 relative bg-[#090D15] overflow-hidden"
+      className="py-24 relative bg-[#F5F2EB] border-t border-[#EAE5DC] overflow-hidden"
     >
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-3 mb-12">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#D4AF37]/10 border border-[#D4AF37]/30 text-xs font-bold text-[#F3D068] uppercase tracking-wider">
-            <HelpCircle className="w-3.5 h-3.5" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F3EEDF] border border-[#E2D6BE] text-xs font-bold text-[#8C6418] uppercase tracking-wider">
+            <HelpCircle className="w-3.5 h-3.5 text-[#8C6418]" />
             <span>Clear Answers</span>
           </div>
-          <h2 className="font-serif-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight">
+          <h2 className="font-serif-display text-3xl sm:text-4xl lg:text-5xl font-bold text-[#121316] tracking-tight">
             Frequently Asked Questions
           </h2>
-          <p className="text-slate-400 text-sm sm:text-base">
+          <p className="text-slate-600 text-sm sm:text-base">
             Everything you need to know about our courses, mentorship, study materials, and examination approach.
           </p>
         </div>
@@ -47,10 +47,10 @@ export const FAQ = () => {
             <button
               key={cat}
               onClick={() => setSelectedFilter(cat)}
-              className={`px-4 py-1.5 rounded-full text-xs font-semibold tracking-wide transition-all ${
+              className={`px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all ${
                 selectedFilter === cat
-                  ? "bg-[#D4AF37] text-black shadow-[0_0_15px_rgba(212,175,55,0.4)]"
-                  : "bg-slate-900 text-slate-400 border border-slate-800 hover:border-slate-700 hover:text-white"
+                  ? "bg-[#121316] text-white shadow-md"
+                  : "bg-white text-slate-700 border border-[#EAE5DC] hover:border-[#8C6418] hover:text-[#121316] shadow-xs"
               }`}
             >
               {cat}
@@ -70,8 +70,8 @@ export const FAQ = () => {
                 transition={{ duration: 0.4, delay: idx * 0.04 }}
                 className={`rounded-2xl border transition-all duration-300 overflow-hidden ${
                   isOpen
-                    ? "bg-[#0E1524] border-[#D4AF37]/50 shadow-[0_10px_30px_-10px_rgba(212,175,55,0.2)]"
-                    : "bg-[#0B0F19]/80 border-slate-800 hover:border-slate-700"
+                    ? "bg-white border-[#8C6418] shadow-md"
+                    : "bg-white border-[#EAE5DC] hover:border-[#8C6418]/60 shadow-xs"
                 }`}
               >
                 <button
@@ -80,14 +80,14 @@ export const FAQ = () => {
                   aria-expanded={isOpen}
                 >
                   <div className="flex items-center gap-3.5">
-                    <span className="font-mono text-xs font-bold text-[#D4AF37]/70">
+                    <span className="font-mono text-xs font-bold text-[#8C6418]">
                       {(idx + 1).toString().padStart(2, "0")}
                     </span>
-                    <h3 className="font-serif-display text-base sm:text-lg font-bold text-white leading-snug">
+                    <h3 className="font-serif-display text-base sm:text-lg font-bold text-[#121316] leading-snug">
                       {faq.question}
                     </h3>
                   </div>
-                  <div className={`p-1.5 rounded-full bg-slate-900 border border-slate-800 text-[#D4AF37] shrink-0 transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}>
+                  <div className={`p-2 rounded-full bg-[#FAF8F5] border border-[#EAE5DC] text-[#8C6418] shrink-0 transition-transform duration-300 ${isOpen ? "rotate-180 bg-[#F3EEDF]" : ""}`}>
                     <ChevronDown className="w-4 h-4" />
                   </div>
                 </button>
@@ -100,7 +100,7 @@ export const FAQ = () => {
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.3, ease: "easeInOut" }}
                     >
-                      <div className="px-5 sm:px-6 pb-6 pt-1 text-xs sm:text-sm text-slate-300 leading-relaxed border-t border-slate-800/80">
+                      <div className="px-5 sm:px-6 pb-6 pt-1 text-xs sm:text-sm text-slate-700 leading-relaxed border-t border-[#EAE5DC]">
                         {faq.answer}
                       </div>
                     </motion.div>

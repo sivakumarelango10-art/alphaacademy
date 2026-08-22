@@ -72,7 +72,7 @@ export const academyData: AcademyInfo = {
       sublabel: "In Teaching & Academic Mentoring"
     },
     {
-      value: 7,
+      value: 8,
       label: "Published Materials",
       sublabel: "Specialised UGC NET Study Books"
     },
@@ -123,7 +123,7 @@ export const academyData: AcademyInfo = {
       {
         id: "quality-materials",
         title: "Provide Quality Study Materials",
-        description: "Offering 7 dedicated, student-reviewed study volumes designed specifically for English Literature.",
+        description: "Offering 8 dedicated, student-reviewed study volumes designed specifically for English Literature.",
         iconName: "BookOpenCheck"
       },
       {
@@ -179,7 +179,7 @@ export const academyData: AcademyInfo = {
       title: "Quality Study Materials",
       description: "Specially designed materials help students learn important concepts in a structured and systematic manner.",
       iconName: "BookMarked",
-      highlight: "7 Comprehensive Volumes"
+      highlight: "8 Comprehensive Volumes"
     },
     {
       id: "conceptual-clarity",
