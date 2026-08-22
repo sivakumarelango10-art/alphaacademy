@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { Sparkles, BookOpen, Layers, CheckCircle2, GraduationCap } from "lucide-react";
+import { Award, BookOpen, Layers, CheckCircle2, GraduationCap } from "lucide-react";
 import { academyData } from "../../data/academy";
 import { useCountUp } from "../../hooks/useCountUp";
 
@@ -43,7 +43,7 @@ export const About = () => {
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-3 mb-16">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F3EEDF] border border-[#E2D6BE] text-xs font-bold text-[#8C6418] uppercase tracking-wider">
-            <Sparkles className="w-3.5 h-3.5 text-[#8C6418]" />
+            <Award className="w-3.5 h-3.5 text-[#8C6418]" />
             <span>Academic Excellence & Direction</span>
           </div>
           <h2 className="font-serif-display text-3xl sm:text-4xl lg:text-5xl font-bold text-[#121316] tracking-tight">

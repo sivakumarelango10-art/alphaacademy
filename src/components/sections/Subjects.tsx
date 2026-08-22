@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { Sparkles, Book, Brain, Feather, Hourglass, Key, GraduationCap, FileQuestion, Zap, CheckCircle2 } from "lucide-react";
+import { Book, Brain, Feather, Hourglass, Key, GraduationCap, FileQuestion, Zap, CheckCircle2 } from "lucide-react";
 import { subjectDomainsData } from "../../data/subjects";
 
 export const Subjects = () => {
@@ -17,7 +17,7 @@ export const Subjects = () => {
       case "GraduationCap": return <GraduationCap className="w-5 h-5 text-[#8C6418]" />;
       case "FileQuestion": return <FileQuestion className="w-5 h-5 text-[#8C6418]" />;
       case "Zap": return <Zap className="w-5 h-5 text-[#8C6418]" />;
-      default: return <Sparkles className="w-5 h-5 text-[#8C6418]" />;
+      default: return <Book className="w-5 h-5 text-[#8C6418]" />;
     }
   };
 

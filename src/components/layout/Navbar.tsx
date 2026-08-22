@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ArrowRight, Sparkles, GraduationCap } from "lucide-react";
+import { Menu, X, ArrowRight, GraduationCap } from "lucide-react";
 import { useScrollSpy } from "../../hooks/useScrollSpy";
 
 interface NavbarProps {
@@ -117,7 +117,6 @@ export const Navbar = ({ onOpenEnquiryModal }: NavbarProps) => {
               onClick={onOpenEnquiryModal}
               className="px-5 py-2.5 rounded-none sm:rounded-md text-xs xl:text-sm font-bold tracking-wider uppercase text-white bg-[#121316] hover:bg-black shadow-md hover:shadow-lg transition-all flex items-center gap-2"
             >
-              <Sparkles className="w-3.5 h-3.5 text-[#F3D068]" />
               <span>Join Now</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </button>
@@ -192,7 +191,6 @@ export const Navbar = ({ onOpenEnquiryModal }: NavbarProps) => {
                   }}
                   className="w-full py-3 rounded-lg text-sm font-bold uppercase tracking-wider text-white bg-[#121316] hover:bg-black shadow-md flex items-center justify-center gap-2"
                 >
-                  <Sparkles className="w-4 h-4 text-[#F3D068]" />
                   <span>Enroll for 2026 Batch</span>
                   <ArrowRight className="w-4 h-4" />
                 </button>

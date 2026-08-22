@@ -1,4 +1,4 @@
-import { ArrowUp, BookOpen, GraduationCap, Sparkles } from "lucide-react";
+import { ArrowUp, BookOpen, GraduationCap } from "lucide-react";
 import { InstagramIcon, YoutubeIcon, FacebookIcon } from "../ui/SocialIcons";
 import { socialLinksData } from "../../data/social";
 import { studyMaterialsData } from "../../data/materials";
@@ -134,7 +134,6 @@ export const Footer = ({ onOpenEnquiryModal }: FooterProps) => {
               onClick={onOpenEnquiryModal}
               className="w-full mt-2 py-3 px-3 rounded-md text-xs font-bold uppercase tracking-wider text-black bg-gradient-to-r from-[#F3D068] via-[#D4AF37] to-[#B8860B] hover:shadow-[0_0_20px_rgba(212,175,55,0.4)] transition-all flex items-center justify-center gap-2"
             >
-              <Sparkles className="w-3.5 h-3.5" />
               <span>Enquire for Next Batch</span>
             </button>
           </div>

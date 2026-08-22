@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowRight, BookOpen, Sparkles, Award, GraduationCap, Feather, CheckCircle2, ShieldCheck } from "lucide-react";
+import { ArrowRight, BookOpen, Award, GraduationCap, Feather, CheckCircle2, ShieldCheck } from "lucide-react";
 import { academyData } from "../../data/academy";
 import { founderData } from "../../data/founder";
 
@@ -31,7 +31,7 @@ export const Hero = ({ onOpenEnquiryModal }: HeroProps) => {
             {/* Trust Indicator & Motto Badge */}
             <div className="inline-flex flex-wrap items-center justify-center lg:justify-start gap-2.5">
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F3EEDF] border border-[#E2D6BE] text-xs font-bold uppercase tracking-wider text-[#8C6418] shadow-xs">
-                <Sparkles className="w-3.5 h-3.5 text-[#8C6418]" />
+                <GraduationCap className="w-3.5 h-3.5 text-[#8C6418]" />
                 <span>{academyData.trustIndicator}</span>
               </div>
 

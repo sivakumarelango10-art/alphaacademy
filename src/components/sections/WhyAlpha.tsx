@@ -1,7 +1,6 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import {
-  Sparkles,
   Award,
   Crosshair,
   BookMarked,
@@ -28,7 +27,7 @@ export const WhyAlpha = ({ onOpenEnquiryModal: _onOpenEnquiryModal }: WhyAlphaPr
       case "Lightbulb": return <Lightbulb className="w-6 h-6 text-[#8C6418]" />;
       case "FileCheck2": return <FileCheck2 className="w-6 h-6 text-[#8C6418]" />;
       case "HeartHandshake": return <HeartHandshake className="w-6 h-6 text-[#8C6418]" />;
-      default: return <Sparkles className="w-6 h-6 text-[#8C6418]" />;
+      default: return <CheckCircle2 className="w-6 h-6 text-[#8C6418]" />;
     }
   };
 
@@ -43,7 +42,7 @@ export const WhyAlpha = ({ onOpenEnquiryModal: _onOpenEnquiryModal }: WhyAlphaPr
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-3 mb-16">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F3EEDF] border border-[#E2D6BE] text-xs font-bold text-[#8C6418] uppercase tracking-wider">
-            <Sparkles className="w-3.5 h-3.5 text-[#8C6418]" />
+            <CheckCircle2 className="w-3.5 h-3.5 text-[#8C6418]" />
             <span>The Alpha Advantage</span>
           </div>
           <h2 className="font-serif-display text-3xl sm:text-4xl lg:text-5xl font-bold text-[#121316] tracking-tight">

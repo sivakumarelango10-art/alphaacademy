@@ -1,4 +1,4 @@
-import { Sparkles, BookOpen, ArrowRight, Mail } from "lucide-react";
+import { BookOpen, ArrowRight, Mail, GraduationCap } from "lucide-react";
 import { academyData } from "../../data/academy";
 
 interface CTAProps {
@@ -22,7 +22,7 @@ export const CTA = ({ onOpenEnquiryModal }: CTAProps) => {
           <div className="space-y-6 max-w-3xl mx-auto">
             {/* Small Badge */}
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F3EEDF] border border-[#E2D6BE] text-xs font-bold text-[#8C6418] uppercase tracking-wider">
-              <Sparkles className="w-3.5 h-3.5 text-[#8C6418]" />
+              <GraduationCap className="w-3.5 h-3.5 text-[#8C6418]" />
               <span>Begin Your Preparation with Clarity</span>
             </div>
 

@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { X, BookOpen, CheckCircle2, Feather, Sparkles, Send } from "lucide-react";
+import { X, BookOpen, CheckCircle2, Feather, Send } from "lucide-react";
 import type { StudyMaterial } from "../../data/materials";
 
 interface MaterialModalProps {
@@ -58,35 +58,34 @@ export const MaterialModal = ({ material, onClose, onEnquire }: MaterialModalPro
                   <div className="absolute left-0 top-0 bottom-0 w-4 bg-gradient-to-r from-black/50 via-black/15 to-transparent pointer-events-none" />
                   
                   {/* Volume pill */}
-                  <div className="absolute top-3 right-3 z-10">
-                    <span className="text-xs font-extrabold px-3 py-1 rounded-full bg-black/80 text-white backdrop-blur-md border border-white/20 shadow-md">
-                      VOL {material.volumeNumber.toString().padStart(2, "0")}
-                    </span>
+                  <div className="absolute top-3 right-3 px-3 py-1 rounded-md bg-[#121316]/90 text-[#F3D068] text-xs font-black uppercase tracking-wider border border-[#D4AF37]/30 shadow-lg">
+                    VOL {String(material.volumeNumber).padStart(2, "0")}
                   </div>
                 </div>
 
-                {/* Author attribution under image */}
-                <div className="mt-4 p-3 rounded-xl bg-[#FAF8F5] border border-[#EAE5DC] w-full max-w-[280px] text-center space-y-1">
-                  <div className="flex items-center justify-center gap-1.5 text-xs text-[#8C6418] font-bold">
-                    <Feather className="w-3.5 h-3.5" />
-                    <span>Authored by {material.author}</span>
+                <div className="mt-4 text-center space-y-1">
+                  <span className="text-xs font-bold text-slate-500 uppercase tracking-wider block">
+                    Author & Academic Lead
+                  </span>
+                  <div className="text-sm font-bold text-[#121316] flex items-center justify-center gap-1.5">
+                    <Feather className="w-4 h-4 text-[#8C6418]" />
+                    <span>{material.author}</span>
                   </div>
-                  <p className="text-[11px] text-slate-500">
-                    Founder & CEO, Alpha Academy
-                  </p>
+                  <span className="text-[11px] text-[#8C6418] font-semibold block">
+                    Founder, Alpha Academy
+                  </span>
                 </div>
               </div>
 
-              {/* Right Column: Detailed Book Information (7 cols) */}
-              <div className="md:col-span-7 space-y-5">
-                {/* Title & Category */}
-                <div className="space-y-2 pr-8">
-                  <div className="flex flex-wrap items-center gap-2">
-                    <span className="px-2.5 py-0.5 rounded-full text-xs font-bold uppercase tracking-wider bg-[#F3EEDF] text-[#8C6418] border border-[#E2D6BE]">
-                      Volume {material.volumeNumber.toString().padStart(2, "0")}
-                    </span>
-                    <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-700 border border-slate-200">
+              {/* Right Column: Book Details (7 cols) */}
+              <div className="md:col-span-7 space-y-6">
+                <div>
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-[#F3EEDF] text-[#8C6418] border border-[#E2D6BE]">
                       {material.category}
+                    </span>
+                    <span className="text-xs text-slate-500 font-semibold">
+                      UGC NET Preparation Series
                     </span>
                   </div>
 
@@ -132,7 +131,7 @@ export const MaterialModal = ({ material, onClose, onEnquire }: MaterialModalPro
                 {/* Book Highlights */}
                 <div className="p-3.5 rounded-xl bg-[#F3EEDF]/60 border border-[#E2D6BE] space-y-1">
                   <div className="text-xs font-bold text-[#8C6418] uppercase tracking-wider flex items-center gap-1.5">
-                    <Sparkles className="w-3.5 h-3.5" />
+                    <CheckCircle2 className="w-3.5 h-3.5 text-[#8C6418]" />
                     <span>Targeted Examination Focus</span>
                   </div>
                   <p className="text-xs text-slate-800">

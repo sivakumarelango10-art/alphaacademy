@@ -148,7 +148,7 @@ export const academyData: AcademyInfo = {
         id: "student-confidence",
         title: "Build Student Confidence",
         description: "Fostering an encouraging mentor-led atmosphere that replaces exam anxiety with self-assurance.",
-        iconName: "Sparkles"
+        iconName: "Award"
       },
       {
         id: "career-support",

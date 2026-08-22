@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { BookOpen, Eye, Send, ArrowRight, Sparkles } from "lucide-react";
+import { BookOpen, Eye, Send, ArrowRight } from "lucide-react";
 import { studyMaterialsData } from "../../data/materials";
 import type { StudyMaterial } from "../../data/materials";
 
@@ -159,7 +159,7 @@ export const StudyMaterials = ({ onSelectMaterial, onEnquire }: StudyMaterialsPr
         <div className="mt-14 p-6 sm:p-8 rounded-3xl bg-white border border-[#EAE5DC] shadow-sm max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
           <div className="space-y-1 max-w-xl">
             <div className="flex items-center justify-center sm:justify-start gap-1.5 text-xs font-bold text-[#8C6418] uppercase tracking-wider">
-              <Sparkles className="w-3.5 h-3.5 text-[#8C6418]" />
+              <BookOpen className="w-3.5 h-3.5 text-[#8C6418]" />
               <span>Comprehensive Study Material Bundle</span>
             </div>
             <h4 className="font-serif-display text-lg font-bold text-[#121316]">

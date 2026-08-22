@@ -1,7 +1,6 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import {
-  Sparkles,
   Eye,
   Target,
   BrainCircuit,
@@ -31,7 +30,7 @@ export const VisionMission = () => {
       case "GraduationCap": return <GraduationCap className="w-5 h-5 text-[#D4AF37]" />;
       case "SearchCheck": return <SearchCheck className="w-5 h-5 text-[#D4AF37]" />;
       case "TrendingUp": return <TrendingUp className="w-5 h-5 text-[#D4AF37]" />;
-      default: return <Sparkles className="w-5 h-5 text-[#D4AF37]" />;
+      default: return <Target className="w-5 h-5 text-[#D4AF37]" />;
     }
   };
 

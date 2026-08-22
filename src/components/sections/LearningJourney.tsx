@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { Sparkles, Compass, BookOpen, CheckSquare, RefreshCw, Trophy, CheckCircle2 } from "lucide-react";
+import { Compass, BookOpen, CheckSquare, RefreshCw, Trophy, CheckCircle2 } from "lucide-react";
 import { journeyStepsData } from "../../data/learningJourney";
 
 export const LearningJourney = () => {
@@ -14,7 +14,7 @@ export const LearningJourney = () => {
       case "CheckSquare": return <CheckSquare className="w-6 h-6 text-[#D4AF37]" />;
       case "RefreshCw": return <RefreshCw className="w-6 h-6 text-[#D4AF37]" />;
       case "Trophy": return <Trophy className="w-6 h-6 text-[#D4AF37]" />;
-      default: return <Sparkles className="w-6 h-6 text-[#D4AF37]" />;
+      default: return <Compass className="w-6 h-6 text-[#D4AF37]" />;
     }
   };
 
@@ -32,7 +32,7 @@ export const LearningJourney = () => {
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-3 mb-16">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#D4AF37]/10 border border-[#D4AF37]/30 text-xs font-bold text-[#F3D068] uppercase tracking-wider">
-            <Sparkles className="w-3.5 h-3.5" />
+            <Compass className="w-3.5 h-3.5" />
             <span>The 5-Step Path to Qualification</span>
           </div>
           <h2 className="font-serif-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight">
