@@ -30,13 +30,13 @@ export const studyMaterialsData: StudyMaterial[] = [
     author: "Sabarna Suresh",
     image: "/books/british-literature-vol1.jpg",
     shortDescription: "Comprehensive structured guidance covering foundational British literature, historical eras, canonical writers, and major movements.",
-    fullDescription: "A thoroughly researched reference book designed specifically for UGC NET aspirants. Focuses on high-yield literary concepts with structured chapter outlines, critical summaries, major British authors, timeline chronologies, and concept-check revision points.",
+    fullDescription: "A thoroughly researched reference book designed specifically for UGC NET aspirants. Focuses on high-yield literary concepts from Old & Middle English to the Renaissance and Neoclassical eras with structured chapter outlines, critical summaries, author chronologies, and concept-check revision points.",
     keyTopics: [
-      "Old & Middle English to Renaissance Era",
-      "Neoclassical, Romantic & Victorian Periods",
-      "20th Century & Modern British Canon",
-      "Major Poets, Dramatists & Novelists",
-      "High-Yield Concept Check Revision Points"
+      "Old & Middle English to Renaissance",
+      "Neoclassical & Augustan Literature",
+      "Major Elizabethan & Jacobean Dramatists",
+      "Metaphysical & Cavalier Poetry",
+      "Concept-Check Revision Points"
     ],
     targetExam: "UGC NET / JRF English Literature",
     features: [
@@ -56,13 +56,45 @@ export const studyMaterialsData: StudyMaterial[] = [
   {
     id: "material-02",
     volumeNumber: 2,
+    title: "A Complete Guidance to British Literature",
+    subtitle: "Volume II",
+    category: "British Literature",
+    author: "Sabarna Suresh",
+    image: "/books/british-literature-vol2.jpg",
+    shortDescription: "Advanced guide covering Romantic, Victorian, Modernist, and Postmodern British poetry, prose, and theatre.",
+    fullDescription: "Extends British literature mastery into the 19th and 20th centuries, covering Romantic poetry, Victorian novelistic traditions, Modernism, Postmodern experimentation, Theatre of the Absurd, and contemporary British authors.",
+    keyTopics: [
+      "Romantic Movement & Major Poets",
+      "Victorian Novels, Prose & Industrial Themes",
+      "Modernist Experimentation & Bloomsbury Group",
+      "Postmodern British Drama & Theatre of Absurd",
+      "Contemporary British Fiction & Poetry"
+    ],
+    targetExam: "UGC NET / JRF English Literature",
+    features: [
+      "Thematic author comparative matrices",
+      "Century-wise timeline summaries",
+      "Pivotal text excerpts & critiques",
+      "High-yield repeat topics"
+    ],
+    pricePlaceholder: "Pricing details available on enquiry",
+    coverAccent: {
+      gradient: "from-yellow-600/30 via-slate-900 to-black",
+      border: "border-yellow-500/40",
+      badgeBg: "bg-yellow-500/20",
+      badgeText: "text-yellow-700"
+    }
+  },
+  {
+    id: "material-03",
+    volumeNumber: 3,
     title: "Theories",
     subtitle: "Literary Theory & Criticism",
     category: "Literary Theory & Criticism",
     author: "Sabarna Suresh",
     image: "/books/theories.jpg",
     shortDescription: "In-depth breakdown of classical to contemporary literary theories, critical schools, seminal essays, and theorists.",
-    fullDescription: "Demystifies intricate theoretical paradigms from Structuralism, Post-structuralism, Psychoanalysis, to Ecocriticism, Reader-Response, and Postmodern Theory, with simplified explanations, theorist charts, and exam-oriented focus.",
+    fullDescription: "Demystifies intricate theoretical paradigms from Structuralism, Post-structuralism, Psychoanalysis, to Ecocriticism, Reader-Response, Postmodern Theory, and Cultural Materialism with simplified explanations, theorist charts, and exam-oriented focus.",
     keyTopics: [
       "Classical & Neoclassical Criticism",
       "Structuralism & Post-Structuralism",
@@ -86,20 +118,20 @@ export const studyMaterialsData: StudyMaterial[] = [
     }
   },
   {
-    id: "material-03",
-    volumeNumber: 3,
+    id: "material-04",
+    volumeNumber: 4,
     title: "Non-British Writers",
     subtitle: "World & Postcolonial Literature",
     category: "World Literature",
     author: "Sabarna Suresh",
     image: "/books/non-british-writers.jpg",
-    shortDescription: "Comprehensive compendium of American, European, Commonwealth, Postcolonial, and Indian writers in English.",
-    fullDescription: "Detailed study notes covering global anglophone literatures, American classics, African, Canadian, Australian, and Caribbean canons, along with Indian English writers and translated world masterpieces.",
+    shortDescription: "Comprehensive compendium of American, European, Commonwealth, Postcolonial, African, and Caribbean writers in English.",
+    fullDescription: "Detailed study notes covering global anglophone literatures, American classics, African, Canadian, Australian, and Caribbean canons, alongside major translated European and world masterpieces for UGC NET Paper II.",
     keyTopics: [
       "American & European Literary Traditions",
       "Postcolonial & Commonwealth Canons",
-      "Indian Writing in English & Translations",
       "African, Caribbean & Canadian Authors",
+      "Latin American & European Classics in Translation",
       "Major Award-Winning Texts & Themes"
     ],
     targetExam: "UGC NET / JRF English Literature",
@@ -118,21 +150,53 @@ export const studyMaterialsData: StudyMaterial[] = [
     }
   },
   {
-    id: "material-04",
-    volumeNumber: 4,
+    id: "material-05",
+    volumeNumber: 5,
+    title: "A Complete Guidance to Indian Literature",
+    subtitle: "Indian Writing in English & Translations",
+    category: "Indian Literature",
+    author: "Sabarna Suresh",
+    image: "/books/indian-literature.jpg",
+    shortDescription: "Exhaustive compendium of Indian English writers, poets, dramatists, Dalit literature, and translated regional classics.",
+    fullDescription: "Comprehensive coverage of Indian English literature from the 19th-century renaissance to contemporary Booker winners. Features in-depth analyses of Indian poetry, drama, post-independence fiction, Dalit narratives, and regional masterpieces translated into English.",
+    keyTopics: [
+      "Pre & Post-Independence Indian English Writers",
+      "Major Indian Poets, Novelists & Dramatists",
+      "Dalit Literature & Subaltern Perspectives",
+      "Sahitya Akademi & International Award Winners",
+      "Regional Indian Literatures in Translation"
+    ],
+    targetExam: "UGC NET / JRF English Literature",
+    features: [
+      "Exhaustive Indian author index",
+      "Thematic summaries of canonical works",
+      "Award highlights & publication timelines",
+      "Quick memory matrices"
+    ],
+    pricePlaceholder: "Pricing details available on enquiry",
+    coverAccent: {
+      gradient: "from-rose-600/30 via-slate-900 to-black",
+      border: "border-rose-500/40",
+      badgeBg: "bg-rose-500/20",
+      badgeText: "text-rose-700"
+    }
+  },
+  {
+    id: "material-06",
+    volumeNumber: 6,
     title: "Success Manual for UGC NET Paper - 1",
     subtitle: "Volume 1",
     category: "General Paper 1",
     author: "Sabarna Suresh",
-    image: "/books/ugc-net-paper-1.jpg",
-    shortDescription: "Master manual for UGC NET General Paper 1 covering Teaching Aptitude, Research Methodology, Higher Education, and ICT.",
-    fullDescription: "All-in-one preparation guide covering core Paper 1 units: Teaching Aptitude, Research Methodology & Ethics, ICT, Higher Education System, and Communication. Features simplified explanations, charts, and proven scoring tactics.",
+    image: "/books/ugc-net-paper-1-vol1.jpg",
+    shortDescription: "Master manual for General Paper 1 covering Teaching Aptitude, Research Methodology, Higher Education, and ICT.",
+    fullDescription: "All-in-one preparation guide for UGC NET General Paper 1 (Volume 1). Covers core foundational units including Teaching Aptitude, Research Methodology & Ethics, ICT in Education, Higher Education System policies, and Communication.",
     keyTopics: [
-      "Teaching & Research Aptitude Fundamentals",
-      "Research Ethics, Methods & Steps",
+      "Teaching Aptitude & Learner Characteristics",
+      "Research Types, Methods & Steps",
+      "Research Ethics & Thesis Writing",
       "Information & Communication Technology (ICT)",
-      "Higher Education System in India & Policies",
-      "People, Development & Environment Basics"
+      "Higher Education Governance & Policies"
     ],
     targetExam: "UGC NET General Paper 1 (All Subjects)",
     features: [
@@ -150,8 +214,40 @@ export const studyMaterialsData: StudyMaterial[] = [
     }
   },
   {
-    id: "material-05",
-    volumeNumber: 5,
+    id: "material-07",
+    volumeNumber: 7,
+    title: "Success Manual for UGC NET Paper - 1",
+    subtitle: "Volume 2",
+    category: "General Paper 1",
+    author: "Sabarna Suresh",
+    image: "/books/ugc-net-paper-1-vol2.jpg",
+    shortDescription: "Advanced manual for General Paper 1 covering People & Environment, Mathematical Reasoning, Logical Reasoning, and Data Interpretation.",
+    fullDescription: "Comprehensive Paper 1 companion (Volume 2) focusing on scoring units: People, Development & Environment (SDGs, MDGs, environmental protocols), Logical Reasoning (Pramanas, Indian Logic), Mathematical Aptitude, and Data Interpretation shortcuts.",
+    keyTopics: [
+      "People, Development & Environment Protocols",
+      "SDGs, MDGs & Climate Agreements",
+      "Indian Logic, Pramanas & Fallacies",
+      "Mathematical & Logical Reasoning Techniques",
+      "Data Interpretation Speed Shortcuts"
+    ],
+    targetExam: "UGC NET General Paper 1 (All Subjects)",
+    features: [
+      "Pramanas & Indian logic simplified",
+      "Environmental policy reference charts",
+      "Mathematical shortcuts & solved sets",
+      "High-frequency exam concepts"
+    ],
+    pricePlaceholder: "Pricing details available on enquiry",
+    coverAccent: {
+      gradient: "from-teal-600/30 via-slate-900 to-black",
+      border: "border-teal-500/40",
+      badgeBg: "bg-teal-500/20",
+      badgeText: "text-teal-700"
+    }
+  },
+  {
+    id: "material-08",
+    volumeNumber: 8,
     title: "NET Navigator (PYQ Mastery)",
     subtitle: "Previous Year Questions & Analysis",
     category: "PYQ Mastery",
