@@ -30,10 +30,11 @@ export const Contact = ({ onSuccessToast }: ContactProps) => {
     e.preventDefault();
     setIsSubmitting(true);
 
+    const formattedPhone = phone.trim().startsWith("+91") ? phone.trim() : `+91 ${phone.trim()}`;
     const whatsappMessage = `*New Academic Advisory Enquiry - Alpha Academy*
 ━━━━━━━━━━━━━━━━━━━━
 👤 *Full Name:* ${name.trim()}
-📱 *Phone Number:* ${phone.trim()}
+📱 *WhatsApp Number:* ${formattedPhone}
 📧 *Email Address:* ${email.trim()}
 📚 *Subject / Area:* ${subject.trim()}
 💬 *Message / Query:* ${message.trim() ? message.trim() : "None"}
@@ -223,16 +224,33 @@ _Submitted via Alpha Academy Contact Form_`;
 
                   <div className="space-y-1.5">
                     <label className="text-xs font-bold text-slate-700 uppercase tracking-wide">
-                      Phone Number / WhatsApp <span className="text-red-500">*</span>
+                      WhatsApp Number <span className="text-red-500">*</span>
                     </label>
-                    <input
-                      type="tel"
-                      required
-                      value={phone}
-                      onChange={(e) => setPhone(e.target.value)}
-                      placeholder="+91 XXXXX XXXXX"
-                      className="w-full px-4 py-3 rounded-xl bg-[#FAF8F5] border border-[#EAE5DC] focus:border-[#8C6418] focus:bg-white focus:outline-none text-[#121316] text-sm placeholder-slate-400 transition-colors"
-                    />
+                    <div className="flex items-center rounded-xl bg-[#FAF8F5] border border-[#EAE5DC] focus-within:border-[#8C6418] focus-within:bg-white overflow-hidden transition-colors">
+                      <span className="px-3.5 py-3 bg-[#F3EEDF] text-[#8C6418] text-xs font-bold border-r border-[#EAE5DC] select-none shrink-0">
+                        +91
+                      </span>
+                      <input
+                        type="tel"
+                        required
+                        inputMode="numeric"
+                        maxLength={10}
+                        pattern="[6-9][0-9]{9}"
+                        title="Please enter a valid 10-digit mobile number"
+                        value={phone}
+                        onChange={(e) => {
+                          const val = e.target.value.replace(/\D/g, "");
+                          if (val.length <= 10) setPhone(val);
+                        }}
+                        placeholder="9025567624"
+                        className="w-full px-3 py-3 bg-transparent focus:outline-none text-[#121316] text-sm placeholder-slate-400"
+                      />
+                    </div>
+                    {phone && phone.length < 10 && (
+                      <span className="text-[10px] text-amber-700 block font-medium">
+                        Please enter {10 - phone.length} more digit{10 - phone.length > 1 ? "s" : ""} (10 digits required)
+                      </span>
+                    )}
                   </div>
                 </div>
 
