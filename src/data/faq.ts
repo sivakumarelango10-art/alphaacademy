@@ -51,7 +51,7 @@ export const faqData: FAQItem[] = [
   {
     id: "faq-8",
     question: "What is the duration of the course?",
-    answer: "Course duration details will be provided based on the specific batch chosen (Regular Comprehensive Batch or Fast-Track Intensive Batch). Please get in touch for the latest batch schedules.",
+    answer: "The comprehensive course duration is 6 months, structured to cover the complete UGC NET syllabus along with regular chapter tests, mock exams, and intensive revision.",
     category: "Classes"
   },
   {

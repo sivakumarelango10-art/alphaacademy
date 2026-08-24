@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { BookOpen, Eye, Send, ArrowRight } from "lucide-react";
 import { studyMaterialsData } from "../../data/materials";
@@ -10,15 +10,8 @@ interface StudyMaterialsProps {
 }
 
 export const StudyMaterials = ({ onSelectMaterial, onEnquire }: StudyMaterialsProps) => {
-  const [selectedCategory, setSelectedCategory] = useState<string>("All");
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
-
-  const categories = ["All", ...Array.from(new Set(studyMaterialsData.map((b) => b.category)))];
-
-  const filteredBooks = selectedCategory === "All"
-    ? studyMaterialsData
-    : studyMaterialsData.filter((b) => b.category === selectedCategory);
 
   return (
     <section
@@ -29,7 +22,7 @@ export const StudyMaterials = ({ onSelectMaterial, onEnquire }: StudyMaterialsPr
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-3 mb-12">
+        <div className="text-center max-w-3xl mx-auto space-y-3 mb-14">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F3EEDF] border border-[#E2D6BE] text-xs font-bold text-[#8C6418] uppercase tracking-wider">
             <BookOpen className="w-3.5 h-3.5 text-[#8C6418]" />
             <span>Authored by Sabarna Suresh</span>
@@ -42,26 +35,9 @@ export const StudyMaterials = ({ onSelectMaterial, onEnquire }: StudyMaterialsPr
           </p>
         </div>
 
-        {/* Category Filter Chips */}
-        <div className="flex flex-wrap items-center justify-center gap-2 mb-12">
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setSelectedCategory(cat)}
-              className={`px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all ${
-                selectedCategory === cat
-                  ? "bg-[#121316] text-white shadow-md"
-                  : "bg-white text-slate-700 border border-[#EAE5DC] hover:border-[#8C6418] hover:text-[#121316] shadow-xs"
-              }`}
-            >
-              {cat}
-            </button>
-          ))}
-        </div>
-
         {/* Books Grid - 8 Books */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-7">
-          {filteredBooks.map((book, idx) => (
+          {studyMaterialsData.map((book, idx) => (
             <motion.div
               key={book.id}
               initial={{ opacity: 0, y: 30 }}

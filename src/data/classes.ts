@@ -45,18 +45,18 @@ export const classData: ClassDetailInfo = {
 
   parameters: [
     {
+      label: "Course Duration",
+      value: "6 Months",
+      isPlaceholder: false,
+      helperText: "Structured 6-month comprehensive syllabus coverage & intensive revision",
+      icon: "Calendar"
+    },
+    {
       label: "Course Fee",
       value: "Fee details provided on enquiry",
       isPlaceholder: true,
       helperText: "Flexible installment & batch-specific options available",
       icon: "BadgeIndianRupee"
-    },
-    {
-      label: "Course Duration",
-      value: "Duration details provided upon batch selection",
-      isPlaceholder: true,
-      helperText: "Structured to cover syllabus plus intensive revision",
-      icon: "Calendar"
     },
     {
       label: "Class Schedule & Timings",

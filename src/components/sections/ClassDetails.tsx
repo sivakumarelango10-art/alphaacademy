@@ -57,7 +57,7 @@ export const ClassDetails = ({ onOpenEnquiryModal: _onOpenEnquiryModal }: ClassD
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className="p-6 sm:p-7 rounded-2xl bg-white border border-[#8C6418]/40 shadow-xs hover:border-[#8C6418] hover:shadow-md transition-all space-y-2.5 text-center group"
+              className="p-6 sm:p-8 rounded-3xl bg-white border border-[#8C6418]/40 shadow-xs hover:border-[#8C6418] hover:shadow-md transition-all space-y-3.5 text-center group"
             >
               <div className="flex items-center justify-center gap-2">
                 <span className="text-xs font-bold px-3 py-0.5 rounded-full bg-[#F3EEDF] text-[#8C6418] border border-[#E2D6BE]">
@@ -68,10 +68,19 @@ export const ClassDetails = ({ onOpenEnquiryModal: _onOpenEnquiryModal }: ClassD
                   <span>Live & Recorded Access</span>
                 </span>
               </div>
-              <h3 className="font-serif-display text-xl font-bold text-[#121316]">
+              
+              <h3 className="font-serif-display text-xl sm:text-2xl font-bold text-[#121316]">
                 {mode.name}
               </h3>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed max-w-xl mx-auto">
+
+              {/* Course Duration highlight directly after Online Interactive Coaching */}
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#FAF8F5] border border-[#E2D6BE] text-xs font-bold text-[#8C6418] shadow-2xs">
+                <Calendar className="w-4 h-4 text-[#8C6418]" />
+                <span className="text-slate-800 font-bold">Course Duration:</span>
+                <span className="text-[#8C6418] font-extrabold">6 Months</span>
+              </div>
+
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed max-w-xl mx-auto pt-1">
                 {mode.description}
               </p>
             </motion.div>
