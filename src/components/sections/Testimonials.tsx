@@ -1,18 +1,57 @@
 import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import type { Variants } from "framer-motion";
 import { Star, ChevronLeft, ChevronRight, GraduationCap, Quote, ShieldCheck } from "lucide-react";
 import { studentReviewsData } from "../../data/testimonials";
 
+const slideVariants: Variants = {
+  enter: (direction: number) => ({
+    x: direction > 0 ? 40 : -40,
+    opacity: 0,
+    scale: 0.98,
+    filter: "blur(4px)",
+  }),
+  center: {
+    x: 0,
+    opacity: 1,
+    scale: 1,
+    filter: "blur(0px)",
+    transition: {
+      duration: 0.45,
+      ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
+    },
+  },
+  exit: (direction: number) => ({
+    x: direction > 0 ? -40 : 40,
+    opacity: 0,
+    scale: 0.98,
+    filter: "blur(4px)",
+    transition: {
+      duration: 0.35,
+      ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
+    },
+  }),
+};
+
 export const Testimonials = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [direction, setDirection] = useState(0);
   const sectionRef = useRef(null);
 
   const nextReview = () => {
+    setDirection(1);
     setCurrentIndex((prev) => (prev + 1) % studentReviewsData.length);
   };
 
   const prevReview = () => {
+    setDirection(-1);
     setCurrentIndex((prev) => (prev - 1 + studentReviewsData.length) % studentReviewsData.length);
+  };
+
+  const goToSlide = (idx: number) => {
+    if (idx === currentIndex) return;
+    setDirection(idx > currentIndex ? 1 : -1);
+    setCurrentIndex(idx);
   };
 
   return (
@@ -40,14 +79,26 @@ export const Testimonials = () => {
         {/* Carousel Container */}
         <div className="max-w-4xl mx-auto relative">
           <div className="overflow-hidden">
-            <AnimatePresence mode="wait">
+            <AnimatePresence mode="wait" custom={direction} initial={false}>
               <motion.div
                 key={currentIndex}
-                initial={{ opacity: 0, x: 25 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -25 }}
-                transition={{ duration: 0.4 }}
-                className="p-5 sm:p-8 md:p-10 rounded-2xl sm:rounded-3xl bg-white border border-[#EAE5DC] shadow-xl relative"
+                custom={direction}
+                variants={slideVariants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                drag="x"
+                dragConstraints={{ left: 0, right: 0 }}
+                dragElastic={0.2}
+                onDragEnd={(_e, { offset, velocity }) => {
+                  const swipe = Math.abs(offset.x) * velocity.x;
+                  if (swipe < -100 || offset.x < -60) {
+                    nextReview();
+                  } else if (swipe > 100 || offset.x > 60) {
+                    prevReview();
+                  }
+                }}
+                className="p-5 sm:p-8 md:p-10 rounded-2xl sm:rounded-3xl bg-white border border-[#EAE5DC] shadow-xl relative cursor-grab active:cursor-grabbing select-none"
               >
                 {/* Review Header */}
                 <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-5 sm:pb-6 border-b border-[#EAE5DC]">
@@ -79,8 +130,8 @@ export const Testimonials = () => {
                 </div>
 
                 {/* Feedback Content */}
-                <div className="py-5 sm:py-6 space-y-2.5 sm:space-y-3">
-                  <Quote className="w-6 h-6 sm:w-8 sm:h-8 text-[#8C6418]/30" />
+                <div className="py-5 sm:py-6 space-y-2.5 sm:space-y-3 min-h-[140px] sm:min-h-[120px] flex flex-col justify-center">
+                  <Quote className="w-6 h-6 sm:w-8 sm:h-8 text-[#8C6418]/30 shrink-0" />
                   <p className="text-sm sm:text-base md:text-lg text-slate-800 leading-relaxed font-serif-display italic">
                     “{studentReviewsData[currentIndex].reviewText}”
                   </p>
@@ -104,7 +155,7 @@ export const Testimonials = () => {
           <div className="flex items-center justify-center gap-4 mt-8">
             <button
               onClick={prevReview}
-              className="p-3 rounded-full bg-white border border-[#EAE5DC] hover:border-[#8C6418] text-slate-700 hover:text-black transition-all shadow-xs active:scale-95"
+              className="p-3 rounded-full bg-white border border-[#EAE5DC] hover:border-[#8C6418] text-slate-700 hover:text-black transition-all shadow-xs active:scale-95 cursor-pointer touch-manipulation"
               aria-label="Previous review"
             >
               <ChevronLeft className="w-5 h-5" />
@@ -115,8 +166,8 @@ export const Testimonials = () => {
               {studentReviewsData.map((_, idx) => (
                 <button
                   key={idx}
-                  onClick={() => setCurrentIndex(idx)}
-                  className={`h-2 rounded-full transition-all ${
+                  onClick={() => goToSlide(idx)}
+                  className={`h-2 rounded-full transition-all duration-300 cursor-pointer touch-manipulation ${
                     currentIndex === idx ? "w-8 bg-[#121316]" : "w-2 bg-slate-300 hover:bg-slate-400"
                   }`}
                   aria-label={`Go to review ${idx + 1}`}
@@ -126,7 +177,7 @@ export const Testimonials = () => {
 
             <button
               onClick={nextReview}
-              className="p-3 rounded-full bg-white border border-[#EAE5DC] hover:border-[#8C6418] text-slate-700 hover:text-black transition-all shadow-xs active:scale-95"
+              className="p-3 rounded-full bg-white border border-[#EAE5DC] hover:border-[#8C6418] text-slate-700 hover:text-black transition-all shadow-xs active:scale-95 cursor-pointer touch-manipulation"
               aria-label="Next review"
             >
               <ChevronRight className="w-5 h-5" />

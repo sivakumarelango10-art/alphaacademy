@@ -45,7 +45,7 @@ export const faqData: FAQItem[] = [
   {
     id: "faq-7",
     question: "What is the class fee?",
-    answer: "Fee details will be provided upon enquiry based on the selected learning mode (Online / Offline / Hybrid) and current batch schedule. Please submit an enquiry to receive the complete fee schedule.",
+    answer: "The course fee is currently available at a special offer price of ₹27,000 (standard fee: ₹33,000 with 18% offer), which covers 6 months of live lectures, 8 published study materials, Saturday mathematics sessions, and test series.",
     category: "Classes"
   },
   {

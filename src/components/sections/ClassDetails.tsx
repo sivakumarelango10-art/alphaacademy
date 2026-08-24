@@ -104,9 +104,25 @@ export const ClassDetails = ({ onOpenEnquiryModal: _onOpenEnquiryModal }: ClassD
                 <span className="text-xs text-slate-500 uppercase font-bold tracking-wider">
                   {param.label}
                 </span>
-                <div className="text-sm font-bold text-[#121316] mt-1">
-                  {param.value}
-                </div>
+                {param.originalPrice && param.offerPrice ? (
+                  <div className="mt-1 flex items-baseline gap-2 flex-wrap">
+                    <span className="text-xs text-slate-400 line-through font-semibold">
+                      {param.originalPrice}
+                    </span>
+                    <span className="text-base sm:text-lg font-extrabold text-[#121316]">
+                      {param.offerPrice}
+                    </span>
+                    {param.discountBadge && (
+                      <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-[#F3EEDF] text-[#8C6418] border border-[#E2D6BE]">
+                        {param.discountBadge}
+                      </span>
+                    )}
+                  </div>
+                ) : (
+                  <div className="text-sm font-bold text-[#121316] mt-1">
+                    {param.value}
+                  </div>
+                )}
                 {param.helperText && (
                   <p className="text-[11px] text-slate-500 mt-1">
                     {param.helperText}

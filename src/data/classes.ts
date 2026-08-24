@@ -12,6 +12,9 @@ export interface ClassDetailInfo {
   parameters: Array<{
     label: string;
     value: string;
+    originalPrice?: string;
+    offerPrice?: string;
+    discountBadge?: string;
     isPlaceholder: boolean;
     helperText?: string;
     icon: string;
@@ -52,25 +55,28 @@ export const classData: ClassDetailInfo = {
       icon: "Calendar"
     },
     {
-      label: "Course Fee",
-      value: "Fee details provided on enquiry",
-      isPlaceholder: true,
-      helperText: "Flexible installment & batch-specific options available",
-      icon: "BadgeIndianRupee"
-    },
-    {
       label: "Class Schedule & Timings",
-      value: "Class timing provided upon enrollment",
-      isPlaceholder: true,
-      helperText: "Morning & Evening batch slots designed for students & working scholars",
+      value: "Monday – Saturday | 6:00 PM – 9:00 PM",
+      isPlaceholder: false,
+      helperText: "Every Saturday mathematics session will be conducted.",
       icon: "Clock"
     },
     {
       label: "Classes Per Week",
-      value: "Weekly schedule provided in batch planner",
-      isPlaceholder: true,
-      helperText: "Dedicated days for syllabus lectures + separate weekend tests",
+      value: "6 Days",
+      isPlaceholder: false,
+      helperText: "Dedicated live subject lectures + Saturday special mathematics sessions",
       icon: "CalendarDays"
+    },
+    {
+      label: "Course Fee",
+      value: "₹27,000",
+      originalPrice: "₹33,000",
+      offerPrice: "₹27,000",
+      discountBadge: "18% Offer",
+      isPlaceholder: false,
+      helperText: "Special admission offer with full study material package included",
+      icon: "BadgeIndianRupee"
     }
   ],
 
