@@ -1,3 +1,5 @@
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 import { BookOpen, ArrowRight, Mail, GraduationCap } from "lucide-react";
 import { academyData } from "../../data/academy";
 
@@ -6,16 +8,23 @@ interface CTAProps {
 }
 
 export const CTA = ({ onOpenEnquiryModal }: CTAProps) => {
+  const sectionRef = useRef(null);
+  const isInView = useInView(sectionRef, { once: true, margin: "-80px" });
+
   const scrollToSection = (id: string) => {
     const el = document.getElementById(id);
     if (el) el.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
-    <section className="py-24 relative bg-[#FAF8F5] border-t border-[#EAE5DC] overflow-hidden">
+    <section ref={sectionRef} className="py-24 relative bg-[#FAF8F5] border-t border-[#EAE5DC] overflow-hidden">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="relative rounded-3xl bg-white border border-[#EAE5DC] p-10 sm:p-16 text-center shadow-xl overflow-hidden">
-          
+        <motion.div
+          initial={{ opacity: 0, y: 24, scale: 0.98 }}
+          animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="relative rounded-3xl bg-white border border-[#EAE5DC] p-10 sm:p-16 text-center shadow-xl overflow-hidden"
+        >
           {/* Subtle Top Gold Bar */}
           <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#B8860B] via-[#F3D068] to-[#8C6418]" />
 
@@ -47,7 +56,7 @@ export const CTA = ({ onOpenEnquiryModal }: CTAProps) => {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
               <button
                 onClick={() => scrollToSection("materials")}
-                className="w-full sm:w-auto px-8 py-4 rounded-none sm:rounded-md font-bold text-xs uppercase tracking-wider text-white bg-[#121316] hover:bg-black shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 group"
+                className="btn-premium-primary w-full sm:w-auto px-8 py-4 rounded-none sm:rounded-md font-bold text-xs uppercase tracking-wider text-white bg-[#121316] hover:bg-black shadow-md flex items-center justify-center gap-2 group cursor-pointer"
               >
                 <BookOpen className="w-4 h-4 text-[#F3D068]" />
                 <span>Explore Study Materials</span>
@@ -56,7 +65,7 @@ export const CTA = ({ onOpenEnquiryModal }: CTAProps) => {
 
               <button
                 onClick={() => onOpenEnquiryModal("Final CTA Enrolment Enquiry")}
-                className="w-full sm:w-auto px-8 py-4 rounded-none sm:rounded-md font-bold text-xs uppercase tracking-wider text-[#121316] bg-white border-2 border-[#121316] hover:bg-[#121316] hover:text-white transition-all flex items-center justify-center gap-2 shadow-xs"
+                className="btn-premium-secondary w-full sm:w-auto px-8 py-4 rounded-none sm:rounded-md font-bold text-xs uppercase tracking-wider text-[#121316] bg-white border-2 border-[#121316] hover:bg-[#121316] hover:text-white flex items-center justify-center gap-2 shadow-xs cursor-pointer"
               >
                 <Mail className="w-4 h-4 text-[#8C6418]" />
                 <span>Contact Alpha Academy</span>
@@ -64,7 +73,7 @@ export const CTA = ({ onOpenEnquiryModal }: CTAProps) => {
             </div>
           </div>
 
-        </div>
+        </motion.div>
       </div>
     </section>
   );

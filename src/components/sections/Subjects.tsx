@@ -50,8 +50,8 @@ export const Subjects = () => {
               key={subject.id}
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: idx * 0.06 }}
-              className="p-6 rounded-2xl bg-white border border-[#EAE5DC] hover:border-[#8C6418] transition-all duration-300 flex flex-col justify-between group shadow-xs hover:shadow-md"
+              transition={{ duration: 0.5, delay: idx * 0.05, ease: [0.22, 1, 0.36, 1] }}
+              className="p-6 rounded-2xl bg-white border border-[#EAE5DC] hover:border-[#8C6418] card-hover-premium flex flex-col justify-between group shadow-xs"
             >
               <div className="space-y-3">
                 <div className="flex items-center justify-between">

@@ -102,14 +102,14 @@ export const UGCNETCoachingPage = () => {
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
                 to="/#contact"
-                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-md bg-[#F3D068] text-black font-bold text-sm hover:bg-[#D4AF37] transition-colors"
+                className="btn-premium-gold inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-md bg-[#F3D068] text-black font-bold text-sm hover:bg-[#D4AF37] cursor-pointer"
               >
                 <span>Enquire About Next Batch</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
               <a
                 href="tel:+919025567624"
-                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-md border border-white/20 text-white font-bold text-sm hover:border-[#F3D068] hover:text-[#F3D068] transition-colors"
+                className="btn-premium-secondary inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-md border border-white/20 text-white font-bold text-sm hover:border-[#F3D068] hover:text-[#F3D068] cursor-pointer"
               >
                 <Phone className="w-4 h-4" />
                 <span>+91 90255 67624</span>
@@ -136,7 +136,7 @@ export const UGCNETCoachingPage = () => {
                 { icon: <CheckCircle2 className="w-5 h-5 text-[#8C6418]" />, title: "Paper 1 & Paper 2 Coverage", desc: "Comprehensive coaching for both UGC NET Paper 1 (Teaching & Research Aptitude) and Paper 2 (English Literature) within a single integrated programme." },
                 { icon: <CheckCircle2 className="w-5 h-5 text-[#8C6418]" />, title: "JRF-Level Preparation", desc: "For aspirants aiming beyond basic qualification, our programme targets the accuracy and depth required to achieve Junior Research Fellowship scores." }
               ].map((item, i) => (
-                <div key={i} className="flex gap-4 p-5 rounded-2xl bg-[#FAF8F5] border border-[#EAE5DC]">
+                <div key={i} className="flex gap-4 p-5 rounded-2xl bg-[#FAF8F5] border border-[#EAE5DC] card-hover-premium">
                   <div className="p-2.5 rounded-xl bg-[#F3EEDF] h-fit">{item.icon}</div>
                   <div>
                     <h3 className="font-bold text-[#121316] text-sm mb-1">{item.title}</h3>

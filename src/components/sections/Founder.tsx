@@ -35,15 +35,15 @@ export const Founder = ({ onOpenEnquiryModal: _onOpenEnquiryModal }: FounderProp
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
           
-          {/* Left Column: Portrait Presentation & Badge (5 cols) */}
+          {/* Left Column: Authentic Portrait Display (5 cols) */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={isInView ? { opacity: 1, scale: 1 } : {}}
-            transition={{ duration: 0.8 }}
+            initial={{ opacity: 0, x: -24 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
             className="lg:col-span-5 relative"
           >
             {/* Elegant Portrait Frame */}
-            <div className="relative rounded-3xl bg-white border border-[#EAE5DC] p-6 sm:p-8 shadow-xl overflow-hidden text-center space-y-6">
+            <div className="relative rounded-3xl bg-white border border-[#EAE5DC] p-6 sm:p-8 shadow-xl overflow-hidden text-center space-y-6 card-hover-premium">
               
               {/* Enlarged Portrait Presentation */}
               <div className="relative mx-auto w-full max-w-[360px] sm:max-w-[400px] group">
@@ -52,7 +52,7 @@ export const Founder = ({ onOpenEnquiryModal: _onOpenEnquiryModal }: FounderProp
                     <img
                       src="/founder.jpg"
                       alt="Sabarna Suresh — Founder & CEO, Alpha Academy, UGC NET English Literature mentor"
-                      className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                      className="w-full h-full object-cover object-top img-zoom-subtle"
                       loading="lazy"
                       width={400}
                       height={480}
@@ -77,8 +77,8 @@ export const Founder = ({ onOpenEnquiryModal: _onOpenEnquiryModal }: FounderProp
                   <span className="text-[11px] px-3 py-1 rounded-full bg-[#FAF8F5] border border-[#EAE5DC] text-slate-700 font-semibold">
                     5+ Years Teaching Experience
                   </span>
-                  <span className="text-[11px] px-3 py-1 rounded-full bg-[#FAF8F5] border border-[#EAE5DC] text-slate-700 font-semibold">
-                    8 Published Study Materials
+                  <span className="text-[11px] px-3 py-1 rounded-full bg-[#FAF8F5] border border-[#E2D6BE] text-[#8C6418] font-bold">
+                    8 Published Books
                   </span>
                 </div>
               </div>
@@ -88,9 +88,9 @@ export const Founder = ({ onOpenEnquiryModal: _onOpenEnquiryModal }: FounderProp
 
           {/* Right Column: Bio Narrative & Timeline (7 cols) */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
+            initial={{ opacity: 0, x: 24 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 0.6, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
             className="lg:col-span-7 space-y-8"
           >
             {/* Bio Paragraphs */}
@@ -116,7 +116,7 @@ export const Founder = ({ onOpenEnquiryModal: _onOpenEnquiryModal }: FounderProp
                 {founderData.timeline.map((item) => (
                   <div
                     key={item.step}
-                    className="relative p-3.5 rounded-xl bg-white border border-[#EAE5DC] text-center space-y-1 shadow-xs"
+                    className="relative p-3.5 rounded-xl bg-white border border-[#EAE5DC] text-center space-y-1 shadow-xs card-hover-premium"
                   >
                     <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-[#F3EEDF] text-[#8C6418] inline-block">
                       {item.step}

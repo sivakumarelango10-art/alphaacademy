@@ -107,7 +107,7 @@ export const BlogPage = () => {
                   <Link
                     key={post.id}
                     to={`/blog/${post.slug}`}
-                    className="group p-6 rounded-2xl bg-white border border-[#EAE5DC] hover:border-[#8C6418] hover:shadow-md transition-all flex flex-col"
+                    className="group p-6 rounded-2xl bg-white border border-[#EAE5DC] hover:border-[#8C6418] card-hover-premium flex flex-col"
                     aria-label={`Read article: ${post.title}`}
                   >
                     <div className="flex items-center justify-between mb-3">

@@ -40,10 +40,10 @@ export const StudyMaterials = ({ onSelectMaterial, onEnquire }: StudyMaterialsPr
           {studyMaterialsData.map((book, idx) => (
             <motion.div
               key={book.id}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 24 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: idx * 0.08 }}
-              className="p-5 rounded-3xl bg-white border border-[#EAE5DC] hover:border-[#8C6418] transition-all duration-300 flex flex-col justify-between group shadow-xs hover:shadow-xl hover:-translate-y-1 relative overflow-hidden"
+              transition={{ duration: 0.5, delay: idx * 0.06, ease: [0.22, 1, 0.36, 1] }}
+              className="p-5 rounded-3xl bg-white border border-[#EAE5DC] hover:border-[#8C6418] card-hover-premium flex flex-col justify-between group shadow-xs relative overflow-hidden"
             >
               {/* Top Accent bar */}
               <div className={`h-1.5 w-full bg-gradient-to-r ${book.coverAccent.gradient} rounded-full mb-3`} />
@@ -115,7 +115,7 @@ export const StudyMaterials = ({ onSelectMaterial, onEnquire }: StudyMaterialsPr
               <div className="pt-4 mt-3 border-t border-[#EAE5DC] flex items-center gap-2">
                 <button
                   onClick={() => onSelectMaterial(book)}
-                  className="flex-1 py-2 px-2.5 rounded-lg text-xs font-bold text-slate-800 bg-[#FAF8F5] hover:bg-slate-100 border border-[#EAE5DC] transition-colors flex items-center justify-center gap-1"
+                  className="btn-premium-secondary flex-1 py-2 px-2.5 rounded-lg text-xs font-bold text-slate-800 bg-[#FAF8F5] hover:bg-slate-100 border border-[#EAE5DC] flex items-center justify-center gap-1 cursor-pointer"
                 >
                   <Eye className="w-3.5 h-3.5 text-[#8C6418]" />
                   <span>Preview</span>
@@ -123,7 +123,7 @@ export const StudyMaterials = ({ onSelectMaterial, onEnquire }: StudyMaterialsPr
 
                 <button
                   onClick={() => onEnquire(`Order Study Material: ${book.title}`)}
-                  className="flex-1 py-2 px-2.5 rounded-lg text-xs font-bold uppercase tracking-wider text-white bg-[#121316] hover:bg-black transition-all flex items-center justify-center gap-1 shadow-xs"
+                  className="btn-premium-primary flex-1 py-2 px-2.5 rounded-lg text-xs font-bold uppercase tracking-wider text-white bg-[#121316] hover:bg-black flex items-center justify-center gap-1 shadow-xs cursor-pointer"
                 >
                   <Send className="w-3 h-3 text-[#F3D068]" />
                   <span>Enquire</span>

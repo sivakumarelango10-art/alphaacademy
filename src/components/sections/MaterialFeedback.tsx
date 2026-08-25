@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import type { Variants } from "framer-motion";
 import { Star, ChevronLeft, ChevronRight, BookOpen, Quote } from "lucide-react";
@@ -36,6 +36,7 @@ const slideVariants: Variants = {
 export const MaterialFeedback = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
   const sectionRef = useRef(null);
 
   const nextFeedback = () => {
@@ -53,6 +54,15 @@ export const MaterialFeedback = () => {
     setDirection(idx > currentIndex ? 1 : -1);
     setCurrentIndex(idx);
   };
+
+  // Smooth Auto-play with pause on hover
+  useEffect(() => {
+    if (isPaused) return;
+    const timer = setInterval(() => {
+      nextFeedback();
+    }, 7000);
+    return () => clearInterval(timer);
+  }, [currentIndex, isPaused]);
 
   return (
     <section
@@ -76,8 +86,14 @@ export const MaterialFeedback = () => {
           </p>
         </div>
 
-        {/* Carousel Container */}
-        <div className="max-w-4xl mx-auto relative">
+        {/* Carousel Container with pause on hover */}
+        <div
+          className="max-w-4xl mx-auto relative"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+          onTouchStart={() => setIsPaused(true)}
+          onTouchEnd={() => setIsPaused(false)}
+        >
           <div className="overflow-hidden">
             <AnimatePresence mode="wait" custom={direction} initial={false}>
               <motion.div

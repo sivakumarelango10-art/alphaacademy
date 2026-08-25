@@ -102,8 +102,111 @@
   background-size: 100% 100%, 100% 100%, 32px 32px;
 }
 
-/* GPU Acceleration */
+/* GPU Acceleration & Performance */
 .gpu-layer {
   transform: translateZ(0);
   will-change: transform, opacity;
 }
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   Premium Transitions & Micro-Interactions System
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/* Smooth Interactive Card Hover */
+.card-hover-premium {
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+              border-color 0.3s ease;
+  will-change: transform, box-shadow;
+}
+
+.card-hover-premium:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px -6px rgba(18, 19, 22, 0.08), 0 4px 10px -2px rgba(18, 19, 22, 0.03);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .card-hover-lift:hover {
+    transform: translateY(-6px);
+  }
+}
+
+/* Premium Button Physics */
+.btn-premium-primary {
+  transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1),
+              background-color 0.2s ease,
+              box-shadow 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform, box-shadow;
+}
+
+.btn-premium-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px -4px rgba(18, 19, 22, 0.25);
+}
+
+.btn-premium-primary:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.btn-premium-gold {
+  transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+              filter 0.2s ease;
+  will-change: transform, box-shadow;
+}
+
+.btn-premium-gold:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px -4px rgba(212, 175, 55, 0.35);
+}
+
+.btn-premium-gold:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.btn-premium-secondary {
+  transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1),
+              background-color 0.2s ease,
+              border-color 0.2s ease,
+              color 0.2s ease,
+              box-shadow 0.2s ease;
+}
+
+.btn-premium-secondary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px -4px rgba(18, 19, 22, 0.08);
+}
+
+.btn-premium-secondary:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* Subtle Image Scale */
+.img-zoom-subtle {
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+.group:hover .img-zoom-subtle {
+  transform: scale(1.03);
+}
+
+/* Smooth Focus Rings */
+:focus-visible {
+  outline: 2px solid #8C6418;
+  outline-offset: 2px;
+  transition: outline-offset 0.15s ease;
+}
+
+/* Respect User's Reduced Motion Preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+

@@ -1,4 +1,6 @@
+import { useRef } from "react";
 import { Link } from "react-router-dom";
+import { motion, useInView } from "framer-motion";
 import { ArrowUp, BookOpen, GraduationCap, ExternalLink } from "lucide-react";
 import { InstagramIcon, YoutubeIcon, FacebookIcon } from "../ui/SocialIcons";
 import { socialLinksData } from "../../data/social";
@@ -9,19 +11,22 @@ interface FooterProps {
 }
 
 export const Footer = ({ onOpenEnquiryModal }: FooterProps) => {
+  const footerRef = useRef(null);
+  const isInView = useInView(footerRef, { once: true, margin: "-60px" });
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const navLinks = [
-    { label: "Home", href: "#hero" },
-    { label: "About Alpha Academy", href: "#about" },
-    { label: "Meet the Founder", href: "#founder" },
-    { label: "Study Materials", href: "#materials" },
-    { label: "Class Details", href: "#classes" },
-    { label: "Student Reviews", href: "#reviews" },
-    { label: "Frequently Asked Questions", href: "#faq" },
-    { label: "Contact Us", href: "#contact" }
+    { label: "Home", href: "/#hero" },
+    { label: "About Alpha Academy", href: "/#about" },
+    { label: "Meet the Founder", href: "/#founder" },
+    { label: "Study Materials", href: "/#materials" },
+    { label: "Class Details", href: "/#classes" },
+    { label: "Student Reviews", href: "/#reviews" },
+    { label: "Frequently Asked Questions", href: "/#faq" },
+    { label: "Contact Us", href: "/#contact" }
   ];
 
   const seoLinks = [
@@ -34,11 +39,16 @@ export const Footer = ({ onOpenEnquiryModal }: FooterProps) => {
   ];
 
   return (
-    <footer className="relative bg-[#121316] text-slate-300 border-t border-[#8C6418]/30 overflow-hidden">
+    <footer ref={footerRef} className="relative bg-[#121316] text-slate-300 border-t border-[#8C6418]/30 overflow-hidden">
       {/* Decorative top ambient line */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-[1px] bg-gradient-to-r from-transparent via-[#D4AF37]/50 to-transparent" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-12">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={isInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-12"
+      >
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 pb-12 border-b border-neutral-800">
           {/* Brand Column (5 cols) */}
           <div className="lg:col-span-5 space-y-6">
@@ -193,7 +203,7 @@ export const Footer = ({ onOpenEnquiryModal }: FooterProps) => {
             </button>
           </div>
         </div>
-      </div>
+      </motion.div>
     </footer>
   );
 };

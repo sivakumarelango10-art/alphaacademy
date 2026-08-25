@@ -17,7 +17,7 @@ const StatCounter = ({ value, suffix = "", prefix = "", label, sublabel, trigger
   const count = useCountUp(value, 2000, trigger);
 
   return (
-    <div className="relative p-5 rounded-2xl bg-white border border-[#EAE5DC] shadow-xs hover:border-[#8C6418] transition-all duration-300 group hover:shadow-md">
+    <div className="relative p-5 rounded-2xl bg-white border border-[#EAE5DC] shadow-xs hover:border-[#8C6418] card-hover-premium">
       <div className="font-serif-display text-3xl sm:text-4xl font-extrabold text-[#121316] tracking-tight flex items-baseline">
         <span>{prefix}{count}</span>
         <span className="text-[#8C6418] ml-0.5">{suffix}</span>
@@ -59,12 +59,12 @@ export const About = () => {
           
           {/* Left Column: Visual Presentation Card (5 cols) */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
+            initial={{ opacity: 0, x: -24 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
             className="lg:col-span-5 relative"
           >
-            <div className="relative rounded-3xl bg-white border border-[#EAE5DC] p-8 shadow-xl overflow-hidden">
+            <div className="relative rounded-3xl bg-white border border-[#EAE5DC] p-8 shadow-xl overflow-hidden card-hover-premium">
               <div className="space-y-6">
                 <div className="flex items-center gap-4">
                   <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-[#8C6418] p-0.5 bg-[#121316] shadow-md">

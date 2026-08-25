@@ -1,6 +1,9 @@
 import { useState } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
 import { ScrollProgress } from "./components/layout/ScrollProgress";
+import { ScrollToTop } from "./components/layout/ScrollToTop";
+import { PageTransition } from "./components/layout/PageTransition";
 import { Navbar } from "./components/layout/Navbar";
 import { Hero } from "./components/sections/Hero";
 import { About } from "./components/sections/About";
@@ -42,49 +45,51 @@ function HomePage({
   onSuccessToast: (msg: string) => void;
 }) {
   return (
-    <main id="main-content">
-      {/* 1. Hero Section */}
-      <Hero onOpenEnquiryModal={onOpenEnquiry} />
+    <PageTransition>
+      <main id="main-content">
+        {/* 1. Hero Section */}
+        <Hero onOpenEnquiryModal={onOpenEnquiry} />
 
-      {/* 2. About Alpha Academy */}
-      <About />
+        {/* 2. About Alpha Academy */}
+        <About />
 
-      {/* 3. Meet the Founder (Sabarna Suresh) */}
-      <Founder onOpenEnquiryModal={onOpenEnquiry} />
+        {/* 3. Meet the Founder (Sabarna Suresh) */}
+        <Founder onOpenEnquiryModal={onOpenEnquiry} />
 
-      {/* 4. Why Alpha Academy? */}
-      <WhyAlpha onOpenEnquiryModal={onOpenEnquiry} />
+        {/* 4. Why Alpha Academy? */}
+        <WhyAlpha onOpenEnquiryModal={onOpenEnquiry} />
 
-      {/* 5. Study Materials Catalog */}
-      <StudyMaterials
-        onSelectMaterial={onSelectMaterial}
-        onEnquire={onOpenEnquiry}
-      />
+        {/* 5. Study Materials Catalog */}
+        <StudyMaterials
+          onSelectMaterial={onSelectMaterial}
+          onEnquire={onOpenEnquiry}
+        />
 
-      {/* 6. Material Feedback Carousel */}
-      <MaterialFeedback />
+        {/* 6. Material Feedback Carousel */}
+        <MaterialFeedback />
 
-      {/* 7. Student Reviews / Testimonials */}
-      <Testimonials />
+        {/* 7. Student Reviews / Testimonials */}
+        <Testimonials />
 
-      {/* 8. Class Details */}
-      <ClassDetails onOpenEnquiryModal={onOpenEnquiry} />
+        {/* 8. Class Details */}
+        <ClassDetails onOpenEnquiryModal={onOpenEnquiry} />
 
-      {/* 9. Subjects & Core Learning Areas */}
-      <Subjects />
+        {/* 9. Subjects & Core Learning Areas */}
+        <Subjects />
 
-      {/* 10. Frequently Asked Questions */}
-      <FAQ />
+        {/* 10. Frequently Asked Questions */}
+        <FAQ />
 
-      {/* 11. Social Media & Community Hub */}
-      <SocialMedia />
+        {/* 11. Social Media & Community Hub */}
+        <SocialMedia />
 
-      {/* 12. Contact Us */}
-      <Contact onSuccessToast={onSuccessToast} />
+        {/* 12. Contact Us */}
+        <Contact onSuccessToast={onSuccessToast} />
 
-      {/* 13. Final Closing CTA */}
-      <CTA onOpenEnquiryModal={onOpenEnquiry} />
-    </main>
+        {/* 13. Final Closing CTA */}
+        <CTA onOpenEnquiryModal={onOpenEnquiry} />
+      </main>
+    </PageTransition>
   );
 }
 
@@ -94,6 +99,7 @@ export function App() {
   const [isEnquiryModalOpen, setIsEnquiryModalOpen] = useState(false);
   const [enquirySubject, setEnquirySubject] = useState("UGC NET English Coaching 2026 Batch");
   const [toastMessage, setToastMessage] = useState<string | null>(null);
+  const location = useLocation();
 
   const handleOpenEnquiry = (subject?: string) => {
     if (subject) setEnquirySubject(subject);
@@ -107,40 +113,101 @@ export function App() {
 
   return (
     <div className="min-h-screen bg-[#FAF8F5] text-[#1E293B] selection:bg-[#B8860B]/20 selection:text-black">
+      {/* Scroll restoration on route changes */}
+      <ScrollToTop />
+
       {/* Top Scroll Indicator */}
       <ScrollProgress />
 
       {/* Main Sticky Navbar */}
       <Navbar onOpenEnquiryModal={() => handleOpenEnquiry("General Batch Enrolment")} />
 
-      {/* Page Routes */}
-      <Routes>
-        {/* Homepage */}
-        <Route
-          path="/"
-          element={
-            <HomePage
-              onOpenEnquiry={handleOpenEnquiry}
-              onSelectMaterial={(m) => setSelectedMaterial(m)}
-              onSuccessToast={handleShowToast}
-            />
-          }
-        />
+      {/* Page Routes with smooth transition */}
+      <AnimatePresence mode="wait">
+        <Routes location={location} key={location.pathname}>
+          {/* Homepage */}
+          <Route
+            path="/"
+            element={
+              <HomePage
+                onOpenEnquiry={handleOpenEnquiry}
+                onSelectMaterial={(m) => setSelectedMaterial(m)}
+                onSuccessToast={handleShowToast}
+              />
+            }
+          />
 
-        {/* Dedicated SEO pages */}
-        <Route path="/ugc-net-coaching-coimbatore" element={<UGCNETCoachingPage />} />
-        <Route path="/ugc-net-english-literature" element={<EnglishLiteraturePage />} />
-        <Route path="/ugc-net-paper-1-paper-2" element={<Paper1Paper2Page />} />
-        <Route path="/ugc-net-jrf-coaching" element={<JRFCoachingPage />} />
-        <Route path="/teaching-eligibility-exam-coaching" element={<TeachingEligibilityPage />} />
+          {/* Dedicated SEO pages */}
+          <Route
+            path="/ugc-net-coaching-coimbatore"
+            element={
+              <PageTransition>
+                <UGCNETCoachingPage />
+              </PageTransition>
+            }
+          />
+          <Route
+            path="/ugc-net-english-literature"
+            element={
+              <PageTransition>
+                <EnglishLiteraturePage />
+              </PageTransition>
+            }
+          />
+          <Route
+            path="/ugc-net-paper-1-paper-2"
+            element={
+              <PageTransition>
+                <Paper1Paper2Page />
+              </PageTransition>
+            }
+          />
+          <Route
+            path="/ugc-net-jrf-coaching"
+            element={
+              <PageTransition>
+                <JRFCoachingPage />
+              </PageTransition>
+            }
+          />
+          <Route
+            path="/teaching-eligibility-exam-coaching"
+            element={
+              <PageTransition>
+                <TeachingEligibilityPage />
+              </PageTransition>
+            }
+          />
 
-        {/* Blog */}
-        <Route path="/blog" element={<BlogPage />} />
-        <Route path="/blog/:slug" element={<BlogPostPage />} />
+          {/* Blog */}
+          <Route
+            path="/blog"
+            element={
+              <PageTransition>
+                <BlogPage />
+              </PageTransition>
+            }
+          />
+          <Route
+            path="/blog/:slug"
+            element={
+              <PageTransition>
+                <BlogPostPage />
+              </PageTransition>
+            }
+          />
 
-        {/* 404 fallback */}
-        <Route path="*" element={<NotFoundPage />} />
-      </Routes>
+          {/* 404 fallback */}
+          <Route
+            path="*"
+            element={
+              <PageTransition>
+                <NotFoundPage />
+              </PageTransition>
+            }
+          />
+        </Routes>
+      </AnimatePresence>
 
       {/* Footer (shown on all pages) */}
       <Footer onOpenEnquiryModal={() => handleOpenEnquiry("Footer Enrolment Request")} />

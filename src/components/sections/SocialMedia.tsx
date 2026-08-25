@@ -46,8 +46,8 @@ export const SocialMedia = () => {
               key={social.id}
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className="p-8 rounded-3xl bg-white border border-[#EAE5DC] hover:border-[#8C6418] transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1 shadow-xs hover:shadow-xl relative overflow-hidden"
+              transition={{ duration: 0.5, delay: idx * 0.08, ease: [0.22, 1, 0.36, 1] }}
+              className="p-8 rounded-3xl bg-white border border-[#EAE5DC] hover:border-[#8C6418] card-hover-premium flex flex-col justify-between group shadow-xs relative overflow-hidden"
             >
               <div className="space-y-5">
                 {/* Header with authentic real brand symbol */}

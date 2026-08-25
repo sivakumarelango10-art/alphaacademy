@@ -94,8 +94,8 @@ export const ClassDetails = ({ onOpenEnquiryModal: _onOpenEnquiryModal }: ClassD
               key={param.label}
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.2 + idx * 0.08 }}
-              className="p-6 rounded-2xl bg-white border border-[#EAE5DC] hover:border-[#8C6418]/60 transition-all space-y-3 shadow-xs"
+              transition={{ duration: 0.5, delay: 0.2 + idx * 0.08, ease: [0.22, 1, 0.36, 1] }}
+              className="p-6 rounded-2xl bg-white border border-[#EAE5DC] hover:border-[#8C6418] card-hover-premium space-y-3 shadow-xs"
             >
               <div className="p-3 rounded-xl bg-[#F3EEDF] text-[#8C6418] w-fit">
                 {getParamIcon(param.icon)}
