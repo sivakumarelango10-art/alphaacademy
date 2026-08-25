@@ -51,8 +51,11 @@ export const Founder = ({ onOpenEnquiryModal: _onOpenEnquiryModal }: FounderProp
                   <div className="w-full h-[400px] sm:h-[480px] overflow-hidden rounded-xl bg-slate-100">
                     <img
                       src="/founder.jpg"
-                      alt="Sabarna Suresh - Founder & CEO"
+                      alt="Sabarna Suresh — Founder & CEO, Alpha Academy, UGC NET English Literature mentor"
                       className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                      loading="lazy"
+                      width={400}
+                      height={480}
                     />
                   </div>
                 </div>

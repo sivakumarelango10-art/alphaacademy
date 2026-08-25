@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ArrowRight, GraduationCap } from "lucide-react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useScrollSpy } from "../../hooks/useScrollSpy";
 
 interface NavbarProps {
@@ -8,13 +9,14 @@ interface NavbarProps {
 }
 
 const navItems = [
-  { label: "Home", href: "#hero" },
-  { label: "About", href: "#about" },
-  { label: "Founder", href: "#founder" },
-  { label: "Study Materials", href: "#materials" },
-  { label: "Classes", href: "#classes" },
-  { label: "FAQ", href: "#faq" },
-  { label: "Contact", href: "#contact" },
+  { label: "Home", href: "/#hero", sectionId: "hero" },
+  { label: "About", href: "/#about", sectionId: "about" },
+  { label: "Founder", href: "/#founder", sectionId: "founder" },
+  { label: "Study Materials", href: "/#materials", sectionId: "materials" },
+  { label: "Classes", href: "/#classes", sectionId: "classes" },
+  { label: "FAQ", href: "/#faq", sectionId: "faq" },
+  { label: "Blog", href: "/blog", isRoute: true },
+  { label: "Contact", href: "/#contact", sectionId: "contact" },
 ];
 
 const sectionIds = ["hero", "about", "founder", "materials", "classes", "faq", "contact"];
@@ -22,6 +24,8 @@ const sectionIds = ["hero", "about", "founder", "materials", "classes", "faq", "
 export const Navbar = ({ onOpenEnquiryModal }: NavbarProps) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
   const activeId = useScrollSpy(sectionIds, 120);
 
   useEffect(() => {
@@ -51,23 +55,37 @@ export const Navbar = ({ onOpenEnquiryModal }: NavbarProps) => {
     };
   }, [mobileMenuOpen]);
 
-  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault();
+  const handleNavClick = (e: React.MouseEvent, item: typeof navItems[0]) => {
     setMobileMenuOpen(false);
-    
-    // Short timeout allows the mobile menu animation to close smoothly
-    setTimeout(() => {
-      const target = document.querySelector(href);
+
+    if (item.isRoute) {
+      // Direct route navigation handled by React Router
+      return;
+    }
+
+    e.preventDefault();
+    const sectionId = item.sectionId;
+
+    if (location.pathname !== "/") {
+      navigate("/");
+      setTimeout(() => {
+        const target = document.getElementById(sectionId || "");
+        if (target) {
+          target.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 150);
+    } else {
+      const target = document.getElementById(sectionId || "");
       if (target) {
         const headerOffset = 75;
         const elementPosition = target.getBoundingClientRect().top;
         const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
         window.scrollTo({
           top: offsetPosition,
-          behavior: "smooth"
+          behavior: "smooth",
         });
       }
-    }, 100);
+    }
   };
 
   const handleToggleMenu = (e: React.MouseEvent) => {
@@ -88,8 +106,8 @@ export const Navbar = ({ onOpenEnquiryModal }: NavbarProps) => {
           <div className="flex items-center justify-between">
             {/* Logo & Brand Identity */}
             <a
-              href="#hero"
-              onClick={(e) => scrollToSection(e, "#hero")}
+              href="/#hero"
+              onClick={(e) => handleNavClick(e, navItems[0])}
               className="flex items-center gap-2.5 sm:gap-3 group select-none"
             >
               <div className="relative w-9 h-9 sm:w-10 sm:h-10 rounded-full overflow-hidden border border-[#D4AF37] p-0.5 bg-[#121316] shadow-sm group-hover:scale-105 transition-all shrink-0">
@@ -114,12 +132,38 @@ export const Navbar = ({ onOpenEnquiryModal }: NavbarProps) => {
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center gap-1 xl:gap-1.5">
               {navItems.map((item) => {
-                const isActive = activeId === item.href.replace("#", "");
+                const isActive = item.isRoute
+                  ? location.pathname === item.href || location.pathname.startsWith(`${item.href}/`)
+                  : location.pathname === "/" && activeId === item.sectionId;
+
+                if (item.isRoute) {
+                  return (
+                    <Link
+                      key={item.href}
+                      to={item.href}
+                      className={`relative px-3.5 py-1.5 text-xs xl:text-sm font-semibold tracking-wider uppercase transition-colors rounded-md ${
+                        isActive
+                          ? "text-[#8C6418] font-bold bg-[#F3EEDF]/60"
+                          : "text-[#4A5568] hover:text-[#121316] hover:bg-black/5"
+                      }`}
+                    >
+                      {item.label}
+                      {isActive && (
+                        <motion.div
+                          layoutId="activeNavIndicator"
+                          className="absolute bottom-0 left-2 right-2 h-[2px] bg-[#8C6418] rounded-full"
+                          transition={{ type: "spring", stiffness: 400, damping: 35 }}
+                        />
+                      )}
+                    </Link>
+                  );
+                }
+
                 return (
                   <a
                     key={item.href}
                     href={item.href}
-                    onClick={(e) => scrollToSection(e, item.href)}
+                    onClick={(e) => handleNavClick(e, item)}
                     className={`relative px-3.5 py-1.5 text-xs xl:text-sm font-semibold tracking-wider uppercase transition-colors rounded-md ${
                       isActive
                         ? "text-[#8C6418] font-bold"
@@ -202,12 +246,33 @@ export const Navbar = ({ onOpenEnquiryModal }: NavbarProps) => {
 
                 <div className="grid grid-cols-1 gap-1">
                   {navItems.map((item) => {
-                    const isActive = activeId === item.href.replace("#", "");
+                    const isActive = item.isRoute
+                      ? location.pathname === item.href || location.pathname.startsWith(`${item.href}/`)
+                      : location.pathname === "/" && activeId === item.sectionId;
+
+                    if (item.isRoute) {
+                      return (
+                        <Link
+                          key={item.href}
+                          to={item.href}
+                          onClick={() => setMobileMenuOpen(false)}
+                          className={`px-4 py-2.5 rounded-xl text-sm font-semibold uppercase tracking-wider flex items-center justify-between transition-colors touch-manipulation ${
+                            isActive
+                              ? "bg-[#F3EEDF] text-[#8C6418] font-bold border-l-4 border-[#8C6418]"
+                              : "text-slate-700 hover:bg-black/5 active:bg-[#F3EEDF] hover:text-black"
+                          }`}
+                        >
+                          <span>{item.label}</span>
+                          {isActive && <div className="w-2 h-2 rounded-full bg-[#8C6418]"></div>}
+                        </Link>
+                      );
+                    }
+
                     return (
                       <a
                         key={item.href}
                         href={item.href}
-                        onClick={(e) => scrollToSection(e, item.href)}
+                        onClick={(e) => handleNavClick(e, item)}
                         className={`px-4 py-2.5 rounded-xl text-sm font-semibold uppercase tracking-wider flex items-center justify-between transition-colors touch-manipulation ${
                           isActive
                             ? "bg-[#F3EEDF] text-[#8C6418] font-bold border-l-4 border-[#8C6418]"

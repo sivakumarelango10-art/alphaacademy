@@ -69,10 +69,13 @@ export const About = () => {
                 <div className="flex items-center gap-4">
                   <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-[#8C6418] p-0.5 bg-[#121316] shadow-md">
                     <img
-                      src="/alpha-academy-logo.jpg"
-                      alt="Alpha Academy Emblem"
-                      className="w-full h-full object-cover rounded-full"
-                    />
+                       src="/alpha-academy-logo.jpg"
+                       alt="Alpha Academy official emblem — UGC NET English Literature coaching Coimbatore"
+                       className="w-full h-full object-cover rounded-full"
+                       width={64}
+                       height={64}
+                       loading="lazy"
+                     />
                   </div>
                   <div>
                     <h3 className="font-cinzel text-lg font-bold text-[#121316]">
@@ -137,6 +140,9 @@ export const About = () => {
                 With <span className="text-[#8C6418] font-bold">5 years of experience</span> in teaching and academic training,{" "}
                 <strong className="text-[#121316] font-bold">Sabarna Suresh, Founder & CEO</strong> of Alpha Academy, has built the academy with a simple vision:{" "}
                 <em className="text-slate-900 font-semibold">to make exam preparation easier, clearer and more effective for every learner.</em>
+              </p>
+              <p>
+                Serving students preparing for <strong className="text-[#121316] font-bold">UGC NET English Literature</strong> — including Paper 1, Paper 2, and JRF — from Coimbatore, Tamil Nadu, and across India through structured online coaching.
               </p>
             </div>
 

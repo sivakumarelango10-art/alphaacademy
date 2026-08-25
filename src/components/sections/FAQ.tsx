@@ -13,7 +13,7 @@ export const FAQ = () => {
     setOpenId((prev) => (prev === id ? null : id));
   };
 
-  const categories = ["All", "General", "Materials", "Classes", "Contact"];
+  const categories = ["All", "General", "Materials", "Classes", "Contact", "SEO"];
 
   const filteredFAQs = selectedFilter === "All"
     ? faqData
@@ -37,7 +37,7 @@ export const FAQ = () => {
             Frequently Asked Questions
           </h2>
           <p className="text-slate-600 text-sm sm:text-base">
-            Everything you need to know about our courses, mentorship, study materials, and examination approach.
+            Common questions about UGC NET English Literature coaching, Paper 1 &amp; Paper 2, JRF preparation, study materials, and how to join Alpha Academy in Coimbatore or online.
           </p>
         </div>
 
@@ -58,13 +58,16 @@ export const FAQ = () => {
           ))}
         </div>
 
-        {/* FAQ Accordion List */}
-        <div className="space-y-3.5">
+        {/* FAQ Accordion List with FAQPage schema */}
+        <div className="space-y-3.5" itemScope itemType="https://schema.org/FAQPage">
           {filteredFAQs.map((faq, idx) => {
             const isOpen = openId === faq.id;
             return (
               <motion.div
                 key={faq.id}
+                itemScope
+                itemProp="mainEntity"
+                itemType="https://schema.org/Question"
                 initial={{ opacity: 0, y: 15 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.4, delay: idx * 0.04 }}
@@ -78,12 +81,13 @@ export const FAQ = () => {
                   onClick={() => toggleFAQ(faq.id)}
                   className="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 focus:outline-none"
                   aria-expanded={isOpen}
+                  aria-controls={`faq-answer-${faq.id}`}
                 >
                   <div className="flex items-center gap-3.5">
                     <span className="font-mono text-xs font-bold text-[#8C6418]">
                       {(idx + 1).toString().padStart(2, "0")}
                     </span>
-                    <h3 className="font-serif-display text-base sm:text-lg font-bold text-[#121316] leading-snug">
+                    <h3 itemProp="name" className="font-serif-display text-base sm:text-lg font-bold text-[#121316] leading-snug">
                       {faq.question}
                     </h3>
                   </div>
@@ -95,12 +99,16 @@ export const FAQ = () => {
                 <AnimatePresence>
                   {isOpen && (
                     <motion.div
+                      id={`faq-answer-${faq.id}`}
+                      itemScope
+                      itemProp="acceptedAnswer"
+                      itemType="https://schema.org/Answer"
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.3, ease: "easeInOut" }}
                     >
-                      <div className="px-5 sm:px-6 pb-6 pt-1 text-xs sm:text-sm text-slate-700 leading-relaxed border-t border-[#EAE5DC]">
+                      <div itemProp="text" className="px-5 sm:px-6 pb-6 pt-1 text-xs sm:text-sm text-slate-700 leading-relaxed border-t border-[#EAE5DC]">
                         {faq.answer}
                       </div>
                     </motion.div>

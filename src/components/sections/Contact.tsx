@@ -5,7 +5,9 @@ import {
   Phone,
   Mail,
   CheckCircle2,
-  GraduationCap
+  GraduationCap,
+  MapPin,
+  Clock
 } from "lucide-react";
 import { InstagramIcon, YoutubeIcon, FacebookIcon } from "../ui/SocialIcons";
 import confetti from "canvas-confetti";
@@ -142,6 +144,31 @@ _Submitted via Alpha Academy Contact Form_`;
                     >
                       {contactInfoData.email}
                     </a>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3.5 p-4 rounded-2xl bg-[#FAF8F5] border border-[#EAE5DC]">
+                  <div className="p-2.5 rounded-xl bg-[#F3EEDF] text-[#8C6418] shrink-0">
+                    <MapPin className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <div className="text-xs text-slate-500 font-bold uppercase">Location & Centre</div>
+                    <address className="not-italic text-xs font-semibold text-[#121316] mt-0.5 leading-relaxed">
+                      Coimbatore, Tamil Nadu, India<br />
+                      <span className="text-[11px] text-slate-500 font-normal">Online Interactive Coaching Across India</span>
+                    </address>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3.5 p-4 rounded-2xl bg-[#FAF8F5] border border-[#EAE5DC]">
+                  <div className="p-2.5 rounded-xl bg-[#F3EEDF] text-[#8C6418] shrink-0">
+                    <Clock className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <div className="text-xs text-slate-500 font-bold uppercase">Admissions & Query Hours</div>
+                    <div className="text-xs font-semibold text-[#121316] mt-0.5">
+                      {contactInfoData.operatingHours}
+                    </div>
                   </div>
                 </div>
               </div>

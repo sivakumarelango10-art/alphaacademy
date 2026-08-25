@@ -51,8 +51,11 @@ export const MaterialModal = ({ material, onClose, onEnquire }: MaterialModalPro
                 <div className="relative w-full max-w-[280px] aspect-[3/4.2] rounded-2xl overflow-hidden shadow-2xl border border-[#EAE5DC] bg-slate-900 group">
                   <img
                     src={material.image}
-                    alt={material.title}
+                    alt={`${material.title} — UGC NET English Literature Volume ${material.volumeNumber} by Alpha Academy`}
                     className="w-full h-full object-cover object-center"
+                    loading="lazy"
+                    width={280}
+                    height={392}
                   />
                   {/* Subtle Spine & Lighting Shading */}
                   <div className="absolute left-0 top-0 bottom-0 w-4 bg-gradient-to-r from-black/50 via-black/15 to-transparent pointer-events-none" />

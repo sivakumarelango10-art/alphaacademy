@@ -34,13 +34,13 @@ export interface ClassDetailInfo {
 export const classData: ClassDetailInfo = {
   courseName: "UGC NET English Literature Master Programme",
   targetExam: "UGC NET / JRF English Literature",
-  tagline: "Comprehensive, structured coaching designed for conceptual mastery and high-percentile success.",
+  tagline: "Comprehensive UGC NET Paper 1 & Paper 2 coaching designed for conceptual mastery, JRF target scores, and teaching eligibility success.",
   overview: "Our flagship training programme blends deep literary insights with examination-proven problem-solving techniques under direct mentorship from Sabarna Suresh.",
   
   modes: [
     {
       name: "Online Interactive Coaching",
-      description: "Live interactive classes with full recorded video backup, doubt-clearing sessions, and integrated digital study materials.",
+      description: "Live interactive classes with full recorded video backup, doubt-clearing sessions, and integrated digital study materials — accessible from Coimbatore and across India.",
       badge: "Online Interactive",
       isAvailable: true
     }

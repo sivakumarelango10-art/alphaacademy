@@ -39,6 +39,11 @@ export const Hero = ({ onOpenEnquiryModal }: HeroProps) => {
                 <ShieldCheck className="w-3 h-3 text-[#8C6418]" />
                 <span>Repeated NET Success</span>
               </div>
+
+              <div className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-[#EAE5DC] text-[11px] font-semibold text-slate-700 shadow-xs">
+                <span>📍</span>
+                <span>Coimbatore & Online</span>
+              </div>
             </div>
 
             {/* Headline */}
@@ -122,8 +127,12 @@ export const Hero = ({ onOpenEnquiryModal }: HeroProps) => {
                       <div className="w-full h-full rounded-full overflow-hidden bg-white flex items-center justify-center">
                         <img
                           src="/founder.jpg"
-                          alt="Sabarna Suresh - Alpha Academy"
+                         alt="Sabarna Suresh — Founder & CEO, Alpha Academy, UGC NET English Literature mentor"
                           className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300"
+                          width={144}
+                          height={144}
+                          loading="eager"
+                          fetchPriority="high"
                         />
                       </div>
                     </div>

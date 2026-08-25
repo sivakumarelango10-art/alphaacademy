@@ -1,4 +1,5 @@
-import { ArrowUp, BookOpen, GraduationCap } from "lucide-react";
+import { Link } from "react-router-dom";
+import { ArrowUp, BookOpen, GraduationCap, ExternalLink } from "lucide-react";
 import { InstagramIcon, YoutubeIcon, FacebookIcon } from "../ui/SocialIcons";
 import { socialLinksData } from "../../data/social";
 import { studyMaterialsData } from "../../data/materials";
@@ -23,21 +24,33 @@ export const Footer = ({ onOpenEnquiryModal }: FooterProps) => {
     { label: "Contact Us", href: "#contact" }
   ];
 
+  const seoLinks = [
+    { label: "UGC NET Coaching in Coimbatore", to: "/ugc-net-coaching-coimbatore" },
+    { label: "UGC NET English Literature", to: "/ugc-net-english-literature" },
+    { label: "UGC NET Paper 1 & Paper 2", to: "/ugc-net-paper-1-paper-2" },
+    { label: "UGC NET JRF Coaching", to: "/ugc-net-jrf-coaching" },
+    { label: "Teaching Eligibility Coaching", to: "/teaching-eligibility-exam-coaching" },
+    { label: "Blog & Resources", to: "/blog" }
+  ];
+
   return (
     <footer className="relative bg-[#121316] text-slate-300 border-t border-[#8C6418]/30 overflow-hidden">
       {/* Decorative top ambient line */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-[1px] bg-gradient-to-r from-transparent via-[#D4AF37]/50 to-transparent" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 pb-12 border-b border-neutral-800">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 pb-12 border-b border-neutral-800">
           {/* Brand Column (5 cols) */}
           <div className="lg:col-span-5 space-y-6">
             <div className="flex items-center gap-3.5">
               <div className="w-12 h-12 rounded-full overflow-hidden border border-[#D4AF37] p-0.5 bg-[#121316] shadow-md">
                 <img
                   src="/alpha-academy-logo.jpg"
-                  alt="Alpha Academy Emblem"
+                  alt="Alpha Academy official emblem — UGC NET English Literature coaching in Coimbatore"
                   className="w-full h-full object-cover rounded-full"
+                  width={48}
+                  height={48}
+                  loading="lazy"
                 />
               </div>
               <div>
@@ -91,11 +104,11 @@ export const Footer = ({ onOpenEnquiryModal }: FooterProps) => {
             </div>
           </div>
 
-          {/* Quick Navigation (4 cols) */}
-          <div className="lg:col-span-4 space-y-4">
+          {/* Quick Navigation (3 cols) */}
+          <div className="lg:col-span-3 space-y-4">
             <h4 className="font-cinzel text-sm font-bold tracking-wider text-white uppercase border-b border-neutral-800 pb-2 flex items-center gap-2">
               <GraduationCap className="w-4 h-4 text-[#F3D068]" />
-              <span>Academy Navigation</span>
+              <span>Quick Navigation</span>
             </h4>
             <div className="grid grid-cols-2 gap-2 text-xs sm:text-sm">
               {navLinks.map((link) => (
@@ -111,8 +124,28 @@ export const Footer = ({ onOpenEnquiryModal }: FooterProps) => {
             </div>
           </div>
 
-          {/* Study Materials & Enrolment (3 cols) */}
-          <div className="lg:col-span-3 space-y-4">
+          {/* SEO Coaching Pages (2 cols) */}
+          <div className="lg:col-span-2 space-y-4">
+            <h4 className="font-cinzel text-sm font-bold tracking-wider text-white uppercase border-b border-neutral-800 pb-2 flex items-center gap-2">
+              <ExternalLink className="w-4 h-4 text-[#F3D068]" />
+              <span>Coaching Pages</span>
+            </h4>
+            <div className="space-y-2 text-xs">
+              {seoLinks.map((link) => (
+                <Link
+                  key={link.to}
+                  to={link.to}
+                  className="text-slate-300 hover:text-[#F3D068] transition-colors py-1 flex items-center gap-1.5 group"
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#8C6418] group-hover:scale-125 transition-transform" />
+                  <span>{link.label}</span>
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          {/* Study Materials & Enrolment (2 cols) */}
+          <div className="lg:col-span-2 space-y-4">
             <h4 className="font-cinzel text-sm font-bold tracking-wider text-white uppercase border-b border-neutral-800 pb-2 flex items-center gap-2">
               <BookOpen className="w-4 h-4 text-[#F3D068]" />
               <span>Published Study Books</span>

@@ -58,9 +58,11 @@ export const StudyMaterials = ({ onSelectMaterial, onEnquire }: StudyMaterialsPr
                   {/* Book Image */}
                   <img
                     src={book.image}
-                    alt={book.title}
+                    alt={`${book.title} — UGC NET English Literature Volume ${book.volumeNumber} by Alpha Academy`}
                     className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
                     loading="lazy"
+                    width={300}
+                    height={420}
                   />
 
                   {/* Spine Highlight Shadow */}

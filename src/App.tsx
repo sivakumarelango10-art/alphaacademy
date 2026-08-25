@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Routes, Route } from "react-router-dom";
 import { ScrollProgress } from "./components/layout/ScrollProgress";
 import { Navbar } from "./components/layout/Navbar";
 import { Hero } from "./components/sections/Hero";
@@ -20,6 +21,74 @@ import { EnquiryModal } from "./components/sections/EnquiryModal";
 import { Toast } from "./components/ui/Toast";
 import type { StudyMaterial } from "./data/materials";
 
+// Dedicated SEO pages
+import { UGCNETCoachingPage } from "./pages/UGCNETCoachingPage";
+import { EnglishLiteraturePage } from "./pages/EnglishLiteraturePage";
+import { Paper1Paper2Page } from "./pages/Paper1Paper2Page";
+import { JRFCoachingPage } from "./pages/JRFCoachingPage";
+import { TeachingEligibilityPage } from "./pages/TeachingEligibilityPage";
+import { BlogPage } from "./pages/BlogPage";
+import { BlogPostPage } from "./pages/BlogPostPage";
+import { NotFoundPage } from "./pages/NotFoundPage";
+
+// ── Homepage assembled from all sections ──────────────────────────────────────
+function HomePage({
+  onOpenEnquiry,
+  onSelectMaterial,
+  onSuccessToast,
+}: {
+  onOpenEnquiry: (subject?: string) => void;
+  onSelectMaterial: (m: StudyMaterial) => void;
+  onSuccessToast: (msg: string) => void;
+}) {
+  return (
+    <main id="main-content">
+      {/* 1. Hero Section */}
+      <Hero onOpenEnquiryModal={onOpenEnquiry} />
+
+      {/* 2. About Alpha Academy */}
+      <About />
+
+      {/* 3. Meet the Founder (Sabarna Suresh) */}
+      <Founder onOpenEnquiryModal={onOpenEnquiry} />
+
+      {/* 4. Why Alpha Academy? */}
+      <WhyAlpha onOpenEnquiryModal={onOpenEnquiry} />
+
+      {/* 5. Study Materials Catalog */}
+      <StudyMaterials
+        onSelectMaterial={onSelectMaterial}
+        onEnquire={onOpenEnquiry}
+      />
+
+      {/* 6. Material Feedback Carousel */}
+      <MaterialFeedback />
+
+      {/* 7. Student Reviews / Testimonials */}
+      <Testimonials />
+
+      {/* 8. Class Details */}
+      <ClassDetails onOpenEnquiryModal={onOpenEnquiry} />
+
+      {/* 9. Subjects & Core Learning Areas */}
+      <Subjects />
+
+      {/* 10. Frequently Asked Questions */}
+      <FAQ />
+
+      {/* 11. Social Media & Community Hub */}
+      <SocialMedia />
+
+      {/* 12. Contact Us */}
+      <Contact onSuccessToast={onSuccessToast} />
+
+      {/* 13. Final Closing CTA */}
+      <CTA onOpenEnquiryModal={onOpenEnquiry} />
+    </main>
+  );
+}
+
+// ── Root App ─────────────────────────────────────────────────────────────────
 export function App() {
   const [selectedMaterial, setSelectedMaterial] = useState<StudyMaterial | null>(null);
   const [isEnquiryModalOpen, setIsEnquiryModalOpen] = useState(false);
@@ -33,9 +102,7 @@ export function App() {
 
   const handleShowToast = (msg: string) => {
     setToastMessage(msg);
-    setTimeout(() => {
-      setToastMessage(null);
-    }, 6000);
+    setTimeout(() => setToastMessage(null), 6000);
   };
 
   return (
@@ -46,55 +113,39 @@ export function App() {
       {/* Main Sticky Navbar */}
       <Navbar onOpenEnquiryModal={() => handleOpenEnquiry("General Batch Enrolment")} />
 
-      {/* Main Content Sections */}
-      <main id="main-content">
-        {/* 1. Hero Section */}
-        <Hero onOpenEnquiryModal={handleOpenEnquiry} />
-
-        {/* 2. About Alpha Academy */}
-        <About />
-
-        {/* 3. Meet the Founder (Sabarna Suresh) */}
-        <Founder onOpenEnquiryModal={handleOpenEnquiry} />
-
-        {/* 4. Why Alpha Academy? (6 Interactive Cards) */}
-        <WhyAlpha onOpenEnquiryModal={handleOpenEnquiry} />
-
-        {/* 5. Study Materials Catalog (8 Published Books) */}
-        <StudyMaterials
-          onSelectMaterial={(material) => setSelectedMaterial(material)}
-          onEnquire={(subject) => handleOpenEnquiry(subject)}
+      {/* Page Routes */}
+      <Routes>
+        {/* Homepage */}
+        <Route
+          path="/"
+          element={
+            <HomePage
+              onOpenEnquiry={handleOpenEnquiry}
+              onSelectMaterial={(m) => setSelectedMaterial(m)}
+              onSuccessToast={handleShowToast}
+            />
+          }
         />
 
-        {/* 9. Material Feedback Carousel */}
-        <MaterialFeedback />
+        {/* Dedicated SEO pages */}
+        <Route path="/ugc-net-coaching-coimbatore" element={<UGCNETCoachingPage />} />
+        <Route path="/ugc-net-english-literature" element={<EnglishLiteraturePage />} />
+        <Route path="/ugc-net-paper-1-paper-2" element={<Paper1Paper2Page />} />
+        <Route path="/ugc-net-jrf-coaching" element={<JRFCoachingPage />} />
+        <Route path="/teaching-eligibility-exam-coaching" element={<TeachingEligibilityPage />} />
 
-        {/* 10. Student Reviews / Testimonials */}
-        <Testimonials />
+        {/* Blog */}
+        <Route path="/blog" element={<BlogPage />} />
+        <Route path="/blog/:slug" element={<BlogPostPage />} />
 
-        {/* 11. Class Details */}
-        <ClassDetails onOpenEnquiryModal={handleOpenEnquiry} />
+        {/* 404 fallback */}
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
 
-        {/* 12. Subjects & Core Learning Areas */}
-        <Subjects />
-
-        {/* 14. Frequently Asked Questions */}
-        <FAQ />
-
-        {/* 15. Social Media & Community Hub */}
-        <SocialMedia />
-
-        {/* 16. Contact Us */}
-        <Contact onSuccessToast={handleShowToast} />
-
-        {/* 17. Final Closing CTA */}
-        <CTA onOpenEnquiryModal={handleOpenEnquiry} />
-      </main>
-
-      {/* Footer */}
+      {/* Footer (shown on all pages) */}
       <Footer onOpenEnquiryModal={() => handleOpenEnquiry("Footer Enrolment Request")} />
 
-      {/* Modals & Overlays */}
+      {/* Modals & Overlays (available on all pages) */}
       <MaterialModal
         material={selectedMaterial}
         onClose={() => setSelectedMaterial(null)}
