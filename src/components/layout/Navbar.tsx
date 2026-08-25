@@ -8,7 +8,14 @@ interface NavbarProps {
   onOpenEnquiryModal: () => void;
 }
 
-const navItems = [
+interface NavItem {
+  label: string;
+  href: string;
+  sectionId?: string;
+  isRoute?: boolean;
+}
+
+const navItems: NavItem[] = [
   { label: "Home", href: "/#hero", sectionId: "hero" },
   { label: "About", href: "/#about", sectionId: "about" },
   { label: "Founder", href: "/#founder", sectionId: "founder" },
@@ -28,6 +35,7 @@ export const Navbar = ({ onOpenEnquiryModal }: NavbarProps) => {
   const navigate = useNavigate();
   const activeId = useScrollSpy(sectionIds, 120);
 
+  // Scroll listener for sticky navbar appearance
   useEffect(() => {
     let ticking = false;
     const handleScroll = () => {
@@ -43,6 +51,11 @@ export const Navbar = ({ onOpenEnquiryModal }: NavbarProps) => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Close mobile drawer when route or hash changes
+  useEffect(() => {
+    setMobileMenuOpen(false);
+  }, [location.pathname, location.hash]);
+
   // Lock body scroll on mobile when menu is open
   useEffect(() => {
     if (mobileMenuOpen) {
@@ -55,11 +68,12 @@ export const Navbar = ({ onOpenEnquiryModal }: NavbarProps) => {
     };
   }, [mobileMenuOpen]);
 
-  const handleNavClick = (e: React.MouseEvent, item: typeof navItems[0]) => {
+  // Navigation click handler supporting both on-page sections and cross-page navigation
+  const handleNavClick = (e: React.MouseEvent, item: NavItem) => {
     setMobileMenuOpen(false);
 
     if (item.isRoute) {
-      // Direct route navigation handled by React Router
+      // Route navigation handled by Link or navigate
       return;
     }
 
@@ -67,13 +81,7 @@ export const Navbar = ({ onOpenEnquiryModal }: NavbarProps) => {
     const sectionId = item.sectionId;
 
     if (location.pathname !== "/") {
-      navigate("/");
-      setTimeout(() => {
-        const target = document.getElementById(sectionId || "");
-        if (target) {
-          target.scrollIntoView({ behavior: "smooth" });
-        }
-      }, 150);
+      navigate(`/#${sectionId}`);
     } else {
       const target = document.getElementById(sectionId || "");
       if (target) {
@@ -88,8 +96,7 @@ export const Navbar = ({ onOpenEnquiryModal }: NavbarProps) => {
     }
   };
 
-  const handleToggleMenu = (e: React.MouseEvent) => {
-    e.stopPropagation();
+  const toggleMobileMenu = () => {
     setMobileMenuOpen((prev) => !prev);
   };
 
@@ -108,13 +115,15 @@ export const Navbar = ({ onOpenEnquiryModal }: NavbarProps) => {
             <a
               href="/#hero"
               onClick={(e) => handleNavClick(e, navItems[0])}
-              className="flex items-center gap-2.5 sm:gap-3 group select-none"
+              className="flex items-center gap-2.5 sm:gap-3 group select-none cursor-pointer"
             >
               <div className="relative w-9 h-9 sm:w-10 sm:h-10 rounded-full overflow-hidden border border-[#D4AF37] p-0.5 bg-[#121316] shadow-sm group-hover:scale-105 transition-all shrink-0">
                 <img
                   src="/alpha-academy-logo.jpg"
-                  alt="Alpha Academy Logo"
+                  alt="Alpha Academy official logo"
                   className="w-full h-full object-cover rounded-full"
+                  width={40}
+                  height={40}
                 />
               </div>
               <div className="flex flex-col">
@@ -130,7 +139,7 @@ export const Navbar = ({ onOpenEnquiryModal }: NavbarProps) => {
             </a>
 
             {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center gap-1 xl:gap-1.5">
+            <nav className="hidden lg:flex items-center gap-1 xl:gap-1.5" aria-label="Main Navigation">
               {navItems.map((item) => {
                 const isActive = item.isRoute
                   ? location.pathname === item.href || location.pathname.startsWith(`${item.href}/`)
@@ -164,7 +173,7 @@ export const Navbar = ({ onOpenEnquiryModal }: NavbarProps) => {
                     key={item.href}
                     href={item.href}
                     onClick={(e) => handleNavClick(e, item)}
-                    className={`relative px-3.5 py-1.5 text-xs xl:text-sm font-semibold tracking-wider uppercase transition-colors rounded-md ${
+                    className={`relative px-3.5 py-1.5 text-xs xl:text-sm font-semibold tracking-wider uppercase transition-colors rounded-md cursor-pointer ${
                       isActive
                         ? "text-[#8C6418] font-bold"
                         : "text-[#4A5568] hover:text-[#121316] hover:bg-black/5"
@@ -183,12 +192,12 @@ export const Navbar = ({ onOpenEnquiryModal }: NavbarProps) => {
               })}
             </nav>
 
-            {/* Desktop Right CTA: Solid Black JOIN NOW Button */}
+            {/* Desktop Right CTA Button */}
             <div className="hidden lg:flex items-center gap-3">
               <button
                 type="button"
                 onClick={onOpenEnquiryModal}
-                className="px-5 py-2.5 rounded-none sm:rounded-md text-xs xl:text-sm font-bold tracking-wider uppercase text-white bg-[#121316] hover:bg-black shadow-md hover:shadow-lg transition-all flex items-center gap-2 cursor-pointer"
+                className="btn-premium-primary px-5 py-2.5 rounded-none sm:rounded-md text-xs xl:text-sm font-bold tracking-wider uppercase text-white bg-[#121316] hover:bg-black shadow-md flex items-center gap-2 cursor-pointer"
               >
                 <span>Join Now</span>
                 <ArrowRight className="w-3.5 h-3.5" />
@@ -200,7 +209,7 @@ export const Navbar = ({ onOpenEnquiryModal }: NavbarProps) => {
               <button
                 type="button"
                 onClick={onOpenEnquiryModal}
-                className="px-3 py-1.5 text-xs font-bold uppercase tracking-wider rounded-lg bg-[#121316] text-white hover:bg-black transition-colors cursor-pointer touch-manipulation shadow-xs"
+                className="btn-premium-primary px-3 py-1.5 text-xs font-bold uppercase tracking-wider rounded-lg bg-[#121316] text-white hover:bg-black transition-colors cursor-pointer touch-manipulation shadow-xs"
               >
                 Join Now
               </button>
@@ -208,10 +217,11 @@ export const Navbar = ({ onOpenEnquiryModal }: NavbarProps) => {
               {/* Reliable Mobile Hamburger Toggle Button */}
               <button
                 type="button"
-                onClick={handleToggleMenu}
+                onClick={toggleMobileMenu}
                 aria-expanded={mobileMenuOpen}
+                aria-controls="mobile-nav-drawer"
                 aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
-                className="relative z-50 p-2 sm:p-2.5 rounded-lg text-[#121316] bg-white border border-[#EAE5DC] shadow-xs active:scale-95 cursor-pointer touch-manipulation transition-all hover:bg-slate-50 focus:outline-none"
+                className="relative z-50 p-2 sm:p-2.5 rounded-xl text-[#121316] bg-white border border-[#EAE5DC] shadow-xs active:scale-95 cursor-pointer touch-manipulation transition-all hover:bg-slate-50 focus:outline-none"
               >
                 {mobileMenuOpen ? (
                   <X className="w-5 h-5 sm:w-6 sm:h-6 text-[#121316]" />
@@ -227,10 +237,14 @@ export const Navbar = ({ onOpenEnquiryModal }: NavbarProps) => {
         <AnimatePresence>
           {mobileMenuOpen && (
             <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.25, ease: "easeOut" }}
+              id="mobile-nav-drawer"
+              role="dialog"
+              aria-modal="true"
+              aria-label="Mobile Navigation"
+              initial={{ opacity: 0, y: -8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.22, ease: "easeOut" }}
               className="lg:hidden bg-[#FAF8F5] border-b border-[#EAE5DC] shadow-2xl overflow-y-auto max-h-[calc(100vh-4.5rem)] overscroll-contain"
             >
               <div className="px-5 py-4 space-y-3">
@@ -244,7 +258,7 @@ export const Navbar = ({ onOpenEnquiryModal }: NavbarProps) => {
                   </span>
                 </div>
 
-                <div className="grid grid-cols-1 gap-1">
+                <nav className="grid grid-cols-1 gap-1" aria-label="Mobile Menu Links">
                   {navItems.map((item) => {
                     const isActive = item.isRoute
                       ? location.pathname === item.href || location.pathname.startsWith(`${item.href}/`)
@@ -273,7 +287,7 @@ export const Navbar = ({ onOpenEnquiryModal }: NavbarProps) => {
                         key={item.href}
                         href={item.href}
                         onClick={(e) => handleNavClick(e, item)}
-                        className={`px-4 py-2.5 rounded-xl text-sm font-semibold uppercase tracking-wider flex items-center justify-between transition-colors touch-manipulation ${
+                        className={`px-4 py-2.5 rounded-xl text-sm font-semibold uppercase tracking-wider flex items-center justify-between transition-colors touch-manipulation cursor-pointer ${
                           isActive
                             ? "bg-[#F3EEDF] text-[#8C6418] font-bold border-l-4 border-[#8C6418]"
                             : "text-slate-700 hover:bg-black/5 active:bg-[#F3EEDF] hover:text-black"
@@ -284,7 +298,7 @@ export const Navbar = ({ onOpenEnquiryModal }: NavbarProps) => {
                       </a>
                     );
                   })}
-                </div>
+                </nav>
 
                 <div className="pt-3 border-t border-[#EAE5DC]">
                   <button
@@ -293,7 +307,7 @@ export const Navbar = ({ onOpenEnquiryModal }: NavbarProps) => {
                       setMobileMenuOpen(false);
                       onOpenEnquiryModal();
                     }}
-                    className="w-full py-3 rounded-xl text-sm font-bold uppercase tracking-wider text-white bg-[#121316] hover:bg-black active:scale-[0.98] shadow-md flex items-center justify-center gap-2 cursor-pointer touch-manipulation transition-all"
+                    className="btn-premium-primary w-full py-3 rounded-xl text-sm font-bold uppercase tracking-wider text-white bg-[#121316] hover:bg-black active:scale-[0.98] shadow-md flex items-center justify-center gap-2 cursor-pointer touch-manipulation transition-all"
                   >
                     <span>Enroll for 2026 Batch</span>
                     <ArrowRight className="w-4 h-4 text-[#F3D068]" />
@@ -314,7 +328,7 @@ export const Navbar = ({ onOpenEnquiryModal }: NavbarProps) => {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
             onClick={() => setMobileMenuOpen(false)}
-            className="fixed inset-0 bg-black/40 backdrop-blur-xs z-40 lg:hidden"
+            className="fixed inset-0 bg-black/40 backdrop-blur-xs z-40 lg:hidden cursor-pointer"
             aria-hidden="true"
           />
         )}
@@ -322,4 +336,3 @@ export const Navbar = ({ onOpenEnquiryModal }: NavbarProps) => {
     </>
   );
 };
-
