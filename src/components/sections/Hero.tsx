@@ -4,10 +4,10 @@ import { academyData } from "../../data/academy";
 import { founderData } from "../../data/founder";
 
 interface HeroProps {
-  onOpenEnquiryModal: (subject?: string) => void;
+  onOpenEnquiryModal?: (subject?: string) => void;
 }
 
-export const Hero = ({ onOpenEnquiryModal }: HeroProps) => {
+export const Hero = ({ onOpenEnquiryModal: _onOpenEnquiryModal }: HeroProps) => {
   const scrollToSection = (id: string) => {
     const el = document.getElementById(id);
     if (el) el.scrollIntoView({ behavior: "smooth" });
@@ -140,67 +140,47 @@ export const Hero = ({ onOpenEnquiryModal }: HeroProps) => {
           >
             {/* Center Main Card */}
             <div className="relative w-full max-w-md">
-              <div className="relative rounded-3xl bg-white border border-[#EAE5DC] p-6 sm:p-8 shadow-xl overflow-hidden card-hover-premium">
+              <div className="relative rounded-3xl bg-white border border-[#EAE5DC] p-6 sm:p-8 shadow-xl overflow-hidden text-center space-y-6 card-hover-premium">
                 
-                {/* Founder Presentation Header */}
-                <div className="flex flex-col items-center text-center space-y-4">
-                  {/* Official Emblem Logo Circle */}
-                  <div className="relative group">
-                    <div className="w-32 h-32 sm:w-36 sm:h-36 rounded-full p-1 bg-gradient-to-tr from-[#D4AF37] via-[#F3D068] to-[#B8860B] shadow-md">
-                      <div className="w-full h-full rounded-full overflow-hidden bg-white flex items-center justify-center">
-                        <img
-                          src="/founder.jpg"
-                          alt="Sabarna Suresh — Founder & CEO, Alpha Academy, UGC NET English Literature mentor"
-                          className="w-full h-full object-cover object-top img-zoom-subtle"
-                          width={144}
-                          height={144}
-                          loading="eager"
-                          fetchPriority="high"
-                        />
-                      </div>
-                    </div>
-
-                    {/* Badge on logo */}
-                    <div className="absolute -bottom-2 -right-1 px-3 py-1 rounded-full bg-[#121316] text-[10px] font-bold uppercase tracking-wider text-white shadow-md flex items-center gap-1">
-                      <Award className="w-3 h-3 text-[#F3D068]" />
-                      <span>Founder & CEO</span>
+                {/* Enlarged Portrait Presentation */}
+                <div className="relative mx-auto w-full max-w-[360px] sm:max-w-[400px] group">
+                  <div className="relative rounded-2xl p-1 bg-gradient-to-tr from-[#D4AF37] via-[#F3D068] to-[#B8860B] shadow-md">
+                    <div className="w-full h-[400px] sm:h-[480px] overflow-hidden rounded-xl bg-slate-100">
+                      <img
+                        src="/founder.jpg"
+                        alt="Sabarna Suresh — Founder & CEO, Alpha Academy, UGC NET English Literature mentor"
+                        className="w-full h-full object-cover object-top img-zoom-subtle"
+                        loading="eager"
+                        fetchPriority="high"
+                        width={400}
+                        height={480}
+                      />
                     </div>
                   </div>
-
-                  {/* Founder Info */}
-                  <div className="space-y-1">
-                    <h3 className="font-serif-display text-2xl font-bold text-[#121316] tracking-wide">
-                      {founderData.name}
-                    </h3>
-                    <p className="text-xs text-[#8C6418] font-bold tracking-wider uppercase">
-                      Educator • Academic Trainer • Mentor
-                    </p>
-                    <p className="text-xs text-slate-500 max-w-xs pt-1 leading-relaxed">
-                      Specialising in UGC NET English Literature with repeated examination qualifications.
-                    </p>
+                  <div className="absolute -bottom-3 right-4 px-4 py-1.5 rounded-full bg-[#121316] text-xs font-bold uppercase tracking-wider text-white shadow-xl flex items-center gap-1.5">
+                    <Award className="w-4 h-4 text-[#F3D068]" />
+                    <span>UGC NET Qualified</span>
                   </div>
-
-                  {/* Visual Pill Matrix */}
-                  <div className="w-full grid grid-cols-2 gap-2 pt-2 text-left">
-                    <div className="p-3 rounded-xl bg-[#FAF8F5] border border-[#EAE5DC]">
-                      <div className="text-[10px] text-slate-500 uppercase font-bold">Specialisation</div>
-                      <div className="text-xs font-bold text-slate-800">UGC NET English</div>
-                    </div>
-                    <div className="p-3 rounded-xl bg-[#FAF8F5] border border-[#EAE5DC]">
-                      <div className="text-[10px] text-slate-500 uppercase font-bold">Study Materials</div>
-                      <div className="text-xs font-bold text-[#8C6418]">8 Published Books</div>
-                    </div>
-                  </div>
-
-                  {/* Fast Action */}
-                  <button
-                    onClick={() => onOpenEnquiryModal("UGC NET English Mentorship")}
-                    className="btn-premium-primary w-full py-3 px-4 rounded-xl text-xs font-bold uppercase tracking-wider text-white bg-[#121316] hover:bg-black transition-colors flex items-center justify-center gap-2 shadow-sm cursor-pointer"
-                  >
-                    <span>Connect for 2026 Guidance</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </button>
                 </div>
+
+                {/* Founder Name & Titles */}
+                <div className="space-y-2 pt-2">
+                  <h3 className="font-serif-display text-2xl sm:text-3xl font-bold text-[#121316] tracking-wide">
+                    {founderData.name}
+                  </h3>
+                  <p className="text-xs sm:text-sm font-bold text-[#8C6418] tracking-wider uppercase">
+                    {founderData.designation}
+                  </p>
+                  <div className="pt-2 flex flex-wrap justify-center gap-1.5">
+                    <span className="text-[11px] px-3 py-1 rounded-full bg-[#FAF8F5] border border-[#EAE5DC] text-slate-700 font-semibold">
+                      5+ Years Teaching Experience
+                    </span>
+                    <span className="text-[11px] px-3 py-1 rounded-full bg-[#FAF8F5] border border-[#E2D6BE] text-[#8C6418] font-bold">
+                      8 Published Books
+                    </span>
+                  </div>
+                </div>
+
               </div>
 
               {/* Floating Academic Element 1: Top Left */}
